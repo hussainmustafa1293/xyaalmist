@@ -18,16 +18,16 @@ const PRODUCTS = [
   {
     slug: "haider",
     name: "Haider",
-    tagline: "Mysterious. Bold. Unforgettable.",
-    description: "A signature fragrance built for presence. Haider opens with sharp, spicy notes and settles into a deep, woody base of oud and amber. Crafted to leave a lingering trail of sophistication from morning to midnight.",
-    price: 4500,        // e.g. 4500
+    tagline: "[Short tagline for Haider]",
+    description: "[Product description for Haider goes here. Replace with a few sentences describing the fragrance, its character and how it feels to wear.]",
+    price: null,        // e.g. 4500
     salePrice: null,    // e.g. 3900, or null if no discount
-    size: "50ml Eau de Parfum",
+    size: "[e.g. 50ml Eau de Parfum]",
     available: true,
     notes: {
-      top: "Bergamot, Black Pepper",
-      heart: "Oud, Rose",
-      base: "Amber, Musk"
+      top: "[Top Notes]",
+      heart: "[Heart Notes]",
+      base: "[Base Notes]"
     },
     images: [
       "assets/products/haider/main.jpg",
@@ -37,45 +37,45 @@ const PRODUCTS = [
     ]
   },
   {
-    slug: "ivory-bloom",
-    name: "Ivory Bloom",
-    tagline: "Soft. Floral. Radiant.",
-    description: "A delicate and radiant floral blend that captures the essence of a fresh morning. Perfect for daily wear and quiet elegance.",
-    price: 3800,
+    slug: "product-2",
+    name: "[Product Name 2]",
+    tagline: "[Short tagline]",
+    description: "[Product description goes here.]",
+    price: null,
     salePrice: null,
-    size: "50ml Eau de Parfum",
+    size: "[Size]",
     available: true,
     notes: {
-      top: "Pink Pepper, Citrus",
-      heart: "Jasmine, Peony",
-      base: "Sandalwood, Vanilla"
+      top: "[Top Notes]",
+      heart: "[Heart Notes]",
+      base: "[Base Notes]"
     },
     images: [
-      "assets/products/ivory-bloom/main.jpg",
-      "assets/products/ivory-bloom/angle.jpg",
-      "assets/products/ivory-bloom/lifestyle.jpg",
-      "assets/products/ivory-bloom/packaging.jpg"
+      "assets/products/product-2/main.jpg",
+      "assets/products/product-2/angle.jpg",
+      "assets/products/product-2/lifestyle.jpg",
+      "assets/products/product-2/packaging.jpg"
     ]
   },
   {
-    slug: "golden-oud",
-    name: "Golden Oud",
-    tagline: "Rich. Warm. Majestic.",
-    description: "A majestic blend of warm spices and rich woods. Golden Oud offers a truly royal fragrance experience for special occasions.",
-    price: 5200,
+    slug: "product-3",
+    name: "[Product Name 3]",
+    tagline: "[Short tagline]",
+    description: "[Product description goes here.]",
+    price: null,
     salePrice: null,
-    size: "50ml Eau de Parfum",
+    size: "[Size]",
     available: true,
     notes: {
-      top: "Saffron, Cardamom",
-      heart: "Oud Wood, Leather",
-      base: "Amber, Tonka Bean"
+      top: "[Top Notes]",
+      heart: "[Heart Notes]",
+      base: "[Base Notes]"
     },
     images: [
-      "assets/products/golden-oud/main.jpg",
-      "assets/products/golden-oud/angle.jpg",
-      "assets/products/golden-oud/lifestyle.jpg",
-      "assets/products/golden-oud/packaging.jpg"
+      "assets/products/product-3/main.jpg",
+      "assets/products/product-3/angle.jpg",
+      "assets/products/product-3/lifestyle.jpg",
+      "assets/products/product-3/packaging.jpg"
     ]
   }
 ];
