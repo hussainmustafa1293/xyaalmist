@@ -1,54 +1,84 @@
-// js/products.js
+/* =====================================================
+   XYAAL MIST — PRODUCT DATA
+   ---------------------------------------------------
+   EDIT PRODUCT INFORMATION HERE.
+   This is the ONLY file you need to touch to change
+   product names, prices, descriptions, notes or images.
 
-const WHATSAPP_NUMBER = "923281959312";
+   For each product:
+   - slug        → must match its folder name in /products/
+   - images[]    → REPLACE PRODUCT IMAGES HERE (put real
+                    photos in /assets/products/<slug>/ and
+                    update the paths below)
+   - price/salePrice → set salePrice to null if there is no discount
+   - available   → set to false to show "Currently Unavailable"
+===================================================== */
 
-const products = [
+const PRODUCTS = [
   {
-    id: "haider",
     slug: "haider",
     name: "Haider",
-    price: "PKR 4,500",
-    tagline: "Mysterious. Bold. Unforgettable.",
-    description: "A signature fragrance built for presence. Haider opens with sharp, spicy notes and settles into a deep, woody base of oud and amber. Crafted to leave a lingering trail of sophistication from morning to midnight.",
+    tagline: "[Short tagline for Haider]",
+    description: "[Product description for Haider goes here. Replace with a few sentences describing the fragrance, its character and how it feels to wear.]",
+    price: null,        // e.g. 4500
+    salePrice: null,    // e.g. 3900, or null if no discount
+    size: "[e.g. 50ml Eau de Parfum]",
+    available: true,
     notes: {
-      top: "Bergamot, Black Pepper",
-      heart: "Oud, Rose",
-      base: "Amber, Musk"
+      top: "[Top Notes]",
+      heart: "[Heart Notes]",
+      base: "[Base Notes]"
     },
-    size: "50ml Eau de Parfum",
-    inStock: true,
-    image: "assets/products/haider/main.jpg"
+    images: [
+      "assets/products/haider/main.jpg",
+      "assets/products/haider/angle.jpg",
+      "assets/products/haider/lifestyle.jpg",
+      "assets/products/haider/packaging.jpg"
+    ]
   },
   {
-    id: "product-2",
-    slug: "product-2", // Change this to your real slug (e.g., "ivory-bloom") once you rename the folder
-    name: "Ivory Bloom", // Replace with actual Product 2 name
-    price: "PKR 3,800",
-    tagline: "Soft. Floral. Radiant.",
-    description: "A delicate and radiant floral blend that captures the essence of a fresh morning. Perfect for daily wear and quiet elegance.",
+    slug: "product-2",
+    name: "[Product Name 2]",
+    tagline: "[Short tagline]",
+    description: "[Product description goes here.]",
+    price: null,
+    salePrice: null,
+    size: "[Size]",
+    available: true,
     notes: {
-      top: "Pink Pepper, Citrus",
-      heart: "Jasmine, Peony",
-      base: "Sandalwood, Vanilla"
+      top: "[Top Notes]",
+      heart: "[Heart Notes]",
+      base: "[Base Notes]"
     },
-    size: "50ml Eau de Parfum",
-    inStock: true,
-    image: "assets/products/product-2/main.jpg"
+    images: [
+      "assets/products/product-2/main.jpg",
+      "assets/products/product-2/angle.jpg",
+      "assets/products/product-2/lifestyle.jpg",
+      "assets/products/product-2/packaging.jpg"
+    ]
   },
   {
-    id: "product-3",
-    slug: "product-3", // Change this to your real slug once you rename the folder
-    name: "Golden Oud", // Replace with actual Product 3 name
-    price: "PKR 5,200",
-    tagline: "Rich. Warm. Majestic.",
-    description: "A majestic blend of warm spices and rich woods. Golden Oud offers a truly royal fragrance experience for special occasions.",
+    slug: "product-3",
+    name: "[Product Name 3]",
+    tagline: "[Short tagline]",
+    description: "[Product description goes here.]",
+    price: null,
+    salePrice: null,
+    size: "[Size]",
+    available: true,
     notes: {
-      top: "Saffron, Cardamom",
-      heart: "Oud Wood, Leather",
-      base: "Amber, Tonka Bean"
+      top: "[Top Notes]",
+      heart: "[Heart Notes]",
+      base: "[Base Notes]"
     },
-    size: "50ml Eau de Parfum",
-    inStock: true,
-    image: "assets/products/product-3/main.jpg"
+    images: [
+      "assets/products/product-3/main.jpg",
+      "assets/products/product-3/angle.jpg",
+      "assets/products/product-3/lifestyle.jpg",
+      "assets/products/product-3/packaging.jpg"
+    ]
   }
 ];
+
+// EDIT WHATSAPP NUMBER HERE (used site-wide by js/main.js)
+const WHATSAPP_NUMBER = "923281959312"; // country code + number, no + or spaces
