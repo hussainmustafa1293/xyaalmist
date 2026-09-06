@@ -12,22 +12,27 @@
                     update the paths below)
    - price/salePrice → set salePrice to null if there is no discount
    - available   → set to false to show "Currently Unavailable"
+
+   NOTE: Names, prices, notes and descriptions below are SAMPLE
+   placeholder data (added on request so the site looks populated
+   for preview/demo purposes). Replace with your real product
+   details before going fully live.
 ===================================================== */
 
 const PRODUCTS = [
   {
     slug: "haider",
     name: "Haider",
-    tagline: "[Short tagline for Haider]",
-    description: "[Product description for Haider goes here. Replace with a few sentences describing the fragrance, its character and how it feels to wear.]",
-    price: null,        // e.g. 4500
-    salePrice: null,    // e.g. 3900, or null if no discount
-    size: "[e.g. 50ml Eau de Parfum]",
+    tagline: "Bold, woody and warm",
+    description: "Haider opens with a sharp, confident freshness before settling into a warm, woody heart. Built for evening wear, it leaves a rich, long-lasting trail without being overpowering.",
+    price: 4500,
+    salePrice: null,
+    size: "50ml Eau de Parfum",
     available: true,
     notes: {
-      top: "[Top Notes]",
-      heart: "[Heart Notes]",
-      base: "[Base Notes]"
+      top: "Bergamot, Black Pepper",
+      heart: "Cedarwood, Lavender",
+      base: "Amber, Musk, Oud"
     },
     images: [
       "assets/products/haider/main.jpg",
@@ -38,17 +43,17 @@ const PRODUCTS = [
   },
   {
     slug: "product-2",
-    name: "[Product Name 2]",
-    tagline: "[Short tagline]",
-    description: "[Product description goes here.]",
-    price: null,
-    salePrice: null,
-    size: "[Size]",
+    name: "Aabnoos",
+    tagline: "Cool, clean and understated",
+    description: "Aabnoos is a quiet, modern scent built around clean, cool tones. Light enough for daily wear, with a soft musky finish that lingers close to the skin.",
+    price: 4200,
+    salePrice: 3600,
+    size: "50ml Eau de Parfum",
     available: true,
     notes: {
-      top: "[Top Notes]",
-      heart: "[Heart Notes]",
-      base: "[Base Notes]"
+      top: "Sea Salt, Grapefruit",
+      heart: "Violet, Iris",
+      base: "White Musk, Sandalwood"
     },
     images: [
       "assets/products/product-2/main.jpg",
@@ -59,17 +64,17 @@ const PRODUCTS = [
   },
   {
     slug: "product-3",
-    name: "[Product Name 3]",
-    tagline: "[Short tagline]",
-    description: "[Product description goes here.]",
-    price: null,
+    name: "Sultana",
+    tagline: "Rich, floral and romantic",
+    description: "Sultana is a rich floral fragrance layered over a warm amber base — romantic and expressive, designed for occasions that call for something memorable.",
+    price: 4800,
     salePrice: null,
-    size: "[Size]",
+    size: "50ml Eau de Parfum",
     available: true,
     notes: {
-      top: "[Top Notes]",
-      heart: "[Heart Notes]",
-      base: "[Base Notes]"
+      top: "Rose, Saffron",
+      heart: "Jasmine, Oud",
+      base: "Amber, Vanilla"
     },
     images: [
       "assets/products/product-3/main.jpg",

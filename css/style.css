@@ -209,6 +209,43 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:500; line-height:1.15; }
 .footer-grid a:hover{ color:var(--brass-light); }
 .footer-bottom{ text-align:center; font-size:.76rem; color:var(--ivory-dim); border-top:1px solid var(--ivory-faint); padding-top:22px; }
 
+/* ---------- Floating WhatsApp button ---------- */
+.wa-float{
+  position:fixed; bottom:24px; right:24px; z-index:150;
+  width:58px; height:58px; border-radius:50%;
+  background:#25D366; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.4); transition:.25s ease;
+}
+.wa-float:hover{ transform:translateY(-3px) scale(1.05); box-shadow:0 10px 26px rgba(0,0,0,.5); }
+.wa-float svg{ width:30px; height:30px; }
+
+/* WhatsApp-icon style buttons (used for "Order on WhatsApp") */
+.btn-wa{
+  background:#1f2a22; color:#e9f5ec; border:1px solid rgba(37,211,102,.4);
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+}
+.btn-wa:hover{ background:#25D366; color:#0b0b0a; border-color:#25D366; }
+.btn-wa svg{ width:18px; height:18px; flex-shrink:0; }
+.btn-wa.icon-only{ width:44px; height:44px; padding:0; border-radius:50%; }
+.btn-wa.icon-only svg{ width:20px; height:20px; }
+
+/* ---------- Back link (product detail page) ---------- */
+.back-link{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.82rem; letter-spacing:.05em; color:var(--ivory-dim);
+  margin-bottom:26px; padding-bottom:2px; border-bottom:1px solid transparent;
+}
+.back-link svg{ width:14px; height:14px; }
+.back-link:hover{ color:var(--brass-light); border-color:var(--brass); }
+
+/* ---------- Social icons (contact page) ---------- */
+.social-row a{
+  width:42px; height:42px; border:1px solid var(--line); border-radius:50%;
+  display:flex; align-items:center; justify-content:center; color:var(--ivory-dim);
+}
+.social-row a svg{ width:18px; height:18px; }
+.social-row a:hover{ border-color:var(--brass); color:var(--brass-light); }
+
 /* ---------- Fade-in on scroll ---------- */
 .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
 .reveal.in{ opacity:1; transform:none; }
