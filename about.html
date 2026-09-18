@@ -3,8 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Story | XYAAL MIST</title>
-<meta name="description" content="XYAAL MIST is a small Pakistani perfume brand focused on fragrance, presentation and identity.">
+<title>Our Story | XYAAL MIST — Luxury Artisan Perfumes</title>
+<meta name="description" content="Discover the story behind XYAAL MIST — a Pakistani perfume house dedicated to fragrance, presentation, and identity.">
+
+<!-- Open Graph / WhatsApp / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="XYAAL MIST">
+<meta property="og:title" content="Our Story | XYAAL MIST">
+<meta property="og:description" content="A quiet approach to fragrance. Built with care around scent, presentation, and identity.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=1200&q=85">
+<meta property="og:url" content="https://xyaalmist.com/about.html">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Our Story | XYAAL MIST">
+<meta name="twitter:description" content="A quiet approach to fragrance. Built with care around scent, presentation, and identity.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=1200&q=85">
+
 <link rel="icon" href="assets/logo/xyaal-mist-logo.png">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -23,6 +38,14 @@
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
+      <button class="nav-bag-btn" aria-label="Open shopping bag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+          <path d="M3 6h18"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="nav-cart-badge">0</span>
+      </button>
       <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu">&#9776;</button>
     </div>
   </div>
@@ -53,8 +76,8 @@
 
   <section class="section" style="padding-top:50px;">
     <div class="container editorial reveal">
-      <div class="ph-block">
-        <div class="ph-label">Brand / studio photo<br><small>Replace with real photography</small></div>
+      <div class="editorial-media">
+        <img src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=1200&q=85" alt="XYAAL MIST Perfume Studio Craftsmanship" class="editorial-img" loading="lazy" />
       </div>
       <div>
         <p>XYAAL MIST is a fragrance brand from Pakistan, built around three ideas: fragrance, presentation and identity.</p>
@@ -106,5 +129,6 @@
 <script>window.ROOT = "./";</script>
 <script src="js/products.js"></script>
 <script src="js/main.js"></script>
+<script src="js/cart.js"></script>
 </body>
 </html>

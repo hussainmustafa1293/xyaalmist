@@ -3,8 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>[Product Name 3] | XYAAL MIST</title>
-<meta name="description" content="[Product Name 3] — a fragrance from the XYAAL MIST collection. Order directly on WhatsApp.">
+<title>Sultana | XYAAL MIST — Eau de Parfum</title>
+<meta name="description" content="Sultana — a rich, floral, and romantic eau de parfum by XYAAL MIST. Notes of rose, saffron, jasmine, oud, amber, and vanilla. Order on WhatsApp.">
+
+<!-- Open Graph / WhatsApp / Facebook -->
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="XYAAL MIST">
+<meta property="og:title" content="Sultana | XYAAL MIST Eau de Parfum">
+<meta property="og:description" content="Rich, floral and romantic. Featuring rose, saffron, jasmine, oud, amber, and vanilla. Order directly on WhatsApp.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=1200&q=85">
+<meta property="og:url" content="https://xyaalmist.com/products/product-3/">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sultana | XYAAL MIST Eau de Parfum">
+<meta name="twitter:description" content="Rich, floral and romantic. Explore olfactory notes and order directly on WhatsApp.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=1200&q=85">
+
 <link rel="icon" href="../../assets/logo/xyaal-mist-logo.png">
 <link rel="stylesheet" href="../../css/style.css">
 </head>
@@ -23,6 +38,14 @@
       <a href="../../contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
+      <button class="nav-bag-btn" aria-label="Open shopping bag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+          <path d="M3 6h18"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="nav-cart-badge">0</span>
+      </button>
       <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu">&#9776;</button>
     </div>
   </div>
@@ -81,6 +104,7 @@
 <script>window.ROOT = "../../";</script>
 <script src="../../js/products.js"></script>
 <script src="../../js/main.js"></script>
+<script src="../../js/cart.js"></script>
 <script>renderProductDetail("product-3");</script>
 </body>
 </html>
