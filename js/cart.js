@@ -221,7 +221,7 @@
             return `
             <div class="cart-item" data-id="${item.id}">
               <div class="cart-item-thumb">
-                <img src="${imgSrc}" alt="${item.name}" onerror="this.src='${root}assets/logo/xyaal-mist-logo.png'; this.style.objectFit='contain';" />
+                <img src="${imgSrc}" alt="${item.name}" onerror="this.src='${root}assets/logo/xyaal-365-transparent.png'; this.style.objectFit='contain';" />
               </div>
               <div class="cart-item-info">
                 <div class="cart-item-header">
@@ -272,7 +272,7 @@
         id: product.id,
         name: product.name,
         price: Number(product.price) || 0,
-        image: product.image || 'assets/logo/xyaal-mist-logo.png',
+        image: product.image || 'assets/logo/xyaal-365-transparent.png',
         qty: quantity,
       });
     }
@@ -363,7 +363,7 @@
     // ---------------------------
     // *Total Amount:* PKR [Total]
     const message = [
-      `*NEW ORDER - XYAAL MIST*`,
+      `*NEW ORDER - XYAAL 365*`,
       `---------------------------`,
       `*Customer Details:*`,
       `Name: ${name}`,
@@ -392,7 +392,7 @@
     const id = btn.dataset.id || 'custom-item';
     const name = btn.dataset.name || 'Perfume';
     const price = Number(btn.dataset.price) || 0;
-    const image = btn.dataset.image || 'assets/logo/xyaal-mist-logo.png';
+    const image = btn.dataset.image || 'assets/logo/xyaal-365-transparent.png';
     const qty = Number(btn.dataset.qty) || 1;
 
     addToCart({ id, name, price, image }, qty);

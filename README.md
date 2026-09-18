@@ -1,4 +1,4 @@
-# XYAAL MIST — Website
+# XYAAL 365 — Website
 
 Static, multi-page site. No backend, no build step — just HTML/CSS/JS you can edit directly or push to GitHub Pages.
 

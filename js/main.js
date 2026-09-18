@@ -28,7 +28,7 @@ function waLink(message){
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 function waOrderMessage(productName){
-  return `Hi, I am interested in ordering ${productName} from XYAAL MIST.`;
+  return `Hi, I am interested in ordering ${productName} from XYAAL 365.`;
 }
 
 /* ---------- Navbar scroll state ---------- */
@@ -145,7 +145,7 @@ function renderProductDetail(slug){
   const root = document.getElementById("productDetail");
   if (!p || !root) return;
 
-  document.title = `${p.name} | XYAAL MIST`;
+  document.title = `${p.name} | XYAAL 365`;
 
   root.innerHTML = `
     <a class="back-link" href="${ROOT}collection.html">${BACK_ICON} Back to Collection</a>
@@ -162,7 +162,7 @@ function renderProductDetail(slug){
         </div>
       </div>
       <div class="pd-info">
-        <span class="eyebrow">XYAAL MIST</span>
+        <span class="eyebrow">XYAAL 365</span>
         <h1>${p.name}</h1>
         <p class="tagline">${p.tagline}</p>
 
@@ -224,7 +224,7 @@ function renderProductDetail(slug){
   const waBtn = document.getElementById("waOrderBtn");
   function updateWaLink(){
     const msg = qty > 1
-      ? `Hi, I am interested in ordering ${qty} x ${p.name} from XYAAL MIST.`
+      ? `Hi, I am interested in ordering ${qty} x ${p.name} from XYAAL 365.`
       : waOrderMessage(p.name);
     waBtn.href = waLink(msg);
   }
@@ -256,5 +256,5 @@ document.addEventListener("click", (e) => {
   const a = e.target.closest('a[href*="wa.me"]');
   if (!a) return;
   if (typeof gtag === "function") gtag("event", "whatsapp_order_click", { event_category:"conversion" });
-  if (typeof fbq === "function") fbq("track", "Contact", { content_name:"XYAAL MIST WhatsApp order" });
+  if (typeof fbq === "function") fbq("track", "Contact", { content_name:"XYAAL 365 WhatsApp order" });
 });
