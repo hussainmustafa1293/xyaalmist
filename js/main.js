@@ -273,6 +273,19 @@ function renderProductDetail(slug){
   const addToBagBtn = document.getElementById("pdAddToBagBtn");
   if (addToBagBtn) {
     addToBagBtn.addEventListener("click", () => {
+      if (!addToBagBtn.classList.contains('is-added')) {
+        const origContent = addToBagBtn.innerHTML;
+        addToBagBtn.classList.add('is-added');
+        addToBagBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;margin-right:6px;display:inline-block;vertical-align:-2px;">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg> Added ✓
+        `;
+        setTimeout(() => {
+          addToBagBtn.classList.remove('is-added');
+          addToBagBtn.innerHTML = origContent;
+        }, 1400);
+      }
       if (window.XyaalCart) {
         window.XyaalCart.add({
           id: p.slug,

@@ -396,6 +396,20 @@
     const price = Number(btn.dataset.price) || 0;
     const image = btn.dataset.image || 'assets/logo/xyaal-365-transparent.png';
     const qty = Number(btn.dataset.qty) || 1;
+    // Trigger micro-feedback "Added ✓"
+    if (!btn.classList.contains('is-added')) {
+      const origHtml = btn.innerHTML;
+      btn.classList.add('is-added');
+      btn.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;margin-right:6px;display:inline-block;vertical-align:-2px;">
+          <path d="M20 6 9 17l-5-5"/>
+        </svg> Added ✓
+      `;
+      setTimeout(() => {
+        btn.classList.remove('is-added');
+        btn.innerHTML = origHtml;
+      }, 1400);
+    }
 
     addToCart({ id, name, price, image }, qty);
   });
