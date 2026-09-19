@@ -921,10 +921,32 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.15; letter
   letter-spacing: 0.08em;
   font-weight: 700;
   text-transform: uppercase;
-  cursor: pointer;
+/* ---------- Stock Badges & Unavailable Styles ---------- */
+.product-thumb { position: relative; }
+.badge-stock {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 4px 10px;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  z-index: 2;
+}
+.badge-sold-out {
+  background: rgba(185, 28, 28, 0.88);
+  color: #fff;
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.product-card.is-unavailable .product-thumb img {
+  filter: grayscale(40%) contrast(90%);
+  opacity: 0.85;
 }
 
-/* ---------- Responsive ---------- */
 @media (max-width: 900px){
   .hero-grid{ grid-template-columns:1fr; }
   .hero-aside{ display:none; }

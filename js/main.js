@@ -82,30 +82,43 @@ function productImgOrPlaceholder(src, label){
 function renderProductGrid(containerId, limit){
   const el = document.getElementById(containerId);
   if (!el) return;
-  const list = limit ? PRODUCTS.slice(0, limit) : PRODUCTS;
+  const currentProducts = (typeof getXyaalProducts === "function") ? getXyaalProducts() : (window.PRODUCTS || PRODUCTS);
+  const list = limit ? currentProducts.slice(0, limit) : currentProducts;
+
+  if (!list.length) {
+    el.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px 20px; color:var(--ivory-dim);">No fragrances currently in collection.</div>`;
+    return;
+  }
+
   el.innerHTML = list.map(p => {
     const activePrice = p.salePrice || p.price;
+    const isAvailable = (p.available !== false);
+    const detailUrl = (p.slug === 'haider' || p.slug === 'product-2' || p.slug === 'product-3')
+      ? `${ROOT}products/${p.slug}/`
+      : `${ROOT}collection.html#${p.id || p.slug}`;
+
     return `
-    <div class="product-card reveal">
-      <a href="${ROOT}products/${p.slug}/" class="product-thumb">
+    <div class="product-card reveal ${!isAvailable ? 'is-unavailable' : ''}">
+      <a href="${detailUrl}" class="product-thumb">
         ${productImgOrPlaceholder(p.images[0], p.name)}
+        ${!isAvailable ? '<span class="badge-stock badge-sold-out">Sold Out</span>' : ''}
       </a>
-      <h3><a href="${ROOT}products/${p.slug}/">${p.name}</a></h3>
-      <p class="tagline">${p.tagline}</p>
+      <h3><a href="${detailUrl}">${p.name}</a></h3>
+      <p class="tagline">${p.tagline || ''}</p>
 
       <!-- Complete Olfactory Notes Breakdown -->
       <div class="card-notes">
         <div class="note-item">
           <span class="note-tag">Top:</span>
-          <span class="note-text">${p.notes.top}</span>
+          <span class="note-text">${p.notes && p.notes.top ? p.notes.top : '—'}</span>
         </div>
         <div class="note-item">
           <span class="note-tag">Heart:</span>
-          <span class="note-text">${p.notes.heart}</span>
+          <span class="note-text">${p.notes && p.notes.heart ? p.notes.heart : '—'}</span>
         </div>
         <div class="note-item">
           <span class="note-tag">Base:</span>
-          <span class="note-text">${p.notes.base}</span>
+          <span class="note-text">${p.notes && p.notes.base ? p.notes.base : '—'}</span>
         </div>
       </div>
 
@@ -116,18 +129,25 @@ function renderProductGrid(containerId, limit){
       </div>
 
       <div class="card-actions">
-        <button type="button" class="btn btn-add-bag" data-action="add-to-bag" data-id="${p.slug}" data-name="${p.name}" data-price="${activePrice}" data-image="${p.images[0]}">
-          ${BAG_ICON} Add to Bag
-        </button>
+        ${isAvailable ? `
+          <button type="button" class="btn btn-add-bag" data-action="add-to-bag" data-id="${p.id || p.slug}" data-name="${p.name}" data-price="${activePrice}" data-image="${p.images[0]}">
+            ${BAG_ICON} Add to Bag
+          </button>
+        ` : `
+          <button type="button" class="btn btn-add-bag" disabled style="opacity:0.5; cursor:not-allowed; border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); color:var(--ivory-dim);">
+            Sold Out
+          </button>
+        `}
         <div class="card-actions-row">
-          <a class="btn btn-ghost" href="${ROOT}products/${p.slug}/">View Details</a>
-          <a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink(waOrderMessage(p.name))}">
-            ${WA_ICON} Order
+          <a class="btn btn-ghost" href="${detailUrl}">View Details</a>
+          <a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink(isAvailable ? waOrderMessage(p.name) : `Hi, I would like to inquire when ${p.name} will be back in stock at XYAAL 365.`)}">
+            ${WA_ICON} ${isAvailable ? 'Order' : 'Inquire'}
           </a>
         </div>
       </div>
     </div>
   `}).join("");
+
   document.querySelectorAll(".reveal").forEach(elm => {
     // re-observe newly injected cards
     const io = new IntersectionObserver((entries) => {
@@ -141,7 +161,8 @@ function renderProductGrid(containerId, limit){
    PRODUCT DETAIL PAGE (used inside /products/<slug>/index.html)
 ===================================================== */
 function renderProductDetail(slug){
-  const p = PRODUCTS.find(x => x.slug === slug);
+  const currentProducts = (typeof getXyaalProducts === "function") ? getXyaalProducts() : (window.PRODUCTS || PRODUCTS);
+  const p = currentProducts.find(x => x.slug === slug || x.id === slug);
   const root = document.getElementById("productDetail");
   if (!p || !root) return;
 
@@ -171,14 +192,14 @@ function renderProductDetail(slug){
             : p.price ? `<span class="price">PKR ${p.price.toLocaleString()}</span>`
             : `<span class="price">[Price]</span>`}
         </div>
-        <span class="pd-badge">${p.available ? 'In Stock' : 'Currently Unavailable'} · ${p.size}</span>
+        <span class="pd-badge ${p.available ? '' : 'is-sold-out'}" style="${p.available ? '' : 'border-color:rgba(239,68,68,0.3); color:#fca5a5;'}">${p.available ? 'In Stock' : 'Currently Unavailable'} · ${p.size}</span>
 
         <p class="pd-desc">${p.description}</p>
 
         <div class="notes-table">
-          <div><b>Top Notes</b><span>${p.notes.top}</span></div>
-          <div><b>Heart Notes</b><span>${p.notes.heart}</span></div>
-          <div><b>Base Notes</b><span>${p.notes.base}</span></div>
+          <div><b>Top Notes</b><span>${p.notes && p.notes.top ? p.notes.top : '—'}</span></div>
+          <div><b>Heart Notes</b><span>${p.notes && p.notes.heart ? p.notes.heart : '—'}</span></div>
+          <div><b>Base Notes</b><span>${p.notes && p.notes.base ? p.notes.base : '—'}</span></div>
         </div>
 
         <div class="qty-row">
@@ -190,13 +211,23 @@ function renderProductDetail(slug){
         </div>
 
         <div class="pd-cta-row">
-          <button type="button" class="btn btn-add-bag" id="pdAddToBagBtn" style="padding:15px 26px; font-size:.9rem; flex:1;">
-            ${BAG_ICON} Add to Bag
-          </button>
-          <a class="btn btn-wa" style="flex:1; justify-content:center; padding:15px 20px;" target="_blank" rel="noopener" id="waOrderBtn"
-             href="${waLink(waOrderMessage(p.name))}">
-            ${WA_ICON} Order on WhatsApp
-          </a>
+          ${p.available ? `
+            <button type="button" class="btn btn-add-bag" id="pdAddToBagBtn" style="padding:15px 26px; font-size:.9rem; flex:1;">
+              ${BAG_ICON} Add to Bag
+            </button>
+            <a class="btn btn-wa" style="flex:1; justify-content:center; padding:15px 20px;" target="_blank" rel="noopener" id="waOrderBtn"
+               href="${waLink(waOrderMessage(p.name))}">
+              ${WA_ICON} Order on WhatsApp
+            </a>
+          ` : `
+            <button type="button" class="btn btn-add-bag" disabled style="padding:15px 26px; font-size:.9rem; flex:1; opacity:0.5; cursor:not-allowed;">
+              Sold Out
+            </button>
+            <a class="btn btn-wa" style="flex:1; justify-content:center; padding:15px 20px;" target="_blank" rel="noopener" id="waOrderBtn"
+               href="${waLink(`Hi, I would like to inquire when ${p.name} will be back in stock at XYAAL 365.`)}">
+              ${WA_ICON} Inquire Availability
+            </a>
+          `}
         </div>
 
         <div class="reviews-empty">
