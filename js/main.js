@@ -73,7 +73,10 @@ function placeholderBlock(label){
 }
 function productImgOrPlaceholder(src, label){
   // Returns an <img> that falls back to a text placeholder if the file isn't there yet.
-  return `<img src="${ROOT}${src}" alt="${label}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-label',innerHTML:'${label}<br><small>Replace with product photo</small>'}))">`;
+  const resolved = (src && (src.startsWith('data:') || src.startsWith('http://') || src.startsWith('https://')))
+    ? src
+    : `${ROOT}${src || ''}`;
+  return `<img src="${resolved}" alt="${label}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-label',innerHTML:'${label}<br><small>Replace with product photo</small>'}))">`;
 }
 
 /* =====================================================

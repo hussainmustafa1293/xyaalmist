@@ -216,7 +216,9 @@
       <div class="cart-items-list">
         ${cart
           .map((item, index) => {
-            const imgSrc = item.image.startsWith('http') ? item.image : root + item.image.replace(/^\.?\/?/, '');
+            const imgSrc = (item.image && (item.image.startsWith('http') || item.image.startsWith('data:')))
+              ? item.image
+              : root + (item.image ? item.image.replace(/^\.?\/?/, '') : 'assets/logo/xyaal-365-transparent.png');
             const itemSubtotal = (Number(item.price) || 0) * (Number(item.qty) || 1);
             return `
             <div class="cart-item" data-id="${item.id}">

@@ -685,11 +685,99 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .form-input:focus, .form-textarea:focus, .form-select:focus {
   border-color: var(--brass);
 }
+
+/* ---------- Luxury File Upload Dropzone ---------- */
+.upload-dropzone {
+  border: 2px dashed var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(10, 10, 14, 0.65);
+  padding: 22px 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.upload-dropzone:hover, .upload-dropzone.dragover {
+  border-color: var(--brass);
+  background: rgba(212, 175, 55, 0.07);
+  box-shadow: 0 0 22px rgba(212, 175, 55, 0.18);
+}
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.dropzone-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brass-light);
+}
+.dropzone-icon svg {
+  width: 22px;
+  height: 22px;
+}
+.dropzone-text {
+  font-size: 0.88rem;
+  color: var(--ivory);
+}
+.dropzone-text b {
+  color: var(--brass-light);
+}
+.dropzone-text small {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--ivory-dim);
+  margin-top: 4px;
+}
+.dropzone-preview {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+}
+.dropzone-preview img {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  background: #0d0d12;
+}
+.preview-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.preview-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ivory);
+}
+.preview-status {
+  font-size: 0.74rem;
+  color: #10b981;
+}
+.preview-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
 .preset-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 6px;
+  margin-top: 8px;
 }
 .chip-btn {
   font-size: 0.72rem;
@@ -756,6 +844,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .form-grid { grid-template-columns: 1fr; }
   .header-inner { flex-direction: column; align-items: stretch; }
   .header-actions { justify-content: space-between; flex-wrap: wrap; }
+  .dropzone-preview { flex-direction: column; text-align: center; }
+  .preview-actions { justify-content: center; }
 }
 </style>
 </head>
@@ -852,16 +942,51 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
             </label>
           </div>
 
+          <!-- Modern Device File Upload with Drag & Drop and Preview -->
           <div class="form-group full-width">
-            <label class="form-label">Product Image Path / URL</label>
-            <input type="text" id="pImage" class="form-input" placeholder="e.g. assets/products/product-3/main.jpg or https://..." required>
+            <label class="form-label">Perfume Image (Upload from Device / Gallery) *</label>
+            
+            <input type="file" id="productImageInput" accept="image/*" style="display:none;" onchange="handleImageFileSelect(event)">
+            
+            <div class="upload-dropzone" id="uploadDropzone" onclick="document.getElementById('productImageInput').click()">
+              <div class="dropzone-content" id="dropzoneEmpty">
+                <div class="dropzone-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2"/>
+                    <circle cx="9" cy="9" r="2"/>
+                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>
+                  </svg>
+                </div>
+                <div class="dropzone-text">
+                  <b>Choose Image from Device</b> or drag & drop here
+                  <small>Auto-compressed & resized to protect browser storage</small>
+                </div>
+              </div>
+
+              <div class="dropzone-preview" id="dropzonePreview" style="display:none;">
+                <img id="imagePreviewImg" src="" alt="Perfume Preview">
+                <div class="preview-details">
+                  <span class="preview-name" id="previewFileName">Selected Image</span>
+                  <span class="preview-status" id="previewStatus">Optimized & ready to save</span>
+                  <div class="preview-actions">
+                    <button type="button" class="btn-outline" style="padding:4px 10px; font-size:0.75rem;" onclick="event.stopPropagation(); document.getElementById('productImageInput').click();">
+                      Replace Photo
+                    </button>
+                    <button type="button" class="btn-icon btn-danger" style="padding:4px 8px; font-size:0.75rem;" onclick="event.stopPropagation(); removeSelectedImage();">
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Optional Presets for Quick Selection -->
             <div class="preset-chips">
-              <span style="font-size:0.72rem; color:var(--ivory-dim); line-height:22px;">Presets:</span>
-              <button type="button" class="chip-btn" onclick="setPresetImage('assets/products/haider/main.jpg')">Haider</button>
-              <button type="button" class="chip-btn" onclick="setPresetImage('assets/products/product-2/main.jpg')">Aabnoos</button>
-              <button type="button" class="chip-btn" onclick="setPresetImage('assets/products/product-3/main.jpg')">Crush</button>
-              <button type="button" class="chip-btn" onclick="setPresetImage('assets/products/product-3/packaging.jpg')">Crush Packaging</button>
-              <button type="button" class="chip-btn" onclick="setPresetImage('assets/logo/xyaal-365-transparent.png')">Brand Crest</button>
+              <span style="font-size:0.72rem; color:var(--ivory-dim); line-height:22px;">Quick Presets:</span>
+              <button type="button" class="chip-btn" onclick="setPresetImage('assets/products/haider/main.jpg', 'Haider Signature')">Haider</button>
+              <button type="button" class="chip-btn" onclick="setPresetImage('assets/products/product-2/main.jpg', 'Aabnoos Signature')">Aabnoos</button>
+              <button type="button" class="chip-btn" onclick="setPresetImage('assets/products/product-3/main.jpg', 'Crush Signature')">Crush</button>
+              <button type="button" class="chip-btn" onclick="setPresetImage('assets/products/product-3/packaging.jpg', 'Crush Packaging')">Crush Box</button>
             </div>
           </div>
 
@@ -1037,6 +1162,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 ===================================================== */
 const DEFAULT_PIN = "1293";
 let currentDeleteId = null;
+let currentProductImage = ''; // Holds active Base64 string or file path
 
 // Auth Check on load
 function checkAuth() {
@@ -1138,9 +1264,121 @@ function closeModal(id) {
   document.getElementById(id).classList.remove('open');
 }
 
-// Preset image helper
-function setPresetImage(path) {
-  document.getElementById('pImage').value = path;
+/* =====================================================
+   IMAGE FILE UPLOAD & CLIENT-SIDE COMPRESSION (Base64)
+===================================================== */
+
+/**
+ * Resizes and compresses image via HTML5 Canvas to prevent exceeding localStorage limits.
+ */
+function compressImageFile(file, maxWidth = 800, maxHeight = 800, quality = 0.82) {
+  return new Promise((resolve, reject) => {
+    if (!file || !file.type.startsWith('image/')) {
+      reject(new Error('Please select a valid image file.'));
+      return;
+    }
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('Failed to read image file.'));
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onerror = () => reject(new Error('Failed to load image.'));
+      img.onload = () => {
+        let w = img.width;
+        let h = img.height;
+        if (w > maxWidth || h > maxHeight) {
+          if (w > h) {
+            h = Math.round((h * maxWidth) / w);
+            w = maxWidth;
+          } else {
+            w = Math.round((w * maxHeight) / h);
+            h = maxHeight;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        const base64 = canvas.toDataURL('image/jpeg', quality);
+        resolve({ base64, width: w, height: h });
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+async function processAndPreviewFile(file) {
+  try {
+    const { base64, width, height } = await compressImageFile(file);
+    currentProductImage = base64;
+    showImagePreview(base64, file.name || 'Uploaded Photo', `Optimized to ${width}x${height}px · Ready to save`);
+  } catch (err) {
+    alert(err.message || 'Error processing image.');
+  }
+}
+
+function handleImageFileSelect(e) {
+  const file = e.target.files && e.target.files[0];
+  if (file) {
+    processAndPreviewFile(file);
+  }
+}
+
+function showImagePreview(src, name = 'Fragrance Photo', status = 'Ready') {
+  const emptyBox = document.getElementById('dropzoneEmpty');
+  const prevBox = document.getElementById('dropzonePreview');
+  const imgEl = document.getElementById('imagePreviewImg');
+  const nameEl = document.getElementById('previewFileName');
+  const statusEl = document.getElementById('previewStatus');
+
+  imgEl.src = src;
+  nameEl.textContent = name;
+  statusEl.textContent = status;
+
+  emptyBox.style.display = 'none';
+  prevBox.style.display = 'flex';
+}
+
+function removeSelectedImage() {
+  currentProductImage = '';
+  document.getElementById('productImageInput').value = '';
+  document.getElementById('dropzoneEmpty').style.display = 'flex';
+  document.getElementById('dropzonePreview').style.display = 'none';
+}
+
+function setPresetImage(path, label = 'Preset Selected') {
+  currentProductImage = path;
+  showImagePreview(path, label, 'Signature Preset Ready');
+}
+
+// Setup Drag and Drop listeners
+function setupDropzone() {
+  const dropzone = document.getElementById('uploadDropzone');
+  if (!dropzone) return;
+
+  ['dragenter', 'dragover'].forEach(name => {
+    dropzone.addEventListener(name, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.add('dragover');
+    });
+  });
+
+  ['dragleave', 'drop'].forEach(name => {
+    dropzone.addEventListener(name, (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dropzone.classList.remove('dragover');
+    });
+  });
+
+  dropzone.addEventListener('drop', (e) => {
+    const files = e.dataTransfer.files;
+    if (files && files.length > 0) {
+      processAndPreviewFile(files[0]);
+    }
+  });
 }
 
 // Render Dashboard Data & Metrics
@@ -1202,7 +1440,6 @@ function renderProductCards(products) {
     const topNote = (p.notes && p.notes.top) ? p.notes.top : '—';
     const heartNote = (p.notes && p.notes.heart) ? p.notes.heart : '—';
     const baseNote = (p.notes && p.notes.base) ? p.notes.base : '—';
-    const activePrice = p.salePrice || p.price;
 
     return `
       <div class="product-admin-card" id="card-${p.id}">
@@ -1296,6 +1533,7 @@ function openAddModal() {
   document.getElementById('productForm').reset();
   document.getElementById('pAvailable').checked = true;
   document.getElementById('pSize').value = '50ml Eau de Parfum';
+  removeSelectedImage();
   openModal('productModal');
 }
 
@@ -1313,11 +1551,15 @@ function openEditModal(id) {
   document.getElementById('pSalePrice').value = (p.salePrice !== null && p.salePrice !== undefined) ? p.salePrice : '';
   document.getElementById('pSize').value = p.size || '50ml Eau de Parfum';
   document.getElementById('pAvailable').checked = (p.available !== false);
-  document.getElementById('pImage').value = (p.images && p.images[0]) ? p.images[0] : (p.image || '');
   document.getElementById('pTopNotes').value = (p.notes && p.notes.top) ? p.notes.top : '';
   document.getElementById('pHeartNotes').value = (p.notes && p.notes.heart) ? p.notes.heart : '';
   document.getElementById('pBaseNotes').value = (p.notes && p.notes.base) ? p.notes.base : '';
   document.getElementById('pDescription').value = p.description || '';
+
+  // Setup current image preview
+  const activeImg = (p.images && p.images[0]) ? p.images[0] : (p.image || 'assets/logo/xyaal-365-transparent.png');
+  currentProductImage = activeImg;
+  showImagePreview(activeImg, `${p.name} Image`, 'Current photo (click to replace from device)');
 
   openModal('productModal');
 }
@@ -1338,11 +1580,13 @@ function submitProductForm() {
   const salePrice = rawSalePrice !== '' ? Number(rawSalePrice) : null;
   const size = document.getElementById('pSize').value.trim() || '50ml Eau de Parfum';
   const available = document.getElementById('pAvailable').checked;
-  const image = document.getElementById('pImage').value.trim() || 'assets/logo/xyaal-365-transparent.png';
   const topNotes = document.getElementById('pTopNotes').value.trim();
   const heartNotes = document.getElementById('pHeartNotes').value.trim();
   const baseNotes = document.getElementById('pBaseNotes').value.trim();
   const description = document.getElementById('pDescription').value.trim();
+
+  // Use selected image or fallback to brand emblem
+  const image = currentProductImage || 'assets/logo/xyaal-365-transparent.png';
 
   let products = getXyaalProducts();
 
@@ -1360,6 +1604,7 @@ function submitProductForm() {
         available,
         notes: { top: topNotes, heart: heartNotes, base: baseNotes },
         description,
+        image: image,
         images: [image, ...(products[idx].images && products[idx].images.slice(1) || [])]
       };
       showToast(`Updated "${name}" successfully.`);
@@ -1378,6 +1623,7 @@ function submitProductForm() {
       available,
       notes: { top: topNotes, heart: heartNotes, base: baseNotes },
       description,
+      image: image,
       images: [image]
     };
     products.unshift(newProduct);
@@ -1422,7 +1668,10 @@ function executeReset() {
 }
 
 // Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', checkAuth);
+document.addEventListener('DOMContentLoaded', () => {
+  setupDropzone();
+  checkAuth();
+});
 </script>
 </body>
 </html>

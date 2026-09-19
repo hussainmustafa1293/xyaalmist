@@ -193,7 +193,8 @@ function normalizeProduct(p, index) {
     size,
     available,
     notes,
-    images
+    images,
+    image: images[0]
   };
 }
 
