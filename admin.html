@@ -840,12 +840,30 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 @media (max-width: 768px) {
-  .products-list { grid-template-columns: 1fr; }
-  .form-grid { grid-template-columns: 1fr; }
-  .header-inner { flex-direction: column; align-items: stretch; }
-  .header-actions { justify-content: space-between; flex-wrap: wrap; }
-  .dropzone-preview { flex-direction: column; text-align: center; }
+  .admin-container { padding: 20px 16px 60px; }
+  .header-inner { flex-direction: column; align-items: stretch; gap: 14px; }
+  .header-actions { justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .header-actions .btn-outline { flex: 1; justify-content: center; padding: 7px 10px; font-size: 0.76rem; }
+  .metrics-grid { grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+  .metric-card { padding: 16px 14px; }
+  .metric-val { font-size: 1.45rem; }
+  .toolbar-card { flex-direction: column; align-items: stretch; gap: 12px; }
+  .filter-group { width: 100%; justify-content: space-between; gap: 8px; }
+  .filter-group .filter-select { flex: 1; }
+  .products-list { grid-template-columns: 1fr; gap: 18px; }
+  .form-grid { grid-template-columns: 1fr; gap: 14px; }
+  .modal-content { max-width: 96%; max-height: 94vh; border-radius: var(--radius-md); }
+  .modal-body { padding: 18px 16px; }
+  .modal-header { padding: 16px 18px; }
+  .modal-footer { padding: 14px 18px; }
+  .dropzone-preview { flex-direction: column; text-align: center; gap: 12px; }
   .preview-actions { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .metrics-grid { grid-template-columns: 1fr; gap: 10px; }
+  .filter-group { flex-direction: column; }
+  .filter-group .btn-gold, .filter-group .btn-outline { width: 100%; justify-content: center; }
+  .pin-card { padding: 32px 20px; }
 }
 </style>
 </head>
