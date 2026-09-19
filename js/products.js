@@ -64,23 +64,23 @@ const PRODUCTS = [
   },
   {
     slug: "product-3",
-    name: "Sultana",
-    tagline: "Rich, floral and romantic",
-    description: "Sultana is a rich floral fragrance layered over a warm amber base — romantic and expressive, designed for occasions that call for something memorable.",
+    name: "Crush",
+    tagline: "Sweet, floral and enchanting — For women & girls",
+    description: "Crush is an enchanting luxury fragrance crafted specially for women and girls. Blending delicate floral sweetness with a luminous, warm amber and vanilla base, it captures youthful charm, effortless poise, and everyday romantic allure.",
     price: 4800,
     salePrice: null,
     size: "50ml Eau de Parfum",
     available: true,
     notes: {
-      top: "Rose, Saffron",
-      heart: "Jasmine, Oud",
-      base: "Amber, Vanilla"
+      top: "Sweet Berry, Pink Peony, Sparkling Mandarin",
+      heart: "Romantic Rose, White Jasmine, Peach Blossom",
+      base: "Golden Amber, Madagascar Vanilla, Soft Velvet Musk"
     },
     images: [
       "assets/products/product-3/main.jpg",
       "assets/products/product-3/angle.jpg",
-      "assets/products/product-3/lifestyle.jpg",
-      "assets/products/product-3/packaging.jpg"
+      "assets/products/product-3/packaging.jpg",
+      "assets/products/product-3/lifestyle.jpg"
     ]
   }
 ];
