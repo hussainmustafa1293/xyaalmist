@@ -68,7 +68,29 @@ if (revealEls.length){
   });
 })();
 
-/* ---------- Placeholder image block (used until real photos are added) ---------- */
+/* ---------- Placeholder image block (used until real photos are added) ---------- *//* ---------- Story Image Handler (renders custom xyaal_story_image or fallback) ---------- */
+function applyStoryImage(){
+  try {
+    const customStoryImg = localStorage.getItem('xyaal_story_image');
+    const storyImgs = document.querySelectorAll('.editorial-img, #storySectionImg');
+    storyImgs.forEach(img => {
+      if (customStoryImg) {
+        img.src = customStoryImg;
+      } else {
+        img.src = `${ROOT}assets/brand/our-story.jpg`;
+      }
+    });
+  } catch (err) {
+    console.warn('Error reading xyaal_story_image:', err);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', applyStoryImage);
+} else {
+  applyStoryImage();
+}
+
 function placeholderBlock(label){
   return `<div class="ph-label">${label}</div>`;
 }
@@ -97,6 +119,7 @@ function renderProductGrid(containerId, limit){
   el.innerHTML = list.map(p => {
     const activePrice = p.salePrice || p.price;
     const isAvailable = (p.available !== false);
+    const activeImg = p.image || (p.images && p.images[0]);
     const detailUrl = (p.slug === 'haider' || p.slug === 'product-2' || p.slug === 'product-3')
       ? `${ROOT}products/${p.slug}/`
       : `${ROOT}collection.html#${p.id || p.slug}`;
@@ -104,7 +127,7 @@ function renderProductGrid(containerId, limit){
     return `
     <div class="product-card reveal ${!isAvailable ? 'is-unavailable' : ''}">
       <a href="${detailUrl}" class="product-thumb">
-        ${productImgOrPlaceholder(p.images[0], p.name)}
+        ${productImgOrPlaceholder(activeImg, p.name)}
         ${!isAvailable ? '<span class="badge-stock badge-sold-out">Sold Out</span>' : ''}
       </a>
       <h3><a href="${detailUrl}">${p.name}</a></h3>

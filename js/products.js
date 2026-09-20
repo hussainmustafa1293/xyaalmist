@@ -173,13 +173,18 @@ function normalizeProduct(p, index) {
   }
 
   // Format images array
+  let activeImage = p.image;
   let images = p.images;
   if (!Array.isArray(images) || images.length === 0) {
-    if (p.image) {
-      images = [p.image];
+    if (activeImage) {
+      images = [activeImage];
     } else {
       images = ['assets/logo/xyaal-365-transparent.png'];
     }
+  } else if (activeImage && images[0] !== activeImage) {
+    images[0] = activeImage;
+  } else if (!activeImage && images[0]) {
+    activeImage = images[0];
   }
 
   return {
@@ -194,7 +199,7 @@ function normalizeProduct(p, index) {
     available,
     notes,
     images,
-    image: images[0]
+    image: activeImage || images[0]
   };
 }
 
