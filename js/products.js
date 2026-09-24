@@ -22,12 +22,12 @@ const PRODUCTS = [
       base: "Rich Amber"
     },
     images: [
-      "assets/images/perfume1.png",
-      "assets/products/haider/angle.jpg",
+      "assets/products/haider/main.jpg",
       "assets/products/haider/lifestyle.jpg",
-      "assets/products/haider/packaging.jpg"
+      "assets/products/haider/packaging.jpg",
+      "assets/products/haider/angle.jpg"
     ],
-    image: "assets/images/perfume1.png"
+    image: "assets/products/haider/main.jpg"
   },
   {
     id: "vibe",
