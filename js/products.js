@@ -70,13 +70,12 @@ const PRODUCTS = [
       base: "Warm Sandalwood"
     },
     images: [
-      "assets/images/perfume3.png",
       "assets/products/product-3/main.jpg",
-      "assets/products/product-3/angle.jpg",
+      "assets/products/product-3/lifestyle.jpg",
       "assets/products/product-3/packaging.jpg",
-      "assets/products/product-3/lifestyle.jpg"
+      "assets/products/product-3/angle.jpg"
     ],
-    image: "assets/images/perfume3.png"
+    image: "assets/products/product-3/main.jpg"
   }
 ];
 
