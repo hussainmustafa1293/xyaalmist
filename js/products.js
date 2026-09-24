@@ -46,12 +46,12 @@ const PRODUCTS = [
       base: "Clean White Musk"
     },
     images: [
-      "assets/images/perfume2.png",
-      "assets/products/product-2/angle.jpg",
+      "assets/products/product-2/main.jpg",
       "assets/products/product-2/lifestyle.jpg",
-      "assets/products/product-2/packaging.jpg"
+      "assets/products/product-2/packaging.jpg",
+      "assets/products/product-2/angle.jpg"
     ],
-    image: "assets/images/perfume2.png"
+    image: "assets/products/product-2/main.jpg"
   },
   {
     id: "crush",
