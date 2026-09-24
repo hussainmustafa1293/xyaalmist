@@ -317,7 +317,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.15; letter
   50%{ transform: scale(1.14) translateY(-14px); opacity: 1; }
   100%{ transform: scale(0.96) translateY(12px); opacity: 0.55; }
 }
-.hero-grid{ position: relative; z-index: 2; display:grid; grid-template-columns:1.15fr .85fr; gap:var(--gap); align-items:end; }
+.hero-grid{ position: relative; z-index: 2; display:grid; grid-template-columns:1fr 1.05fr; gap:var(--gap); align-items:center; }
 .hero-eyebrow{
   display: inline-flex; align-items: center; gap: 10px;
   padding: 7px 20px; background: rgba(212, 175, 55, 0.09);
@@ -327,7 +327,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.15; letter
   margin-bottom: 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.35), 0 0 16px rgba(212, 175, 55, 0.12);
 }
 .hero h1{
-  font-family: var(--serif); font-size: clamp(2.8rem, 6.8vw, 5.2rem);
+  font-family: var(--serif); font-size: clamp(2.6rem, 6vw, 4.6rem);
   font-weight: 600; letter-spacing: .02em; line-height: 1.06;
 }
 .hero h1 em{
@@ -336,7 +336,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.15; letter
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 2px 14px rgba(212, 175, 55, 0.25));
 }
-.hero p{ color:var(--ivory-dim); max-width:48ch; margin:22px 0 38px; font-size:1.08rem; line-height:1.78; letter-spacing: 0.01em; }
+.hero p{ color:var(--ivory-dim); max-width:48ch; margin:22px 0 38px; font-size:1.02rem; line-height:1.75; letter-spacing: 0.01em; }
 .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; }
 .hero-ctas .btn{
   padding: 15px 30px;
@@ -368,7 +368,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.15; letter
   line-height: 1.75; letter-spacing: 0.01em;
 }
 
-/* ---------- Hero Promo Video Player ---------- */
+/* ---------- Hero Promo Video Player (16:9 Format) ---------- */
 .hero-promo-card {
   position: relative;
   border-radius: var(--radius-md);
@@ -379,6 +379,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.15; letter
   overflow: hidden;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(212, 175, 55, 0.18);
   transition: border-color .35s ease, box-shadow .35s ease;
+  width: 100%;
 }
 .hero-promo-card:hover {
   border-color: rgba(212, 175, 55, 0.45);
@@ -387,8 +388,7 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.15; letter
 .promo-video-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
-  max-height: 480px;
+  aspect-ratio: 16 / 9;
   background: var(--black-rich);
   overflow: hidden;
 }
@@ -1663,3 +1663,17 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.15; letter
     height: 34px !important;
   }
 }
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .hero-promo-card {
+    margin-top: 12px;
+  }
+  .promo-video-wrapper {
+    aspect-ratio: 16 / 9;
+  }
+}
+
