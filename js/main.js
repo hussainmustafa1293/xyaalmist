@@ -319,3 +319,35 @@ document.addEventListener("click", (e) => {
   if (typeof gtag === "function") gtag("event", "whatsapp_order_click", { event_category:"conversion" });
   if (typeof fbq === "function") fbq("track", "Contact", { content_name:"XYAAL 365 WhatsApp order" });
 });
+
+/* ---------- Promo Video Mute/Unmute toggle ---------- */
+(function initPromoVideoControl() {
+  function setup() {
+    const vid = document.getElementById('heroPromoVideo');
+    const btn = document.getElementById('promoMuteBtn');
+    const iconMuted = document.getElementById('soundMutedIcon');
+    const iconActive = document.getElementById('soundActiveIcon');
+
+    if (!vid || !btn) return;
+
+    btn.addEventListener('click', () => {
+      vid.muted = !vid.muted;
+      if (vid.muted) {
+        if (iconMuted) iconMuted.style.display = 'block';
+        if (iconActive) iconActive.style.display = 'none';
+        btn.title = "Sound Muted";
+      } else {
+        if (iconMuted) iconMuted.style.display = 'none';
+        if (iconActive) iconActive.style.display = 'block';
+        btn.title = "Sound Active";
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setup);
+  } else {
+    setup();
+  }
+})();
+

@@ -368,6 +368,105 @@ h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.15; letter
   line-height: 1.75; letter-spacing: 0.01em;
 }
 
+/* ---------- Hero Promo Video Player ---------- */
+.hero-promo-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: rgba(18, 18, 24, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(212, 175, 55, 0.18);
+  transition: border-color .35s ease, box-shadow .35s ease;
+}
+.hero-promo-card:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 35px rgba(212, 175, 55, 0.28);
+}
+.promo-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 480px;
+  background: var(--black-rich);
+  overflow: hidden;
+}
+.promo-video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.promo-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 8, 10, 0.35) 0%, rgba(8, 8, 10, 0.05) 50%, rgba(8, 8, 10, 0.75) 100%);
+  pointer-events: none;
+}
+.promo-badge-top {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass-light);
+  background: rgba(8, 8, 10, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  font-weight: 600;
+}
+.promo-video-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(0deg, rgba(8, 8, 10, 0.92) 0%, rgba(8, 8, 10, 0) 100%);
+}
+.promo-video-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.promo-video-info b {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--ivory);
+  letter-spacing: 0.04em;
+}
+.promo-video-info small {
+  font-size: 0.72rem;
+  color: var(--brass-light);
+  letter-spacing: 0.08em;
+}
+.promo-toggle-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(8, 8, 10, 0.8);
+  color: var(--brass-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+.promo-toggle-btn:hover {
+  background: var(--brass);
+  color: var(--black);
+  transform: scale(1.08);
+}
+
 /* ---------- Product cards ---------- */
 .product-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); }
 .product-card{
