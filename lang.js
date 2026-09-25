@@ -1,67 +1,93 @@
 const translations = {
   en: {
+    nav_home: "Home",
+    nav_collection: "Collection",
+    nav_story: "Our Story",
+    nav_contact: "Contact",
     badge: "✦ HAUTE PARFUMERIE · 365 DAYS OF LUXURY ✦",
-    hero_title: "FRAGRANCE, worn quietly.",
-    hero_desc: "A small Pakistani perfume house focused on considered scent and clean presentation. Three fragrances, made to be worn — not shouted about.",
-    shop_btn: "SHOP COLLECTION",
-    whatsapp_btn: "ORDER ON WHATSAPP",
-    collection_tag: "THE COLLECTION",
-    collection_title: "THREE FRAGRANCES.",
-    collection_desc: "Every bottle in the XYAAL 365 collection is built around a distinct character — from first spray to final drydown."
+    hero_title: "Fragrance, <em>crafted for distinction.</em>",
+    hero_desc: "A Pakistani perfume house crafting signature fragrances with considered notes and understated luxury. Discover Aura, Vibe, and Crush.",
+    shop_btn: "Shop Collection",
+    wa_btn: "Order on WhatsApp"
   },
   ur: {
+    nav_home: "ہوم",
+    nav_collection: "کلیکشن",
+    nav_story: "ہماری کہانی",
+    nav_contact: "رابطہ",
     badge: "✦ اعلیٰ خوشبویات · سال کے ۳۶۵ دن کا لگژری احساس ✦",
-    hero_title: "خوشبو، جو دل میں اتر جائے۔",
-    hero_desc: "ایک نفیس پاکستانی پرفیوم ہاؤس جو باوقار خوشبو اور شاندار انداز پر یقین رکھتا ہے۔ تین خاص پرفیومز، جو پکارنے کے لیے نہیں بلکہ محسوس کرنے کے لیے بنے ہیں۔",
+    hero_title: "خوشبو، <em>جو منفرد پہچان بنا دے۔</em>",
+    hero_desc: "ایک نفیس پاکستانی پرفیوم ہاؤس جو باوقار خوشبو اور شاندار انداز پر یقین رکھتا ہے۔ دریافت کریں Aura، Vibe اور Crush۔",
     shop_btn: "کلیکشن دیکھیں",
-    whatsapp_btn: "واٹس ایپ پر آرڈر کریں",
-    collection_tag: "ہمارا کلیکشن",
-    collection_title: "تین منفرد پرفیومز۔",
-    collection_desc: "خیال ۳۶۵ کے ہر پرفیوم کا ایک منفرد مزاج ہے — پہلی اسپرے سے لے کر دیرپا خوشبو تک۔"
+    wa_btn: "واٹس ایپ پر آرڈر کریں"
   }
 };
 
 let currentLang = localStorage.getItem("site_lang") || "en";
 
 function applyLanguage(lang) {
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[lang] && translations[lang][key]) {
-      el.textContent = translations[lang][key];
-    }
+  // 1. Navbar Links
+  const navLinks = document.querySelectorAll(".nav-links a, .mobile-menu a");
+  navLinks.forEach((link) => {
+    const text = link.textContent.trim().toLowerCase();
+    if (text === "home" || text === "ہوم") link.textContent = translations[lang].nav_home;
+    if (text === "collection" || text === "کلیکشن") link.textContent = translations[lang].nav_collection;
+    if (text === "our story" || text === "ہماری کہانی") link.textContent = translations[lang].nav_story;
+    if (text === "contact" || text === "رابطہ") link.textContent = translations[lang].nav_contact;
   });
 
-  const langBtn = document.getElementById("lang-toggle");
-  if (langBtn) {
-    langBtn.textContent = lang === "en" ? "اردو" : "EN";
+  // 2. Hero Eyebrow / Badge
+  const eyebrow = document.querySelector(".hero-eyebrow");
+  if (eyebrow) eyebrow.innerHTML = translations[lang].badge;
+
+  // 3. Hero Main Heading
+  const heroH1 = document.querySelector("section.hero h1, .hero-grid h1");
+  if (heroH1) heroH1.innerHTML = translations[lang].hero_title;
+
+  // 4. Hero Description
+  const heroDesc = document.querySelector("section.hero p, .hero-grid p");
+  if (heroDesc) heroDesc.textContent = translations[lang].hero_desc;
+
+  // 5. Buttons
+  const shopBtn = document.querySelector(".btn-primary");
+  if (shopBtn) shopBtn.textContent = translations[lang].shop_btn;
+
+  const waBtn = document.querySelector(".btn-wa");
+  if (waBtn) {
+    const icon = waBtn.querySelector("svg");
+    waBtn.innerHTML = "";
+    if (icon) waBtn.appendChild(icon);
+    waBtn.append(" " + translations[lang].wa_btn);
   }
 
-  // RTL setup for Urdu
+  // 6. Language Switch Button Label
+  const toggleBtn = document.getElementById("lang-toggle");
+  if (toggleBtn) {
+    toggleBtn.textContent = lang === "en" ? "اردو" : "EN";
+  }
+
+  // 7. Page Direction & Font Styling
   if (lang === "ur") {
-    document.body.setAttribute("dir", "rtl");
-    document.body.classList.add("urdu-mode");
+    document.documentElement.setAttribute("dir", "rtl");
+    document.documentElement.setAttribute("lang", "ur");
   } else {
-    document.body.setAttribute("dir", "ltr");
-    document.body.classList.remove("urdu-mode");
+    document.documentElement.setAttribute("dir", "ltr");
+    document.documentElement.setAttribute("lang", "en");
   }
 
   localStorage.setItem("site_lang", lang);
   currentLang = lang;
 }
 
-function toggleLanguage() {
-  const nextLang = currentLang === "en" ? "ur" : "en";
-  applyLanguage(nextLang);
-}
-
+// Button Click Event
 document.addEventListener("DOMContentLoaded", () => {
   applyLanguage(currentLang);
-  const langBtn = document.getElementById("lang-toggle");
-  if (langBtn) {
-    langBtn.addEventListener("click", (e) => {
+  const toggleBtn = document.getElementById("lang-toggle");
+  if (toggleBtn) {
+    toggleBtn.onclick = (e) => {
       e.preventDefault();
-      toggleLanguage();
-    });
+      const next = currentLang === "en" ? "ur" : "en";
+      applyLanguage(next);
+    };
   }
 });
-
