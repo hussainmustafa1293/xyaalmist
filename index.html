@@ -1,1477 +1,194 @@
 ```html
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XYAAL 365 | Luxury Artisanal Fragrance & Leather Goods</title>
-  <meta name="description" content="XYAAL 365 — Haute Parfumerie, Gasless All-Over Sprays, and Minimalist Leather Essentials. Wear the feeling. Leave the memory.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XYAAL 365 | Luxury Artisan Perfumes</title>
+<meta name="description" content="XYAAL 365 is an artisan Pakistani perfume house crafting signature fragrances with considered notes and understated elegance. Order seamlessly on WhatsApp.">
 
-  <!-- Open Graph & Social Cards -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="XYAAL 365">
-  <meta property="og:title" content="XYAAL 365 | Luxury Artisanal Fragrances">
-  <meta property="og:description" content="Signature fragrances from XYAAL 365. Discover Aura, Vibe, and Crush. Order seamlessly with Cash on Delivery nationwide.">
-  <meta property="og:url" content="https://xyaal365.com">
+<!-- Open Graph / WhatsApp / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="XYAAL 365">
+<meta property="og:title" content="XYAAL 365 | Luxury Artisan Perfumes">
+<meta property="og:description" content="Signature fragrances from XYAAL 365. Discover Aura, Vibe, and Crush. Order directly via WhatsApp.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1200&q=85">
+<meta property="og:url" content="https://xyaalmist.com/">
 
-  <!-- Luxury Editorial Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="XYAAL 365 | Luxury Artisan Perfumes">
+<meta name="twitter:description" content="Signature fragrances from XYAAL 365. Discover our handcrafted collection and order directly on WhatsApp.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1200&q=85">
 
-  <style>
-    :root {
-      --obsidian: #08080a;
-      --obsidian-rich: #0d0d12;
-      --charcoal: #14141a;
-      --surface-card: rgba(20, 20, 26, 0.72);
-      --gold-primary: #dfba73;
-      --gold-light: #fae8be;
-      --gold-deep: #a67c1e;
-      --gold-gradient: linear-gradient(135deg, #dfba73 0%, #fae8be 45%, #c59b48 100%);
-      --dark-card-gradient: linear-gradient(180deg, rgba(24, 24, 32, 0.75) 0%, rgba(13, 13, 18, 0.9) 100%);
-      --text-main: #faf8f5;
-      --text-muted: #a2a2ac;
-      --line-subtle: rgba(223, 186, 115, 0.16);
-      --line-bright: rgba(223, 186, 115, 0.45);
-      --serif: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
-      --serif-italic: 'Cormorant Garamond', serif;
-      --sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      --urdu-font: 'Noto Nastaliq Urdu', serif;
-    }
+<link rel="icon" href="assets/logo/xyaal-365-transparent.png">
+<link rel="stylesheet" href="css/style.css">
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background-color: var(--obsidian);
-      color: var(--text-main);
-      font-family: var(--sans);
-      font-weight: 300;
-      line-height: 1.65;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* RTL Urdu adjustments */
-    html[dir="rtl"] body {
-      font-family: var(--urdu-font), var(--sans);
-    }
-    html[dir="rtl"] .bugatti-menu {
-      direction: rtl;
-    }
-
-    /* Safety rule: ensure no blank invisible areas */
-    .reveal, .section, .product-card, .editorial {
-      opacity: 1 !important;
-      visibility: visible !important;
-      transform: none !important;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: var(--serif);
-      letter-spacing: 0.04em;
-      color: #ffffff;
-      font-weight: 600;
-    }
-    a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; border: none; font-family: inherit; }
-
-    .container {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 24px;
-      width: 100%;
-    }
-
-    /* STREAMING_CHUNK:Styling Bugatti-Style Minimalist Navbar -->
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(8, 8, 10, 0.94);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--line-subtle);
-      transition: all 0.3s ease;
-    }
-
-    .nav-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 70px;
-    }
-
-    .brand-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .brand-crest {
-      color: var(--gold-primary);
-      font-size: 1.15rem;
-      filter: drop-shadow(0 0 10px rgba(223, 186, 115, 0.35));
-    }
-    .brand-title {
-      font-family: var(--serif);
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      background: var(--gold-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
-    }
-
-    /* Bugatti Limousine Sleek Minimalist Aesthetic Links */
-    .bugatti-menu {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-    .bugatti-menu .nav-item {
-      position: relative;
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      padding: 24px 0;
-      transition: color 0.25s ease;
-    }
-    .bugatti-menu .nav-item:hover,
-    .bugatti-menu .nav-item.active {
-      color: #ffffff;
-    }
-    .bugatti-menu .nav-item.active::after,
-    .bugatti-menu .nav-item:hover::after {
-      content: '';
-      position: absolute;
-      bottom: 14px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--gold-gradient);
-      box-shadow: 0 0 10px rgba(223, 186, 115, 0.85);
-      border-radius: 2px;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .lang-btn {
-      background: rgba(223, 186, 115, 0.08);
-      border: 1px solid var(--line-bright);
-      color: var(--gold-primary);
-      padding: 5px 12px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      transition: all 0.25s;
-    }
-    .lang-btn:hover {
-      background: var(--gold-primary);
-      color: #000;
-    }
-
-    .cart-trigger {
-      position: relative;
-      background: transparent;
-      color: var(--gold-primary);
-      padding: 8px;
-      display: flex;
-      align-items: center;
-      border-radius: 4px;
-    }
-    .cart-counter {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: var(--gold-primary);
-      color: #000;
-      font-size: 0.65rem;
-      font-weight: 800;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .mobile-nav-toggle {
-      display: none;
-      background: transparent;
-      color: var(--gold-primary);
-      font-size: 1.5rem;
-    }
-
-    /* STREAMING_CHUNK:Styling Trust Bar and Guarantee Strip -->
-    .trust-bar {
-      border-top: 1px solid rgba(223, 186, 115, 0.1);
-      border-bottom: 1px solid rgba(223, 186, 115, 0.1);
-      background: #0b0b10;
-      padding: 12px 0;
-      font-size: 0.78rem;
-      letter-spacing: 0.06em;
-      color: var(--gold-light);
-    }
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      text-align: center;
-      gap: 12px;
-    }
-    .trust-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    /* STREAMING_CHUNK:Styling Hero Section & Poster Launch Offer Box -->
-    .hero-section {
-      padding: 60px 0 80px;
-      position: relative;
-      background: radial-gradient(ellipse at 50% 15%, rgba(223, 186, 115, 0.09) 0%, transparent 65%);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 0.7rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 16px;
-      border: 1px solid var(--line-bright);
-      padding: 6px 16px;
-      border-radius: 30px;
-      background: rgba(223, 186, 115, 0.06);
-    }
-    .hero-title {
-      font-size: clamp(2.4rem, 4.6vw, 4.2rem);
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    .hero-title em {
-      font-family: var(--serif-italic);
-      font-style: italic;
-      background: var(--gold-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 14px rgba(223, 186, 115, 0.25));
-    }
-    .hero-desc {
-      color: var(--text-muted);
-      font-size: 1.02rem;
-      max-width: 48ch;
-      margin-bottom: 32px;
-      line-height: 1.75;
-    }
-    .hero-ctas {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn-gold {
-      background: var(--gold-gradient);
-      color: #09090c;
-      font-weight: 700;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 14px 28px;
-      border-radius: 4px;
-      box-shadow: 0 4px 18px rgba(223, 186, 115, 0.35);
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(223, 186, 115, 0.55);
-    }
-    .btn-outline {
-      border: 1px solid var(--line-bright);
-      background: rgba(223, 186, 115, 0.04);
-      color: var(--text-main);
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 14px 28px;
-      border-radius: 4px;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-outline:hover {
-      border-color: var(--gold-primary);
-      color: var(--gold-primary);
-      transform: translateY(-2px);
-    }
-    .btn-wa {
-      background: rgba(37, 211, 102, 0.12);
-      border: 1px solid rgba(37, 211, 102, 0.4);
-      color: #a7f3d0;
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      padding: 14px 24px;
-      border-radius: 4px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.25s;
-    }
-    .btn-wa:hover {
-      background: #25d366;
-      color: #000;
-    }
-
-    /* Hero Promo Card with Launch Box */
-    .hero-card {
-      background: var(--surface-card);
-      border: 1px solid var(--line-bright);
-      border-radius: 8px;
-      padding: 24px;
-      text-align: center;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(223, 186, 115, 0.18);
-      position: relative;
-    }
-    .hero-card-img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-bottom: 20px;
-      border: 1px solid rgba(223, 186, 115, 0.2);
-    }
-
-    /* Exact Poster Launch Offer Design Block */
-    .poster-offer-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      margin: 10px 0 18px;
-    }
-    .poster-reg-price {
-      font-size: 0.8rem;
-      letter-spacing: 0.16em;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-    .poster-reg-price .striked {
-      text-decoration: line-through;
-      color: #ff5252;
-      font-weight: 700;
-    }
-    .poster-gold-badge {
-      background: var(--gold-gradient);
-      color: #08080a;
-      padding: 10px 22px;
-      border-radius: 4px;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 4px 16px rgba(223, 186, 115, 0.35);
-      width: 90%;
-      max-width: 300px;
-    }
-    .poster-badge-title {
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-family: var(--serif);
-    }
-    .poster-badge-price {
-      font-size: 1.45rem;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-    }
-    .poster-limit-tag {
-      font-size: 0.7rem;
-      font-style: italic;
-      color: var(--gold-light);
-      letter-spacing: 0.15em;
-      font-weight: 600;
-      margin-top: 4px;
-    }
-
-    /* STREAMING_CHUNK:Styling Catalog and Category Tabs -->
-    .catalog-section {
-      padding: 60px 0 100px;
-      border-top: 1px solid var(--line-subtle);
-    }
-    .category-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin: 32px 0 44px;
-      flex-wrap: wrap;
-    }
-    .cat-tab {
-      background: rgba(22, 22, 28, 0.7);
-      border: 1px solid var(--line-subtle);
-      color: var(--text-muted);
-      padding: 10px 22px;
-      font-size: 0.76rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      border-radius: 4px;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-    .cat-tab.active, .cat-tab:hover {
-      background: var(--gold-gradient);
-      color: #000;
-      border-color: transparent;
-      box-shadow: 0 2px 14px rgba(223, 186, 115, 0.25);
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 32px;
-    }
-    .product-card {
-      background: var(--surface-card);
-      border: 1px solid var(--line-subtle);
-      border-radius: 6px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.35s ease;
-      position: relative;
-    }
-    .product-card:hover {
-      border-color: var(--gold-primary);
-      transform: translateY(-4px);
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.7), 0 0 24px rgba(223, 186, 115, 0.2);
-    }
-    .product-img-box {
-      aspect-ratio: 1 / 1;
-      width: 100%;
-      background: #111116;
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 16px;
-      position: relative;
-    }
-    .product-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .product-card:hover .product-img-box img {
-      transform: scale(1.05);
-    }
-    .badge-chip {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(9, 9, 12, 0.88);
-      border: 1px solid var(--gold-primary);
-      color: var(--gold-light);
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-weight: 700;
-      backdrop-filter: blur(8px);
-    }
-
-    .prod-title {
-      font-size: 1.35rem;
-      margin-bottom: 4px;
-    }
-    .prod-subtitle {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      font-style: italic;
-      margin-bottom: 14px;
-    }
-    .notes-box {
-      background: rgba(9, 9, 12, 0.75);
-      border: 1px solid rgba(223, 186, 115, 0.14);
-      border-radius: 4px;
-      padding: 10px 14px;
-      margin-bottom: 16px;
-      font-size: 0.75rem;
-      line-height: 1.5;
-    }
-    .notes-box b {
-      color: var(--gold-light);
-      text-transform: uppercase;
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-    }
-
-    .card-footer {
-      margin-top: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .price-container {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .price-orig {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .price-orig .cut {
-      text-decoration: line-through;
-      color: #ff5252;
-      font-weight: 600;
-    }
-    .price-launch {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: var(--gold-primary);
-      letter-spacing: 0.02em;
-    }
-
-    .action-button-row {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 8px;
-    }
-    .btn-add-cart {
-      background: var(--gold-gradient);
-      color: #000;
-      font-weight: 700;
-      font-size: 0.76rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 10px;
-      border-radius: 4px;
-      transition: all 0.2s;
-    }
-    .btn-add-cart:hover {
-      box-shadow: 0 4px 14px rgba(223, 186, 115, 0.4);
-    }
-    .btn-quick-wa {
-      background: rgba(37, 211, 102, 0.12);
-      border: 1px solid rgba(37, 211, 102, 0.35);
-      color: #a7f3d0;
-      font-size: 0.74rem;
-      font-weight: 600;
-      padding: 10px;
-      border-radius: 4px;
-      text-align: center;
-      transition: all 0.2s;
-    }
-    .btn-quick-wa:hover {
-      background: #25d366;
-      color: #000;
-    }
-
-    /* STREAMING_CHUNK:Styling Cart Drawer and Checkout Flow -->
-    .cart-drawer-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(8px);
-      z-index: 2000;
-      visibility: hidden;
-      opacity: 0;
-      transition: all 0.3s;
-    }
-    .cart-drawer-overlay.active {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .cart-drawer {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 100%;
-      max-width: 420px;
-      height: 100%;
-      background: #111116;
-      border-left: 1px solid var(--line-bright);
-      z-index: 2001;
-      transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      flex-direction: column;
-    }
-    html[dir="rtl"] .cart-drawer {
-      right: auto;
-      left: 0;
-      border-left: none;
-      border-right: 1px solid var(--line-bright);
-      transform: translateX(-100%);
-    }
-    .cart-drawer.active {
-      transform: translateX(0);
-    }
-
-    .cart-header {
-      padding: 20px 24px;
-      border-bottom: 1px solid var(--line-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .cart-close-btn {
-      background: transparent;
-      color: var(--text-muted);
-      font-size: 1.5rem;
-    }
-    .cart-items-list {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .cart-item {
-      display: flex;
-      gap: 14px;
-      background: rgba(22, 22, 28, 0.6);
-      padding: 12px;
-      border-radius: 4px;
-      border: 1px solid var(--line-subtle);
-      align-items: center;
-    }
-    .cart-item-img {
-      width: 58px;
-      height: 58px;
-      border-radius: 4px;
-      object-fit: cover;
-    }
-    .cart-item-info {
-      flex: 1;
-    }
-    .cart-item-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    .cart-item-price {
-      font-size: 0.82rem;
-      color: var(--gold-primary);
-      font-weight: 700;
-    }
-    .qty-controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 6px;
-    }
-    .qty-btn {
-      background: rgba(223, 186, 115, 0.15);
-      color: var(--gold-light);
-      width: 24px;
-      height: 24px;
-      border-radius: 3px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-    }
-
-    .cart-footer {
-      padding: 20px 24px;
-      border-top: 1px solid var(--line-subtle);
-      background: #0d0d11;
-    }
-    .cart-total-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    /* Checkout Modal */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(10px);
-      z-index: 3000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      visibility: hidden;
-      opacity: 0;
-      transition: all 0.3s;
-    }
-    .modal-overlay.active {
-      visibility: visible;
-      opacity: 1;
-    }
-    .checkout-card {
-      background: #121218;
-      border: 1px solid var(--line-bright);
-      border-radius: 8px;
-      width: 100%;
-      max-width: 520px;
-      padding: 28px;
-      position: relative;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .checkout-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 18px;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .form-group label {
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      color: var(--gold-light);
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .form-control {
-      background: #09090d;
-      border: 1px solid rgba(223, 186, 115, 0.25);
-      border-radius: 4px;
-      padding: 12px 14px;
-      color: #fff;
-      font-size: 0.9rem;
-      outline: none;
-      font-family: inherit;
-    }
-    .form-control:focus {
-      border-color: var(--gold-primary);
-    }
-
-    /* Mobile Drawer */
-    .mobile-menu-drawer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #0b0b10;
-      z-index: 1500;
-      transform: translateY(-100%);
-      transition: transform 0.35s ease;
-      display: flex;
-      flex-direction: column;
-      padding: 24px;
-    }
-    .mobile-menu-drawer.open {
-      transform: translateY(0);
-    }
-
-    /* Footer */
-    .site-footer {
-      border-top: 1px solid var(--line-subtle);
-      padding: 60px 0 30px;
-      background: #08080a;
-      font-size: 0.88rem;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    .footer-bottom {
-      border-top: 1px solid rgba(223, 186, 115, 0.1);
-      padding-top: 20px;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.78rem;
-    }
-
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .bugatti-menu { display: none; }
-      .mobile-nav-toggle { display: block; }
-      .trust-grid { grid-template-columns: repeat(2, 1fr); row-gap: 16px; }
-      .footer-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+<style>
+  /* Ensure reveal items are never hidden or stuck blank */
+  .reveal {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+</style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container nav-wrapper">
-      <a href="#hero" class="brand-link">
-        <span class="brand-crest">✦</span>
-        <span class="brand-title">XYAAL 365</span>
-      </a>
-
-      <!-- Bugatti Minimalist Navigation -->
-      <nav class="bugatti-menu">
-        <a href="#hero" class="nav-item active" data-i18n="nav_home">HOME</a>
-        <a href="#collection" class="nav-item" data-i18n="nav_perfumes">PERFUMES</a>
-        <a href="#collection" class="nav-item" data-i18n="nav_gasless">GASLESS SPRAYS</a>
-        <a href="#collection" class="nav-item" data-i18n="nav_wallets">WALLETS</a>
-        <a href="#story" class="nav-item" data-i18n="nav_story">OUR STORY</a>
-        <a href="#contact" class="nav-item" data-i18n="nav_contact">CONTACT</a>
-      </nav>
-
-      <div class="nav-actions">
-        <!-- Bilingual English/Urdu Toggle -->
-        <button id="langToggleBtn" class="lang-btn" aria-label="Toggle Language">اردو</button>
-
-        <!-- Cart Bag Trigger -->
-        <button id="cartTriggerBtn" class="cart-trigger" aria-label="Open Cart Bag">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <path d="M16 10a4 4 0 0 1-8 0"></path>
-          </svg>
-          <span class="cart-counter" id="cartCountBadge">0</span>
-        </button>
-
-        <!-- Mobile Drawer Toggle -->
-        <button class="mobile-nav-toggle" id="mobileMenuOpenBtn" aria-label="Open Mobile Menu">&#9776;</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Slide Drawer -->
-  <div class="mobile-menu-drawer" id="mobileMenuDrawer">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 24px;">
-      <span class="brand-title">XYAAL 365</span>
-      <button id="mobileMenuCloseBtn" style="background:none; color:var(--text-muted); font-size:1.8rem;">&times;</button>
-    </div>
-    <div style="display:flex; flex-direction:column; gap:20px; font-size:1.15rem; font-family:var(--serif);">
-      <a href="#hero" class="mobile-link" onclick="closeMobileNav()">HOME</a>
-      <a href="#collection" class="mobile-link" onclick="closeMobileNav()">COLLECTION</a>
-      <a href="#story" class="mobile-link" onclick="closeMobileNav()">OUR STORY</a>
-      <a href="#contact" class="mobile-link" onclick="closeMobileNav()">CONTACT</a>
-      <a href="https://wa.me/923281959312" target="_blank" class="btn-gold" style="margin-top:20px; justify-content:center;">ORDER ON WHATSAPP</a>
-    </div>
-  </div>
-
-  <div class="trust-bar">
-    <div class="container trust-grid">
-      <div class="trust-item"><span data-i18n="trust_cod">📦 Cash on Delivery Nationwide</span></div>
-      <div class="trust-item"><span data-i18n="trust_free_ship">🚚 Free Nationwide Delivery on Bundles</span></div>
-      <div class="trust-item"><span data-i18n="trust_pure">✨ 100% Artisanal Pure Oils</span></div>
-      <div class="trust-item"><span data-i18n="trust_guarantee">🛡️ 7-Day Guarantee & Magnetic Box</span></div>
-    </div>
-  </div>
-
-  <main>
-    <section class="hero-section" id="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="hero-eyebrow" data-i18n="hero_eyebrow">✦ HAUTE PARFUMERIE · 365 DAYS OF LUXURY ✦</span>
-          <h1 class="hero-title" data-i18n="hero_title">Fragrance,<br><em>crafted for distinction.</em></h1>
-          <p class="hero-desc" data-i18n="hero_desc">
-            A Pakistani perfume house crafting signature fragrances with considered notes and understated luxury. Discover Aura, Vibe, and Crush — pure extrait formulations designed to linger.
-          </p>
-          <div class="hero-ctas">
-            <a href="#collection" class="btn-gold" data-i18n="btn_shop_now">Explore Collection</a>
-            <a href="https://wa.me/923281959312?text=Hi%20XYAAL%20365%2C%20I%20am%20interested%20in%20ordering." target="_blank" rel="noopener" class="btn-wa">
-              <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor">
-                <path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.42.687 4.68 1.878 6.6L3 29l7.09-2.34a12.44 12.44 0 0 0 5.911 1.5h.005c6.893 0 12.5-5.607 12.5-12.5S22.894 3 16.001 3Zm0 22.7h-.004a10.36 10.36 0 0 1-5.28-1.45l-.379-.225-3.943 1.3 1.32-3.84-.247-.395a10.34 10.34 0 0 1-1.588-5.59c0-5.73 4.665-10.4 10.397-10.4 2.777 0 5.386 1.082 7.35 3.048A10.33 10.33 0 0 1 26.62 15.5c0 5.73-4.665 10.4-10.62 10.4Zm5.706-7.79c-.312-.156-1.846-.911-2.132-1.015-.286-.104-.494-.156-.702.156-.208.312-.806 1.015-.988 1.223-.182.208-.364.234-.676.078-.312-.156-1.317-.485-2.508-1.546-.927-.826-1.553-1.847-1.735-2.159-.182-.312-.02-.48.137-.636.14-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.702-1.69-.962-2.314-.253-.608-.51-.526-.702-.536l-.598-.01c-.208 0-.546.078-.832.39-.286.312-1.09 1.066-1.09 2.6 0 1.534 1.116 3.016 1.272 3.224.156.208 2.196 3.353 5.32 4.7.743.321 1.323.513 1.775.657.746.237 1.424.204 1.96.124.598-.089 1.846-.755 2.106-1.484.26-.729.26-1.354.182-1.484-.078-.13-.286-.208-.598-.364Z"/>
-              </svg>
-              <span data-i18n="btn_wa">Order on WhatsApp</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Poster Launch Promo Box Showcase -->
-        <div class="hero-card">
-          <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80" alt="XYAAL 365 Fragrance Trio" class="hero-card-img">
-          
-          <div class="poster-offer-block">
-            <div class="poster-reg-price">REGULAR PRICE <span class="striked">Rs. 2,999</span></div>
-            <div class="poster-gold-badge">
-              <span class="poster-badge-title">LAUNCH PRICE</span>
-              <span class="poster-badge-price">Rs. 2,499</span>
-            </div>
-            <div class="poster-limit-tag">✦ FIRST 100 CUSTOMERS ONLY ✦</div>
-          </div>
-          
-          <button class="btn-gold" style="width:100%; justify-content:center;" onclick="quickAdd('aura')">
-            <span data-i18n="btn_quick_claim">CLAIM LAUNCH PRICE</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section class="catalog-section" id="collection">
-      <div class="container">
-        <div style="text-align: center; max-width: 640px; margin: 0 auto;">
-          <h2 style="font-size: 2.3rem; margin-bottom: 8px;" data-i18n="sec_collection_title">The Signature Collection</h2>
-          <p style="color: var(--text-muted);" data-i18n="sec_collection_desc">Explore our artisanal extraits, 100% pure gasless atomizers, and full-grain leather wallets.</p>
-        </div>
-
-        <!-- Category Switcher Tabs -->
-        <div class="category-tabs">
-          <button class="cat-tab active" onclick="filterCategory('all', this)" data-i18n="tab_all">All Collection</button>
-          <button class="cat-tab" onclick="filterCategory('perfume', this)" data-i18n="tab_perfumes">Luxury Perfumes</button>
-          <button class="cat-tab" onclick="filterCategory('gasless', this)" data-i18n="tab_gasless">Gasless Sprays</button>
-          <button class="cat-tab" onclick="filterCategory('leather', this)" data-i18n="tab_leather">Leather Goods</button>
-        </div>
-
-        <div class="product-grid" id="productCatalogGrid">
-          <!-- Populated by JavaScript -->
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="story" style="background:#0c0c11; border-top:1px solid var(--line-subtle); padding: 80px 0;">
-      <div class="container" style="display:grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items:center;">
-        <div style="aspect-ratio: 4/3; border-radius: 6px; overflow:hidden; border: 1px solid var(--line-bright);">
-          <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=900&q=80" alt="XYAAL 365 Craftsmanship" style="width:100%; height:100%; object-fit:cover;">
-        </div>
-        <div>
-          <span style="color: var(--gold-light); font-size:0.75rem; letter-spacing: 0.22em; text-transform:uppercase;" data-i18n="story_kicker">Artisanal Pedigree</span>
-          <h2 style="font-size: 2.4rem; margin: 12px 0 20px;" data-i18n="story_title">Wear the feeling. Leave the memory.</h2>
-          <p style="color: var(--text-muted); line-height: 1.8; margin-bottom: 24px;" data-i18n="story_body">
-            XYAAL 365 is an independent perfume house built around scent identity, patience, and bespoke presentation. Each bottle is housed in an understated magnetic box with high concentration oils formulated to project effortlessly throughout your day.
-          </p>
-          <a href="#collection" class="btn-outline" data-i18n="btn_explore">Discover Fragrances</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact" style="padding: 70px 0; text-align:center;">
-      <div class="container" style="max-width: 600px;">
-        <h3 style="font-size: 1.8rem; margin-bottom: 12px;" data-i18n="contact_heading">Concierge & Bespoke Orders</h3>
-        <p style="color: var(--text-muted); margin-bottom: 24px;" data-i18n="contact_desc">Have questions regarding olfactory notes or order dispatch? Connect with our fragrance specialists directly on WhatsApp.</p>
-        <a class="btn-wa" href="https://wa.me/923281959312?text=Hi%20XYAAL%20365%2C%20I%20have%20an%20inquiry%20regarding%20your%20collection." target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor">
-            <path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.42.687 4.68 1.878 6.6L3 29l7.09-2.34a12.44 12.44 0 0 0 5.911 1.5h.005c6.893 0 12.5-5.607 12.5-12.5S22.894 3 16.001 3Zm0 22.7h-.004a10.36 10.36 0 0 1-5.28-1.45l-.379-.225-3.943 1.3 1.32-3.84-.247-.395a10.34 10.34 0 0 1-1.588-5.59c0-5.73 4.665-10.4 10.397-10.4 2.777 0 5.386 1.082 7.35 3.048A10.33 10.33 0 0 1 26.62 15.5c0 5.73-4.665 10.4-10.62 10.4Zm5.706-7.79c-.312-.156-1.846-.911-2.132-1.015-.286-.104-.494-.156-.702.156-.208.312-.806 1.015-.988 1.223-.182.208-.364.234-.676.078-.312-.156-1.317-.485-2.508-1.546-.927-.826-1.553-1.847-1.735-2.159-.182-.312-.02-.48.137-.636.14-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.702-1.69-.962-2.314-.253-.608-.51-.526-.702-.536l-.598-.01c-.208 0-.546.078-.832.39-.286.312-1.09 1.066-1.09 2.6 0 1.534 1.116 3.016 1.272 3.224.156.208 2.196 3.353 5.32 4.7.743.321 1.323.513 1.775.657.746.237 1.424.204 1.96.124.598-.089 1.846-.755 2.106-1.484.26-.729.26-1.354.182-1.484-.078-.13-.286-.208-.598-.364Z"/>
-          </svg>
-          <span data-i18n="btn_chat_wa">Chat on WhatsApp (+92 328 1959312)</span>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCart(false)"></div>
-  <aside class="cart-drawer" id="cartDrawer">
-    <div class="cart-header">
-      <h3 style="font-size: 1.1rem; letter-spacing: 0.12em;" data-i18n="cart_title">SHOPPING BAG</h3>
-      <button class="cart-close-btn" onclick="toggleCart(false)">&times;</button>
-    </div>
-    <div class="cart-items-list" id="cartItemsContainer">
-      <!-- Items dynamically populated -->
-    </div>
-    <div class="cart-footer">
-      <div class="cart-total-row">
-        <span data-i18n="cart_subtotal">Subtotal</span>
-        <span id="cartSubtotalVal" style="color:var(--gold-primary);">Rs. 0</span>
-      </div>
-      <button class="btn-gold" style="width: 100%; justify-content:center;" onclick="openCheckoutModal()" data-i18n="btn_checkout">
-        Proceed to COD Checkout
+<header class="site-header" id="siteHeader">
+  <div class="container nav-row">
+    <a href="index.html" class="brand">
+      <img src="assets/logo/xyaal-365-transparent.png" alt="XYAAL 365 Logo">
+      <span class="brand-text"><b>XYAAL 365</b><small>Parfum Brand</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="collection.html">Collection</a>
+      <a href="about.html">Our Story</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="lang-toggle" style="background:transparent; border:1px solid #c5a880; color:#c5a880; padding:3px 8px; border-radius:4px; margin-right:8px; font-size:12px; cursor:pointer;">EN</button>
+      <button class="nav-bag-btn" aria-label="Open shopping bag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="nav-cart-badge">0</span>
       </button>
-    </div>
-  </aside>
-
-  <div class="modal-overlay" id="checkoutModalOverlay">
-    <div class="checkout-card">
-      <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h3 style="font-size: 1.3rem;" data-i18n="checkout_title">Cash On Delivery Checkout</h3>
-        <button onclick="closeCheckoutModal()" style="background:none; color:var(--text-muted); font-size:1.6rem;">&times;</button>
-      </div>
-      <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;" data-i18n="checkout_subtitle">Provide delivery details. Pay Cash upon delivery anywhere in Pakistan.</p>
-
-      <form class="checkout-form" id="orderCheckoutForm" onsubmit="handleOrderSubmission(event)">
-        <div class="form-group">
-          <label data-i18n="lbl_name">Full Name</label>
-          <input type="text" id="custName" class="form-control" required placeholder="e.g. Hammad Khan">
-        </div>
-        <div class="form-group">
-          <label data-i18n="lbl_phone">Phone / WhatsApp Number</label>
-          <input type="tel" id="custPhone" class="form-control" required placeholder="03XXXXXXXXX">
-        </div>
-        <div class="form-group">
-          <label data-i18n="lbl_address">Delivery Address</label>
-          <input type="text" id="custAddress" class="form-control" required placeholder="House / Flat #, Street, Area">
-        </div>
-        <div class="form-group">
-          <label data-i18n="lbl_city">City</label>
-          <select id="custCity" class="form-control" required>
-            <option value="Lahore">Lahore</option>
-            <option value="Karachi">Karachi</option>
-            <option value="Islamabad">Islamabad</option>
-            <option value="Rawalpindi">Rawalpindi</option>
-            <option value="Faisalabad">Faisalabad</option>
-            <option value="Multan">Multan</option>
-            <option value="Peshawar">Peshawar</option>
-            <option value="Quetta">Quetta</option>
-            <option value="Sialkot">Sialkot</option>
-            <option value="Gujranwala">Gujranwala</option>
-            <option value="Other City">Other City</option>
-          </select>
-        </div>
-
-        <div style="background:rgba(223, 186, 115, 0.08); padding:12px; border-radius:4px; border:1px solid var(--line-bright); margin-top:6px;">
-          <div style="display:flex; justify-content:space-between; font-weight:700;">
-            <span data-i18n="lbl_total_bill">Payable upon Delivery:</span>
-            <span id="modalTotalBill" style="color:var(--gold-primary);">Rs. 0</span>
-          </div>
-        </div>
-
-        <button type="submit" class="btn-gold" style="width:100%; justify-content:center; margin-top:8px;">
-          <span data-i18n="btn_confirm_cod">Confirm Order via COD</span>
-        </button>
-      </form>
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu">&#9776;</button>
     </div>
   </div>
+</header>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="brand-link" style="margin-bottom: 14px;">
-            <span class="brand-crest">✦</span>
-            <span class="brand-title">XYAAL 365</span>
-          </div>
-          <p style="color: var(--text-muted); max-width: 38ch; line-height: 1.7;">
-            Understated luxury fragrance and leather goods house. Handcrafted in Pakistan, worn 365 days a year.
-          </p>
-        </div>
-        <div>
-          <h4 style="font-size: 0.95rem; margin-bottom: 16px; color: var(--gold-light);">Catalog</h4>
-          <div style="display:flex; flex-direction:column; gap:8px; font-size:0.85rem; color:var(--text-muted);">
-            <a href="#collection">Luxury Perfumes</a>
-            <a href="#collection">Gasless Sprays</a>
-            <a href="#collection">Leather Wallets</a>
-            <a href="#story">Our Story</a>
-          </div>
-        </div>
-        <div>
-          <h4 style="font-size: 0.95rem; margin-bottom: 16px; color: var(--gold-light);">Concierge</h4>
-          <div style="display:flex; flex-direction:column; gap:8px; font-size:0.85rem; color:var(--text-muted);">
-            <span>WhatsApp: +92 328 1959312</span>
-            <span>Instagram: @xyaal365</span>
-            <span>TikTok: @xyaal.365</span>
-            <span>Email: xyaal365@gmail.com</span>
-          </div>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="nav-row">
+    <a href="index.html" class="brand">
+      <img src="assets/logo/xyaal-365-transparent.png" alt="XYAAL 365 Logo">
+      <span class="brand-text"><b>XYAAL 365</b></span>
+    </a>
+    <button class="icon-btn" id="menuClose" aria-label="Close menu">&#10005;</button>
+  </div>
+  <a href="index.html">Home</a>
+  <a href="collection.html">Collection</a>
+  <a href="about.html">Our Story</a>
+  <a href="contact.html">Contact</a>
+  <a class="btn btn-primary" href="https://wa.me/923281959312" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;margin-right:7px;vertical-align:-3px;"><path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.42.687 4.68 1.878 6.6L3 29l7.09-2.34a12.44 12.44 0 0 0 5.911 1.5h.005c6.893 0 12.5-5.607 12.5-12.5S22.894 3 16.001 3Zm0 22.7h-.004a10.36 10.36 0 0 1-5.28-1.45l-.379-.225-3.943 1.3 1.32-3.84-.247-.395a10.34 10.34 0 0 1-1.588-5.59c0-5.73 4.665-10.4 10.397-10.4 2.777 0 5.386 1.082 7.35 3.048A10.33 10.33 0 0 1 26.62 15.5c0 5.73-4.665 10.4-10.62 10.4Zm5.706-7.79c-.312-.156-1.846-.911-2.132-1.015-.286-.104-.494-.156-.702.156-.208.312-.806 1.015-.988 1.223-.182.208-.364.234-.676.078-.312-.156-1.317-.485-2.508-1.546-.927-.826-1.553-1.847-1.735-2.159-.182-.312-.02-.48.137-.636.14-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.702-1.69-.962-2.314-.253-.608-.51-.526-.702-.536l-.598-.01c-.208 0-.546.078-.832.39-.286.312-1.09 1.066-1.09 2.6 0 1.534 1.116 3.016 1.272 3.224.156.208 2.196 3.353 5.32 4.7.743.321 1.323.513 1.775.657.746.237 1.424.204 1.96.124.598-.089 1.846-.755 2.106-1.484.26-.729.26-1.354.182-1.484-.078-.13-.286-.208-.598-.364Z"/></svg>Order on WhatsApp</a>
+</div>
+
+<main>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="hero-eyebrow">✦ HAUTE PARFUMERIE · 365 DAYS OF LUXURY ✦</span>
+        <h1>Fragrance,<br><em>crafted for distinction.</em></h1>
+        <p>A Pakistani perfume house crafting signature fragrances with considered notes and understated luxury. Discover <strong>Aura</strong> for Men, <strong>Vibe</strong> for Unisex, and <strong>Crush</strong> for Women — 50ml Eau de Parfum at PKR 2,999 each.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="collection.html">Shop Collection</a>
+          <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20am%20interested%20in%20ordering%2050ml%20Eau%20de%20Parfum%20(PKR%202%2C999)%20from%20XYAAL%20365."><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;margin-right:8px;vertical-align:-4px;"><path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.42.687 4.68 1.878 6.6L3 29l7.09-2.34a12.44 12.44 0 0 0 5.911 1.5h.005c6.893 0 12.5-5.607 12.5-12.5S22.894 3 16.001 3Zm0 22.7h-.004a10.36 10.36 0 0 1-5.28-1.45l-.379-.225-3.943 1.3 1.32-3.84-.247-.395a10.34 10.34 0 0 1-1.588-5.59c0-5.73 4.665-10.4 10.397-10.4 2.777 0 5.386 1.082 7.35 3.048A10.33 10.33 0 0 1 26.62 15.5c0 5.73-4.665 10.4-10.62 10.4Zm5.706-7.79c-.312-.156-1.846-.911-2.132-1.015-.286-.104-.494-.156-.702.156-.208.312-.806 1.015-.988 1.223-.182.208-.364.234-.676.078-.312-.156-1.317-.485-2.508-1.546-.927-.826-1.553-1.847-1.735-2.159-.182-.312-.02-.48.137-.636.14-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.702-1.69-.962-2.314-.253-.608-.51-.526-.702-.536l-.598-.01c-.208 0-.546.078-.832.39-.286.312-1.09 1.066-1.09 2.6 0 1.534 1.116 3.016 1.272 3.224.156.208 2.196 3.353 5.32 4.7.743.321 1.323.513 1.775.657.746.237 1.424.204 1.96.124.598-.089 1.846-.755 2.106-1.484.26-.729.26-1.354.182-1.484-.078-.13-.286-.208-.598-.364Z"/></svg>Order on WhatsApp</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        &copy; 2026 XYAAL 365. All Rights Reserved. Crafted for Distinction.
+      <div class="hero-promo-card">
+        <div class="promo-video-wrapper">
+          <span class="promo-badge-top"></span>
+          <video id="heroPromoVideo" autoplay loop muted playsinline poster="assets/products/haider/main.jpg">
+            <source src="assets/videos/promo.mp4" type="video/mp4">
+          </video>
+          <div class="promo-video-overlay"></div>
+          <div class="promo-video-footer">
+            <div class="promo-video-info">
+              <b>3 Signature Scents</b>
+              <div style="margin-top:6px; display:inline-flex; flex-direction:column; align-items:flex-start; gap:2px;">
+                <span style="font-size:11px; color:#c5a880; letter-spacing:1px; text-transform:uppercase;">
+                  REGULAR PRICE <span style="text-decoration:line-through; opacity:0.7; color:#fff;">Rs. 2,999</span>
+                </span>
+                <span style="background:linear-gradient(135deg, #dfba73, #c59b48); color:#000; padding:3px 10px; border-radius:3px; font-weight:800; font-size:13px; letter-spacing:0.5px; display:inline-block;">
+                  LAUNCH PRICE Rs. 2,499
+                </span>
+                <span style="font-size:10px; color:#dfba73; font-style:italic; margin-top:2px;">✦ FIRST 100 CUSTOMERS ONLY ✦</span>
+              </div>
+            </div>
+            <button class="promo-toggle-btn" id="promoMuteBtn" aria-label="Toggle Sound" title="Sound Muted">
+              <svg id="soundMutedIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:16px;height:16px;"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+              <svg id="soundActiveIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:16px;height:16px;display:none;"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    /* Complete Catalog Data aligned with marketing launch prices */
-    const PRODUCTS = [
-      {
-        id: "aura",
-        category: "perfume",
-        name: "AURA",
-        subtitle: "Bold, masculine, magnetic — for Men",
-        origPrice: 3499,
-        launchPrice: 2999,
-        badge: "UNDER 3K • BEST BUY",
-        notes: "Top: Crisp Bergamot, Pepper | Heart: Smoked Cedarwood | Base: Rich Amber",
-        image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: "vibe",
-        category: "perfume",
-        name: "VIBE",
-        subtitle: "Fresh, versatile, sophisticated — Unisex",
-        origPrice: 3699,
-        launchPrice: 3199,
-        badge: "PREMIUM EVERYDAY",
-        notes: "Top: Light Citrus, Cardamom | Heart: Iris | Base: Clean White Musk",
-        image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: "crush",
-        category: "perfume",
-        name: "CRUSH",
-        subtitle: "Sensual, floral, enchanting — for Women",
-        origPrice: 3999,
-        launchPrice: 3399,
-        badge: "FOR CRUSH 🥰",
-        notes: "Top: Soft Vanilla, Jasmine | Heart: Blooming Rose | Base: Warm Sandalwood",
-        image: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: "aura-spray",
-        category: "gasless",
-        name: "Aura Pure Mist",
-        subtitle: "150ml All-Over Gasless Spray (100% Pure Liquid)",
-        origPrice: 1899,
-        launchPrice: 1499,
-        badge: "ZERO AEROSOL",
-        notes: "Non-staining pure mist with high concentration longevity",
-        image: "https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: "vibe-spray",
-        category: "gasless",
-        name: "Vibe Pure Mist",
-        subtitle: "150ml All-Over Gasless Spray (100% Pure Liquid)",
-        origPrice: 1899,
-        launchPrice: 1499,
-        badge: "AQUATIC FRESH",
-        notes: "Clean citrus and iris mist formulated for daily active wear",
-        image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: "crush-spray",
-        category: "gasless",
-        name: "Crush Pure Mist",
-        subtitle: "150ml All-Over Gasless Spray (100% Pure Liquid)",
-        origPrice: 1899,
-        launchPrice: 1499,
-        badge: "ALL-DAY FLORAL",
-        notes: "Silky rose and vanilla mist with instant calming projection",
-        image: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: "leather-bifold",
-        category: "leather",
-        name: "Executive Bi-Fold Wallet",
-        subtitle: "Handcrafted Matte Black Cowhide Leather",
-        origPrice: 4200,
-        launchPrice: 3499,
-        badge: "RFID PROTECTED",
-        notes: "8 card slots, dual cash compartment, gold debossed crest",
-        image: "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=700&q=80"
-      },
-      {
-        id: "leather-cardholder",
-        category: "leather",
-        name: "Slim Saffiano Cardholder",
-        subtitle: "Ultra-thin front-pocket minimalist card sleeve",
-        origPrice: 2499,
-        launchPrice: 1999,
-        badge: "SLIM LUXURY",
-        notes: "5 card compartments with premium edge finish",
-        image: "https://images.unsplash.com/photo-1554412933-514a83d2f3c8?auto=format&fit=crop&w=700&q=80"
-      }
-    ];
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">The Collection</span>
+        <h2>Three fragrances.</h2>
+        <p>Every bottle in the XYAAL 365 collection is built around a distinct character — from first spray to final drydown.</p>
+      </div>
+      <div class="product-grid" id="homeProductGrid"></div>
+    </div>
+  </section>
 
-    /* Bilingual Dictionaries */
-    const I18N = {
-      en: {
-        nav_home: "HOME",
-        nav_perfumes: "PERFUMES",
-        nav_gasless: "GASLESS SPRAYS",
-        nav_wallets: "WALLETS",
-        nav_story: "OUR STORY",
-        nav_contact: "CONTACT",
-        trust_cod: "📦 Cash on Delivery Nationwide",
-        trust_free_ship: "🚚 Free Nationwide Delivery on Bundles",
-        trust_pure: "✨ 100% Artisanal Pure Oils",
-        trust_guarantee: "🛡️ 7-Day Guarantee & Magnetic Box",
-        hero_eyebrow: "✦ HAUTE PARFUMERIE · 365 DAYS OF LUXURY ✦",
-        hero_title: "Fragrance,<br><em>crafted for distinction.</em>",
-        hero_desc: "A Pakistani perfume house crafting signature fragrances with considered notes and understated luxury. Discover Aura, Vibe, and Crush — pure extrait formulations designed to linger.",
-        btn_shop_now: "Explore Collection",
-        btn_wa: "Order on WhatsApp",
-        btn_quick_claim: "CLAIM LAUNCH PRICE",
-        sec_collection_title: "The Signature Collection",
-        sec_collection_desc: "Explore our artisanal extraits, 100% pure gasless atomizers, and full-grain leather wallets.",
-        tab_all: "All Collection",
-        tab_perfumes: "Luxury Perfumes",
-        tab_gasless: "Gasless Sprays",
-        tab_leather: "Leather Goods",
-        story_kicker: "Artisanal Pedigree",
-        story_title: "Wear the feeling. Leave the memory.",
-        story_body: "XYAAL 365 is an independent perfume house built around scent identity, patience, and bespoke presentation. Each bottle is housed in an understated magnetic box with high concentration oils formulated to project effortlessly throughout your day.",
-        btn_explore: "Discover Fragrances",
-        contact_heading: "Concierge & Bespoke Orders",
-        contact_desc: "Have questions regarding olfactory notes or order dispatch? Connect with our fragrance specialists directly on WhatsApp.",
-        btn_chat_wa: "Chat on WhatsApp (+92 328 1959312)",
-        cart_title: "SHOPPING BAG",
-        cart_subtotal: "Subtotal",
-        btn_checkout: "Proceed to COD Checkout",
-        checkout_title: "Cash On Delivery Checkout",
-        checkout_subtitle: "Provide delivery details. Pay Cash upon delivery anywhere in Pakistan.",
-        lbl_name: "Full Name",
-        lbl_phone: "Phone / WhatsApp Number",
-        lbl_address: "Delivery Address",
-        lbl_city: "City",
-        lbl_total_bill: "Payable upon Delivery:",
-        btn_confirm_cod: "Confirm Order via COD"
-      },
-      ur: {
-        nav_home: "ہوم",
-        nav_perfumes: "پرفیومز",
-        nav_gasless: "گیس لیس اسپرے",
-        nav_wallets: "والٹس",
-        nav_story: "ہماری کہانی",
-        nav_contact: "رابطہ",
-        trust_cod: "📦 پورے پاکستان میں کیش آن ڈیلیوری",
-        trust_free_ship: "🚚 بنڈلز پر مفت ہوم ڈیلیوری",
-        trust_pure: "✨ ۱۰۰٪ خالص پرفیوم آئلز",
-        trust_guarantee: "🛡️ ۷ دن کی گارنٹی اور میگنیٹک بکس",
-        hero_eyebrow: "✦ اعلیٰ پرفیومری · ۳۶۵ دن کا شاہکار احساس ✦",
-        hero_title: "خوشبو،<br><em>جو باوقار پہچان بنائے۔</em>",
-        hero_desc: "ایک نفیس پاکستانی پرفیوم ہاؤس جو باوقار خوشبو اور شاندار انداز پر یقین رکھتا ہے۔ دریافت کریں Aura، Vibe اور Crush۔",
-        btn_shop_now: "کلیکشن دیکھیں",
-        btn_wa: "واٹس ایپ پر آرڈر کریں",
-        btn_quick_claim: "لانچ آفر کلیم کریں",
-        sec_collection_title: "ہماری دستکاری کلیکشن",
-        sec_collection_desc: "خالص پرفیومز، جدید گیس لیس اسپرے اور چمڑے کے نفیس والٹس۔",
-        tab_all: "تمام پروڈکٹس",
-        tab_perfumes: "لگژری پرفیومز",
-        tab_gasless: "گیس لیس اسپرے",
-        tab_leather: "لیدر والٹس",
-        story_kicker: "دستکاری و نفاست",
-        story_title: "احساس پہنیں، یاد چھوڑ جائیں۔",
-        story_body: "XYAAL 365 کا مقصد نفاست اور وقار کو روزمرہ زندگی کا حصہ بنانا ہے۔ ہماری تمام پراڈکٹس انتہائی توجہ اور بہترین میٹریل سے تیار کی جاتی ہیں۔",
-        btn_explore: "خوشبوئیں دیکھیں",
-        contact_heading: "رہنمائی و فوری آرڈرز",
-        contact_desc: "پرفیوم نوٹس یا ڈیلیوری کے بارے میں کوئی سوال ہے؟ براہِ راست واٹس ایپ پر رابطہ کریں۔",
-        btn_chat_wa: "واٹس ایپ رابطہ (+92 328 1959312)",
-        cart_title: "شاپنگ بیگ",
-        cart_subtotal: "کل رقم",
-        btn_checkout: "کیش آن ڈیلیوری آرڈر کریں",
-        checkout_title: "کیش آن ڈیلیوری فارم",
-        checkout_subtitle: "ڈیلیوری ایڈریس درج کریں۔ پارسل ملنے پر کیش ادا کریں۔",
-        lbl_name: "پورا نام",
-        lbl_phone: "فون / واٹس ایپ نمبر",
-        lbl_address: "مکمل پتہ",
-        lbl_city: "شہر",
-        lbl_total_bill: "وصولی پر واجب الادا رقم:",
-        btn_confirm_cod: "آرڈر کنفرم کریں"
-      }
-    };
+  <section class="section" style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow-x:hidden;">
+    <div class="container editorial reveal">
+      <div class="editorial-media">
+        <img src="assets/images/story.png" alt="XYAAL 365 — Hidden Chapter" class="editorial-img" id="storySectionImg" loading="lazy" />
+      </div>
+      <div class="editorial-content">
+        <span class="kicker">Our Story</span>
+        <h2>A quiet approach to fragrance.</h2>
+        <p>XYAAL 365 is a Pakistani perfume house, built with care around fragrance, presentation and identity rather than scale. Crafted for every day of the year.</p>
+        <a class="btn btn-ghost" href="about.html">Read Our Story</a>
+      </div>
+    </div>
+  </section>
 
-    /* Cart and State Management */
-    let cart = JSON.parse(localStorage.getItem('xyaal_cart') || '[]');
-    let currentCategory = 'all';
+  <section class="section">
+    <div class="container">
+      <div class="contact-card reveal" style="text-align:center; max-width:640px; margin:0 auto;">
+        <h3>Ready to order?</h3>
+        <p style="margin:10px 0 20px;">Reach us directly on WhatsApp for orders, questions or fragrance guidance.</p>
+        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20am%20interested%20in%20ordering%20from%20XYAAL%20365."><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;margin-right:8px;vertical-align:-4px;"><path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.42.687 4.68 1.878 6.6L3 29l7.09-2.34a12.44 12.44 0 0 0 5.911 1.5h.005c6.893 0 12.5-5.607 12.5-12.5S22.894 3 16.001 3Zm0 22.7h-.004a10.36 10.36 0 0 1-5.28-1.45l-.379-.225-3.943 1.3 1.32-3.84-.247-.395a10.34 10.34 0 0 1-1.588-5.59c0-5.73 4.665-10.4 10.397-10.4 2.777 0 5.386 1.082 7.35 3.048A10.33 10.33 0 0 1 26.62 15.5c0 5.73-4.665 10.4-10.62 10.4Zm5.706-7.79c-.312-.156-1.846-.911-2.132-1.015-.286-.104-.494-.156-.702.156-.208.312-.806 1.015-.988 1.223-.182.208-.364.234-.676.078-.312-.156-1.317-.485-2.508-1.546-.927-.826-1.553-1.847-1.735-2.159-.182-.312-.02-.48.137-.636.14-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.702-1.69-.962-2.314-.253-.608-.51-.526-.702-.536l-.598-.01c-.208 0-.546.078-.832.39-.286.312-1.09 1.066-1.09 2.6 0 1.534 1.116 3.016 1.272 3.224.156.208 2.196 3.353 5.32 4.7.743.321 1.323.513 1.775.657.746.237 1.424.204 1.96.124.598-.089 1.846-.755 2.106-1.484.26-.729.26-1.354.182-1.484-.078-.13-.286-.208-.598-.364Z"/></svg>Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
 
-    function renderProducts() {
-      const grid = document.getElementById('productCatalogGrid');
-      grid.innerHTML = '';
+</main>
 
-      const items = currentCategory === 'all' 
-        ? PRODUCTS 
-        : PRODUCTS.filter(p => p.category === currentCategory);
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo/xyaal-365-transparent.png" alt="XYAAL 365 Logo">
+          <b>XYAAL 365</b>
+        </div>
+        <p>A Pakistani perfume house crafting signature fragrances 365 days a year.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="index.html">Home</a>
+        <a href="collection.html">Collection</a>
+        <a href="about.html">Our Story</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>Contact &amp; Connect</h4>
+        <a target="_blank" rel="noopener" href="https://wa.me/923281959312">WhatsApp: +92 328 1959312</a>
+        <a href="mailto:xyaal365@gmail.com">xyaal365@gmail.com</a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/xyaal365?utm_source=qr&stkn=ZWZ3enRxeTd2N21y">Instagram (@xyaal365)</a>
+        <a target="_blank" rel="noopener" href="https://www.tiktok.com/@xyaal.365?_r=1&_t=ZN-99s46SzQU2Y">TikTok (@xyaal.365)</a>
+        <a target="_blank" rel="noopener" href="https://www.facebook.com/share/18Z7JM6obS/">Facebook Page</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 XYAAL 365. All Rights Reserved.</div>
+  </div>
+</footer>
 
-      items.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-          <div class="product-img-box">
-            <span class="badge-chip">${product.badge}</span>
-            <img src="${product.image}" alt="${product.name}" loading="lazy">
-          </div>
-          <h3 class="prod-title">${product.name}</h3>
-          <p class="prod-subtitle">${product.subtitle}</p>
-          <div class="notes-box">
-            <b>Details:</b> ${product.notes}
-          </div>
-          <div class="card-footer">
-            <div class="price-container">
-              <span class="price-orig">Original <span class="cut">Rs. ${product.origPrice.toLocaleString()}</span></span>
-              <span class="price-launch">Rs. ${product.launchPrice.toLocaleString()}</span>
-            </div>
-            <div class="action-button-row">
-              <button class="btn-add-cart" onclick="quickAdd('${product.id}')">Add To Bag</button>
-              <a href="https://wa.me/923281959312?text=Hi%2C%20I%20want%20to%20order%20${encodeURIComponent(product.name)}%20for%20Rs.%20${product.launchPrice}" target="_blank" rel="noopener" class="btn-quick-wa">WhatsApp</a>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function filterCategory(cat, element) {
-      currentCategory = cat;
-      document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
-      element.classList.add('active');
-      renderProducts();
-    }
-
-    function quickAdd(productId) {
-      const prod = PRODUCTS.find(p => p.id === productId);
-      if (!prod) return;
-
-      const existing = cart.find(item => item.id === productId);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ ...prod, qty: 1 });
-      }
-      saveAndSyncCart();
-      toggleCart(true);
-    }
-
-    function updateQty(productId, delta) {
-      const item = cart.find(p => p.id === productId);
-      if (!item) return;
-      item.qty += delta;
-      if (item.qty <= 0) {
-        cart = cart.filter(p => p.id !== productId);
-      }
-      saveAndSyncCart();
-    }
-
-    function saveAndSyncCart() {
-      localStorage.setItem('xyaal_cart', JSON.stringify(cart));
-      updateCartDisplay();
-    }
-
-    function updateCartDisplay() {
-      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
-      document.getElementById('cartCountBadge').textContent = totalCount;
-
-      const itemsContainer = document.getElementById('cartItemsContainer');
-      itemsContainer.innerHTML = '';
-
-      if (cart.length === 0) {
-        itemsContainer.innerHTML = '<p style="text-align:center; color:var(--text-muted); margin-top:40px;">Your shopping bag is empty.</p>';
-        document.getElementById('cartSubtotalVal').textContent = 'Rs. 0';
-        return;
-      }
-
-      let subtotal = 0;
-      cart.forEach(item => {
-        const itemTotal = item.launchPrice * item.qty;
-        subtotal += itemTotal;
-
-        const row = document.createElement('div');
-        row.className = 'cart-item';
-        row.innerHTML = `
-          <img src="${item.image}" class="cart-item-img" alt="${item.name}">
-          <div class="cart-item-info">
-            <div class="cart-item-title">${item.name}</div>
-            <div class="cart-item-price">Rs. ${item.launchPrice.toLocaleString()}</div>
-            <div class="qty-controls">
-              <button class="qty-btn" onclick="updateQty('${item.id}', -1)">-</button>
-              <span style="font-size:0.85rem; font-weight:700;">${item.qty}</span>
-              <button class="qty-btn" onclick="updateQty('${item.id}', 1)">+</button>
-            </div>
-          </div>
-        `;
-        itemsContainer.appendChild(row);
-      });
-
-      document.getElementById('cartSubtotalVal').textContent = `Rs. ${subtotal.toLocaleString()}`;
-    }
-
-    function toggleCart(show) {
-      const drawer = document.getElementById('cartDrawer');
-      const overlay = document.getElementById('cartOverlay');
-      if (show) {
-        drawer.classList.add('active');
-        overlay.classList.add('active');
-      } else {
-        drawer.classList.remove('active');
-        overlay.classList.remove('active');
-      }
-    }
-
-    document.getElementById('cartTriggerBtn').addEventListener('click', () => toggleCart(true));
-
-    function openCheckoutModal() {
-      if (cart.length === 0) return;
-      toggleCart(false);
-      const subtotal = cart.reduce((sum, item) => sum + (item.launchPrice * item.qty), 0);
-      document.getElementById('modalTotalBill').textContent = `Rs. ${subtotal.toLocaleString()}`;
-      document.getElementById('checkoutModalOverlay').classList.add('active');
-    }
-
-    function closeCheckoutModal() {
-      document.getElementById('checkoutModalOverlay').classList.remove('active');
-    }
-
-    function handleOrderSubmission(e) {
-      e.preventDefault();
-      const name = document.getElementById('custName').value.trim();
-      const phone = document.getElementById('custPhone').value.trim();
-      const address = document.getElementById('custAddress').value.trim();
-      const city = document.getElementById('custCity').value;
-
-      let bill = 0;
-      let orderListText = cart.map(item => {
-        bill += item.launchPrice * item.qty;
-        return `• ${item.name} (${item.qty}x) - Rs. ${item.launchPrice * item.qty}`;
-      }).join('\n');
-
-      const message = `*NEW ORDER - XYAAL 365*\n\n*Customer Details:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}, ${city}\nPayment Method: Cash On Delivery (COD)\n\n*Items Ordered:*\n${orderListText}\n\n*Total Payable:* Rs. ${bill.toLocaleString()}`;
-
-      // Open WhatsApp with populated order details
-      const waURL = `https://wa.me/923281959312?text=${encodeURIComponent(message)}`;
-      window.open(waURL, '_blank');
-
-      // Reset Cart and close modal
-      cart = [];
-      saveAndSyncCart();
-      closeCheckoutModal();
-    }
-
-    /* Mobile Drawer Helpers */
-    const mobileDrawer = document.getElementById('mobileMenuDrawer');
-    document.getElementById('mobileMenuOpenBtn').addEventListener('click', () => {
-      mobileDrawer.classList.add('open');
-    });
-    document.getElementById('mobileMenuCloseBtn').addEventListener('click', () => {
-      mobileDrawer.classList.remove('open');
-    });
-    function closeMobileNav() {
-      mobileDrawer.classList.remove('open');
-    }
-
-    /* Language Switching Functionality */
-    function applyLanguage(lang) {
-      const isUrdu = lang === 'ur';
-      document.documentElement.setAttribute('dir', isUrdu ? 'rtl' : 'ltr');
-      document.documentElement.setAttribute('lang', lang);
-      document.getElementById('langToggleBtn').textContent = isUrdu ? 'English' : 'اردو';
-
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (I18N[lang] && I18N[lang][key]) {
-          el.innerHTML = I18N[lang][key];
-        }
-      });
-
-      localStorage.setItem('xyaal_lang', lang);
-    }
-
-    document.getElementById('langToggleBtn').addEventListener('click', () => {
-      const current = localStorage.getItem('xyaal_lang') || 'en';
-      const next = current === 'en' ? 'ur' : 'en';
-      applyLanguage(next);
-    });
-
-    /* Initial Load */
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('xyaal_lang') || 'en';
-      applyLanguage(savedLang);
-      renderProducts();
-      updateCartDisplay();
-    });
-  </script>
+<script src="lang.js?v=2.0"></script>
+  
 </body>
 </html>
-```
 ```
