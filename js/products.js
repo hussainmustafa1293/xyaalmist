@@ -12,8 +12,10 @@ const PRODUCTS = [
     gender: "For Men",
     tagline: "Bold, masculine, magnetic — For Men",
     description: "Aura is a commanding luxury fragrance crafted for men. Notes of crisp bergamot, pepper, smoked cedarwood, and rich amber create a bold, magnetic sillage built for distinction.",
+    originalPrice: "Rs. 3,499",
     price: 2999,
-    salePrice: null,
+    salePrice: 2999,
+    badge: "UNDER 3K • BEST BUY",
     size: "50ml Eau de Parfum",
     available: true,
     notes: {
@@ -36,8 +38,10 @@ const PRODUCTS = [
     gender: "Unisex",
     tagline: "Fresh, versatile, sophisticated — Unisex",
     description: "Vibe is a quiet, sophisticated scent built for everyone. Fresh and versatile, it harmonizes crisp cardamom, light citrus, and velvet iris with a clean white musk drydown.",
-    price: 2999,
-    salePrice: null,
+    originalPrice: "Rs. 3,699",
+    price: 3199,
+    salePrice: 3199,
+    badge: "PREMIUM EVERYDAY",
     size: "50ml Eau de Parfum",
     available: true,
     notes: {
@@ -60,8 +64,10 @@ const PRODUCTS = [
     gender: "For Women",
     tagline: "Sensual, floral, enchanting — For Women",
     description: "Crush is an enchanting luxury fragrance crafted specially for women. Blending blooming rose petals with soft vanilla, sweet jasmine, and warm sandalwood, it captures effortless romantic allure.",
-    price: 2999,
-    salePrice: null,
+    originalPrice: "Rs. 3,999",
+    price: 3399,
+    salePrice: 3399,
+    badge: "FOR CRUSH 🥰",
     size: "50ml Eau de Parfum",
     available: true,
     notes: {
@@ -90,5 +96,3 @@ if (typeof window !== 'undefined') {
 
 // Site-wide WhatsApp contact
 const WHATSAPP_NUMBER = "923281959312";
-
-
