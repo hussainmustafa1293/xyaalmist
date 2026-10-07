@@ -1,98 +1,362 @@
 /* =====================================================
-   XYAAL 365 — SIGNATURE FRAGRANCE CATALOG
-   ---------------------------------------------------
-   Static product catalog for XYAAL 365.
+   XYAAL MIST — Shared site behavior
+   ROOT is defined inline in each page (e.g. "./" or "../../")
+   so the same file works at any folder depth.
 ===================================================== */
 
-const PRODUCTS = [
-  {
-    id: "aura",
-    slug: "aura",
-    name: "Aura",
-    gender: "For Men",
-    tagline: "Bold, masculine, magnetic — For Men",
-    description: "Aura opens with vibrant Calabrian bergamot leading into a spicy heart of Sichuan pepper, lavender, and star anise, grounded in rich ambroxan and warm vanilla.",
-    originalPrice: "Rs. 4,299",
-    price: 3699,
-    salePrice: 3699,
-    badge: "BESTSELLER • SIGNATURE",
-    size: "50ml Eau de Parfum",
-    available: true,
-    notes: {
-      top: "Bergamot",
-      heart: "Sichuan Pepper, Lavender, Star Anise, Nutmeg",
-      base: "Ambroxan, Vanilla"
-    },
-    images: [
-      "assets/products/haider/main.jpg",
-      "assets/products/haider/lifestyle.jpg",
-      "assets/products/haider/packaging.jpg",
-      "assets/products/haider/angle.jpg"
-    ],
-    image: "assets/products/haider/main.jpg"
-  },
-  {
-    id: "vibe",
-    slug: "vibe",
-    name: "Vibe",
-    gender: "Unisex",
-    tagline: "Fresh, versatile, sophisticated — Unisex",
-    description: "Vibe blends a bright burst of grapefruit, lemon, and mint with aromatic ginger, jasmine, and nutmeg, drying down into an exquisite trail of incense, cedar, and amberwood.",
-    originalPrice: "Rs. 3,499",
-    price: 2999,
-    salePrice: 2999,
-    badge: "UNDER 3K • BEST BUY",
-    size: "50ml Eau de Parfum",
-    available: true,
-    notes: {
-      top: "Grapefruit, Lemon, Mint, Pink Pepper, Bergamot, Aldehydes, Coriander",
-      heart: "Ginger, Jasmine, Nutmeg, Melon",
-      base: "Incense, Amber, Cedar, Sandalwood, Labdanum, Patchouli, Amberwood"
-    },
-    images: [
-      "assets/products/product-2/main.jpg",
-      "assets/products/product-2/lifestyle.jpg",
-      "assets/products/product-2/packaging.jpg",
-      "assets/products/product-2/angle.jpg"
-    ],
-    image: "assets/products/product-2/main.jpg"
-  },
-  {
-    id: "crush",
-    slug: "crush",
-    name: "Crush",
-    gender: "For Women",
-    tagline: "Sensual, floral, enchanting — For Women",
-    description: "Crush is an alluring blend of sparkling orange blossom, pink pepper, and juicy pear enveloped in coffee, white flowers, and warm vanilla over cashmere wood.",
-    originalPrice: "Rs. 3,999",
-    price: 3499,
-    salePrice: 3499,
-    badge: "FOR CRUSH 🥰",
-    size: "50ml Eau de Parfum",
-    available: true,
-    notes: {
-      top: "Orange Blossom, Pink Pepper, Pear",
-      heart: "Coffee, White Flowers, Jasmine",
-      base: "Vanilla, Patchouli, Cashmere Wood, Cedarwood"
-    },
-    images: [
-      "assets/products/product-3/main.jpg",
-      "assets/products/product-3/lifestyle.jpg",
-      "assets/products/product-3/packaging.jpg",
-      "assets/products/product-3/angle.jpg"
-    ],
-    image: "assets/products/product-3/main.jpg"
+const ROOT = window.ROOT || "./";
+
+/* ---------- Icons ---------- */
+const WA_ICON = `<svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.42.687 4.68 1.878 6.6L3 29l7.09-2.34a12.44 12.44 0 0 0 5.911 1.5h.005c6.893 0 12.5-5.607 12.5-12.5S22.894 3 16.001 3Zm0 22.7h-.004a10.36 10.36 0 0 1-5.28-1.45l-.379-.225-3.943 1.3 1.32-3.84-.247-.395a10.34 10.34 0 0 1-1.588-5.59c0-5.73 4.665-10.4 10.397-10.4 2.777 0 5.386 1.082 7.35 3.048A10.33 10.33 0 0 1 26.62 15.5c0 5.73-4.665 10.4-10.62 10.4Zm5.706-7.79c-.312-.156-1.846-.911-2.132-1.015-.286-.104-.494-.156-.702.156-.208.312-.806 1.015-.988 1.223-.182.208-.364.234-.676.078-.312-.156-1.317-.485-2.508-1.546-.927-.826-1.553-1.847-1.735-2.159-.182-.312-.02-.48.137-.636.14-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.702-1.69-.962-2.314-.253-.608-.51-.526-.702-.536l-.598-.01c-.208 0-.546.078-.832.39-.286.312-1.09 1.066-1.09 2.6 0 1.534 1.116 3.016 1.272 3.224.156.208 2.196 3.353 5.32 4.7.743.321 1.323.513 1.775.657.746.237 1.424.204 1.96.124.598-.089 1.846-.755 2.106-1.484.26-.729.26-1.354.182-1.484-.078-.13-.286-.208-.598-.364Z"/></svg>`;
+const WA_BTN_ICON = `<svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width:14px;height:14px;min-width:14px;max-width:14px;min-height:14px;max-height:14px;flex-shrink:0;vertical-align:-2px;margin-right:5px;"><path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.42.687 4.68 1.878 6.6L3 29l7.09-2.34a12.44 12.44 0 0 0 5.911 1.5h.005c6.893 0 12.5-5.607 12.5-12.5S22.894 3 16.001 3Zm0 22.7h-.004a10.36 10.36 0 0 1-5.28-1.45l-.379-.225-3.943 1.3 1.32-3.84-.247-.395a10.34 10.34 0 0 1-1.588-5.59c0-5.73 4.665-10.4 10.397-10.4 2.777 0 5.386 1.082 7.35 3.048A10.33 10.33 0 0 1 26.62 15.5c0 5.73-4.665 10.4-10.62 10.4Zm5.706-7.79c-.312-.156-1.846-.911-2.132-1.015-.286-.104-.494-.156-.702.156-.208.312-.806 1.015-.988 1.223-.182.208-.364.234-.676.078-.312-.156-1.317-.485-2.508-1.546-.927-.826-1.553-1.847-1.735-2.159-.182-.312-.02-.48.137-.636.14-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.702-1.69-.962-2.314-.253-.608-.51-.526-.702-.536l-.598-.01c-.208 0-.546.078-.832.39-.286.312-1.09 1.066-1.09 2.6 0 1.534 1.116 3.016 1.272 3.224.156.208 2.196 3.353 5.32 4.7.743.321 1.323.513 1.775.657.746.237 1.424.204 1.96.124.598-.089 1.846-.755 2.106-1.484.26-.729.26-1.354.182-1.484-.078-.13-.286-.208-.598-.364Z"/></svg>`;
+const BACK_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg"><path d="M15 18l-6-6 6-6"/></svg>`;
+const BAG_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`;
+
+/* ---------- Floating WhatsApp button (every page) ---------- */
+(function injectFloatingWhatsApp(){
+  const a = document.createElement("a");
+  a.className = "wa-float";
+  a.target = "_blank";
+  a.rel = "noopener";
+  a.setAttribute("aria-label", "Chat on WhatsApp");
+  a.href = `https://wa.me/${typeof WHATSAPP_NUMBER !== "undefined" ? WHATSAPP_NUMBER : ""}`;
+  a.innerHTML = WA_ICON;
+  document.body.appendChild(a);
+})();
+
+/* ---------- WhatsApp link builder ---------- */
+function waLink(message){
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+function waOrderMessage(productName){
+  return `Hi, I am interested in ordering ${productName} from XYAAL 365.`;
+}
+
+/* ---------- Navbar scroll state ---------- */
+const header = document.getElementById("siteHeader");
+if (header){
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 24);
+  window.addEventListener("scroll", onScroll, { passive:true });
+  onScroll();
+}
+
+/* ---------- Mobile menu ---------- */
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+const menuClose = document.getElementById("menuClose");
+menuToggle?.addEventListener("click", () => mobileMenu.classList.add("open"));
+menuClose?.addEventListener("click", () => mobileMenu.classList.remove("open"));
+mobileMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mobileMenu.classList.remove("open")));
+
+/* ---------- Reveal on scroll ---------- */
+const revealEls = document.querySelectorAll(".reveal");
+if (revealEls.length){
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); });
+  }, { threshold:.15 });
+  revealEls.forEach(el => io.observe(el));
+}
+
+/* ---------- Highlight active nav link ---------- */
+(function markActiveNav(){
+  const path = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".nav-links a, .mobile-menu a").forEach(a => {
+    const href = a.getAttribute("href");
+    if (href && (href === path || (path === "" && href === "index.html"))) {
+      a.classList.add("active");
+    }
+  });
+})();
+
+/* ---------- Story Image Handler ---------- */
+function applyStoryImage(){
+  const storyImgs = document.querySelectorAll('.editorial-img, #storySectionImg');
+  storyImgs.forEach(img => {
+    img.src = `${ROOT}assets/images/story.png`;
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', applyStoryImage);
+} else {
+  applyStoryImage();
+}
+
+function placeholderBlock(label){
+  return `<div class="ph-label">${label}</div>`;
+}
+function productImgOrPlaceholder(src, label){
+  const resolved = (src && (src.startsWith('data:') || src.startsWith('http://') || src.startsWith('https://')))
+    ? src
+    : `${ROOT}${src || ''}`;
+  return `<img src="${resolved}" alt="${label}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-label',innerHTML:'${label}<br><small>Replace with product photo</small>'}))">`;
+}
+
+/* Specific Strikethrough Pricing Function */
+function getCutOriginalPrice(p) {
+  if (p.originalPrice) return p.originalPrice;
+  const key = (p.id || p.slug || p.name || "").toLowerCase();
+  if (key.includes("aura")) return "PKR 4,299";
+  if (key.includes("vibe")) return "PKR 3,499";
+  if (key.includes("crush")) return "PKR 3,999";
+  return "PKR 3,999";
+}
+
+/* =====================================================
+   COLLECTION GRID (used on index.html + collection.html)
+===================================================== */
+function renderProductGrid(containerId, limit){
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const currentProducts = (typeof getXyaalProducts === "function") ? getXyaalProducts() : (window.PRODUCTS || PRODUCTS);
+  const list = limit ? currentProducts.slice(0, limit) : currentProducts;
+
+  if (!list.length) {
+    el.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px 20px; color:var(--ivory-dim);">No fragrances currently in collection.</div>`;
+    return;
   }
-];
 
-function getXyaalProducts() {
-  return PRODUCTS;
+  el.innerHTML = list.map(p => {
+    const activePrice = p.salePrice || p.price;
+    const cutPrice = getCutOriginalPrice(p);
+    const isAvailable = (p.available !== false);
+    const activeImg = p.image || (p.images && p.images[0]);
+    const detailUrl = `${ROOT}products/${p.slug}/`;
+
+    return `
+    <div class="product-card reveal ${!isAvailable ? 'is-unavailable' : ''}">
+      <a href="${detailUrl}" class="product-thumb">
+        ${productImgOrPlaceholder(activeImg, p.name)}
+        ${!isAvailable ? '<span class="badge-stock badge-sold-out">Sold Out</span>' : ''}
+      </a>
+      <h3><a href="${detailUrl}">${p.name}</a></h3>
+      <p class="tagline">${p.tagline || ''}</p>
+
+      <!-- Complete Olfactory Notes Breakdown -->
+      <div class="card-notes">
+        <div class="note-item">
+          <span class="note-tag">Top:</span>
+          <span class="note-text">${p.notes && p.notes.top ? p.notes.top : '—'}</span>
+        </div>
+        <div class="note-item">
+          <span class="note-tag">Heart:</span>
+          <span class="note-text">${p.notes && p.notes.heart ? p.notes.heart : '—'}</span>
+        </div>
+        <div class="note-item">
+          <span class="note-tag">Base:</span>
+          <span class="note-text">${p.notes && p.notes.base ? p.notes.base : '—'}</span>
+        </div>
+      </div>
+
+      <!-- Price Row with Visible Different Cut Price -->
+      <div class="price-row" style="display:flex; align-items:center; gap:8px;">
+        <span class="price">PKR ${activePrice.toLocaleString()}</span>
+        <span class="old-price" style="text-decoration:line-through; color:#ff5252; opacity:0.85; font-size:0.85rem; font-weight:600;">${cutPrice}</span>
+      </div>
+
+      <div class="card-actions">
+        ${isAvailable ? `
+          <button type="button" class="btn btn-add-bag" data-action="add-to-bag" data-id="${p.id \vert{}\vert{} p.slug}" data-name="${p.name}" data-price="${activePrice}" data-image="${p.images[0]}">
+            ${BAG_ICON} Add to Bag
+          </button>
+        ` : `
+          <button type="button" class="btn btn-add-bag" disabled style="opacity:0.5; cursor:not-allowed; border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); color:var(--ivory-dim);">
+            Sold Out
+          </button>
+        `}
+        <div class="card-actions-row">
+          <a class="btn btn-ghost" href="${detailUrl}">View Details</a>
+          <a class="btn btn-wa btn-wa-compact" target="_blank" rel="noopener" href="${waLink(isAvailable ? waOrderMessage(p.name) : `Hi, I would like to inquire when ${p.name} will be back in stock at XYAAL 365.`)}" title="Order on WhatsApp">
+            ${WA_BTN_ICON}<span>${isAvailable ? 'Order' : 'Inquire'}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  `}).join("");
+
+  document.querySelectorAll(".reveal").forEach(elm => {
+    // re-observe newly injected cards
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); });
+    }, { threshold:.15 });
+    io.observe(elm);
+  });
 }
 
-if (typeof window !== 'undefined') {
-  window.PRODUCTS = PRODUCTS;
-  window.getXyaalProducts = getXyaalProducts;
+/* =====================================================
+   PRODUCT DETAIL PAGE (used inside /products/<slug>/index.html)
+===================================================== */
+function renderProductDetail(slug){
+  const currentProducts = (typeof getXyaalProducts === "function") ? getXyaalProducts() : (window.PRODUCTS || PRODUCTS);
+  const p = currentProducts.find(x => x.slug === slug || x.id === slug);
+  const root = document.getElementById("productDetail");
+  if (!p || !root) return;
+
+  document.title = `${p.name} | XYAAL 365`;
+  const activePrice = p.salePrice || p.price;
+  const cutPrice = getCutOriginalPrice(p);
+
+  root.innerHTML = `
+    <a class="back-link" href="${ROOT}collection.html">${BACK_ICON} Back to Collection</a>
+    <div class="pd-grid">
+      <div class="pd-gallery">
+        <div class="gallery-main" id="galleryMain">
+          ${productImgOrPlaceholder(p.images[0], p.name)}
+        </div>
+        <div class="gallery-thumbs" id="galleryThumbs">
+          ${p.images.map((img,i) => `
+            <button class="${i===0?'active':''}" data-index="${i}">
+              ${productImgOrPlaceholder(img, p.name + ' ' + (i+1))}
+            </button>`).join("")}
+        </div>
+      </div>
+      <div class="pd-info">
+        <span class="eyebrow">XYAAL 365</span>
+        <h1>${p.name}</h1>
+        <p class="tagline">${p.tagline}</p>
+
+        <div class="pd-price" style="display:flex; align-items:center; gap:10px;">
+          <span class="price">PKR ${activePrice.toLocaleString()}</span>
+          <span class="old-price" style="text-decoration:line-through; color:#ff5252; opacity:0.85; font-size:0.95rem; font-weight:600;">${cutPrice}</span>
+        </div>
+        <span class="pd-badge ${p.available ? '' : 'is-sold-out'}" style="${p.available ? '' : 'border-color:rgba(239,68,68,0.3); color:#fca5a5;'}">${p.available ? 'In Stock' : 'Currently Unavailable'} · ${p.size}</span>
+
+        <p class="pd-desc">${p.description}</p>
+
+        <div class="notes-table">
+          <div><b>Top Notes</b><span>${p.notes && p.notes.top ? p.notes.top : '—'}</span></div>
+          <div><b>Heart Notes</b><span>${p.notes && p.notes.heart ? p.notes.heart : '—'}</span></div>
+          <div><b>Base Notes</b><span>${p.notes && p.notes.base ? p.notes.base : '—'}</span></div>
+        </div>
+
+        <div class="qty-row">
+          <div class="qty-box">
+            <button id="qtyMinus" aria-label="Decrease quantity">&minus;</button>
+            <span id="qtyValue">1</span>
+            <button id="qtyPlus" aria-label="Increase quantity">&plus;</button>
+          </div>
+        </div>
+
+        <div class="pd-cta-row">
+          ${p.available ? `
+            <button type="button" class="btn btn-add-bag" id="pdAddToBagBtn" style="padding:14px 24px; font-size:.88rem; flex:1;">
+              ${BAG_ICON} Add to Bag
+            </button>
+            <a class="btn btn-wa" style="flex:1; justify-content:center; padding:14px 20px; font-size:.88rem;" target="_blank" rel="noopener" id="waOrderBtn"
+               href="${waLink(waOrderMessage(p.name))}">
+              ${WA_BTN_ICON} Order on WhatsApp
+            </a>
+          ` : `
+            <button type="button" class="btn btn-add-bag" disabled style="padding:14px 24px; font-size:.88rem; flex:1; opacity:0.5; cursor:not-allowed;">
+              Sold Out
+            </button>
+            <a class="btn btn-wa" style="flex:1; justify-content:center; padding:14px 20px; font-size:.88rem;" target="_blank" rel="noopener" id="waOrderBtn"
+               href="${waLink(`Hi, I would like to inquire when ${p.name} will be back in stock at XYAAL 365.`)}">
+              ${WA_BTN_ICON} Inquire Availability
+            </a>
+          `}
+        </div>
+
+        <div class="reviews-empty">
+          <span>No reviews yet.</span>
+          <a class="btn btn-ghost" href="${ROOT}contact.html">Write a Review</a>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Gallery interaction
+  const mainEl = document.getElementById("galleryMain");
+  document.querySelectorAll("#galleryThumbs button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const i = +btn.dataset.index;
+      mainEl.innerHTML = productImgOrPlaceholder(p.images[i], p.name);
+      document.querySelectorAll("#galleryThumbs button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+
+  // Quantity selector (reflected in the WhatsApp message & Add to Bag)
+  let qty = 1;
+  const qtyValue = document.getElementById("qtyValue");
+  const waBtn = document.getElementById("waOrderBtn");
+  function updateWaLink(){
+    const msg = qty > 1
+      ? `Hi, I am interested in ordering ${qty} x ${p.name} from XYAAL 365.`
+      : waOrderMessage(p.name);
+    waBtn.href = waLink(msg);
+  }
+  document.getElementById("qtyMinus").addEventListener("click", () => {
+    qty = Math.max(1, qty - 1); qtyValue.textContent = qty; updateWaLink();
+  });
+  document.getElementById("qtyPlus").addEventListener("click", () => {
+    qty += 1; qtyValue.textContent = qty; updateWaLink();
+  });
+
+  // Add to Bag button handler
+  const addToBagBtn = document.getElementById("pdAddToBagBtn");
+  if (addToBagBtn) {
+    addToBagBtn.addEventListener("click", () => {
+      if (!addToBagBtn.classList.contains('is-added')) {
+        const origContent = addToBagBtn.innerHTML;
+        addToBagBtn.classList.add('is-added');
+        addToBagBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;margin-right:6px;display:inline-block;vertical-align:-2px;">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg> Added ✓
+        `;
+        setTimeout(() => {
+          addToBagBtn.classList.remove('is-added');
+          addToBagBtn.innerHTML = origContent;
+        }, 1400);
+      }
+      if (window.XyaalCart) {
+        window.XyaalCart.add({
+          id: p.slug,
+          name: p.name,
+          price: p.salePrice || p.price,
+          image: p.images[0]
+        }, qty);
+      }
+    });
+  }
 }
 
-// Site-wide WhatsApp contact
-const WHATSAPP_NUMBER = "923281959312";
+/* ---------- Conversion tracking hooks (dormant until GA4 / Meta Pixel is added) ---------- */
+document.addEventListener("click", (e) => {
+  const a = e.target.closest('a[href*="wa.me"]');
+  if (!a) return;
+  if (typeof gtag === "function") gtag("event", "whatsapp_order_click", { event_category:"conversion" });
+  if (typeof fbq === "function") fbq("track", "Contact", { content_name:"XYAAL 365 WhatsApp order" });
+});
+
+/* ---------- Promo Video Mute/Unmute toggle ---------- */
+(function initPromoVideoControl() {
+  function setup() {
+    const vid = document.getElementById('heroPromoVideo');
+    const btn = document.getElementById('promoMuteBtn');
+    const iconMuted = document.getElementById('soundMutedIcon');
+    const iconActive = document.getElementById('soundActiveIcon');
+
+    if (!vid || !btn) return;
+
+    btn.addEventListener('click', () => {
+      vid.muted = !vid.muted;
+      if (vid.muted) {
+        if (iconMuted) iconMuted.style.display = 'block';
+        if (iconActive) iconActive.style.display = 'none';
+        btn.title = "Sound Muted";
+      } else {
+        if (iconMuted) iconMuted.style.display = 'none';
+        if (iconActive) iconActive.style.display = 'block';
+        btn.title = "Sound Active";
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setup);
+  } else {
+    setup();
+  }
+})();
