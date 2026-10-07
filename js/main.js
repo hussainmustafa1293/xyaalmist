@@ -12,8 +12,9 @@ const WA_BTN_ICON = `<svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://
 const BACK_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" xmlns="http://www.w3.org/2000/svg"><path d="M15 18l-6-6 6-6"/></svg>`;
 const BAG_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;margin-right:6px;vertical-align:-2px;"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>`;
 
-/* ---------- Floating WhatsApp button (every page) ---------- */
+/* ---------- Floating WhatsApp button ---------- */
 (function injectFloatingWhatsApp(){
+  if (document.querySelector('.wa-float')) return;
   const a = document.createElement("a");
   a.className = "wa-float";
   a.target = "_blank";
@@ -24,13 +25,9 @@ const BAG_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
   document.body.appendChild(a);
 })();
 
-/* ---------- WhatsApp link builder ---------- */
 function waLink(message){
   const num = typeof WHATSAPP_NUMBER !== "undefined" ? WHATSAPP_NUMBER : "923281959312";
   return `https://wa.me/${num}?text=${encodeURIComponent(message)}`;
-}
-function waOrderMessage(productName){
-  return `Hi, I am interested in ordering ${productName} from XYAAL 365.`;
 }
 
 /* ---------- Navbar scroll state ---------- */
@@ -45,27 +42,10 @@ if (header){
 const menuToggle = document.getElementById("menuToggle");
 const mobileMenu = document.getElementById("mobileMenu");
 const menuClose = document.getElementById("menuClose");
-menuToggle?.addEventListener("click", () => mobileMenu.classList.add("open"));
-menuClose?.addEventListener("click", () => mobileMenu.classList.remove("open"));
-mobileMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mobileMenu.classList.remove("open")));
+menuToggle?.addEventListener("click", () => mobileMenu?.classList.add("open"));
+menuClose?.addEventListener("click", () => mobileMenu?.classList.remove("open"));
+mobileMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mobileMenu?.classList.remove("open")));
 
-/* ---------- Story Image Handler ---------- */
-function applyStoryImage(){
-  const storyImgs = document.querySelectorAll('.editorial-img, #storySectionImg');
-  storyImgs.forEach(img => {
-    img.src = `${ROOT}assets/images/story.png`;
-  });
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', applyStoryImage);
-} else {
-  applyStoryImage();
-}
-
-function placeholderBlock(label){
-  return `<div class="ph-label">${label}</div>`;
-}
 function productImgOrPlaceholder(src, label){
   const resolved = (src && (src.startsWith('data:') || src.startsWith('http://') || src.startsWith('https://')))
     ? src
@@ -74,110 +54,38 @@ function productImgOrPlaceholder(src, label){
 }
 
 /* =====================================================
-   COLLECTION GRID (Works on both index.html and collection.html)
-===================================================== */
-function renderProductGrid(containerId, limit){
-  const targetId = containerId || (document.getElementById("collectionGrid") ? "collectionGrid" : "homeProductGrid");
-  const el = document.getElementById(targetId);
-  if (!el) return;
-
-  const currentProducts = (typeof getXyaalProducts === "function") ? getXyaalProducts() : (window.PRODUCTS || PRODUCTS);
-  const list = limit ? currentProducts.slice(0, limit) : currentProducts;
-
-  if (!list.length) {
-    el.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:50px 20px; color:var(--ivory-dim);">No fragrances currently in collection.</div>`;
-    return;
-  }
-
-  el.innerHTML = list.map(p => {
-    const activePrice = p.salePrice || p.price;
-    const isAvailable = (p.available !== false);
-    const activeImg = p.image || (p.images && p.images[0]);
-    const detailUrl = `${ROOT}products/${p.slug}/`;
-
-    return `
-    <div class="product-card reveal in ${!isAvailable ? 'is-unavailable' : ''}">
-      <a href="${detailUrl}" class="product-thumb">
-        ${productImgOrPlaceholder(activeImg, p.name)}
-        ${!isAvailable ? '<span class="badge-stock badge-sold-out">Sold Out</span>' : ''}
-      </a>
-      <h3><a href="${detailUrl}">${p.name}</a></h3>
-      <p class="tagline">${p.tagline || ''}</p>
-
-      <!-- Complete Olfactory Notes Breakdown -->
-      <div class="card-notes">
-        <div class="note-item">
-          <span class="note-tag">Top:</span>
-          <span class="note-text">${p.notes && p.notes.top ? p.notes.top : '—'}</span>
-        </div>
-        <div class="note-item">
-          <span class="note-tag">Heart:</span>
-          <span class="note-text">${p.notes && p.notes.heart ? p.notes.heart : '—'}</span>
-        </div>
-        <div class="note-item">
-          <span class="note-tag">Base:</span>
-          <span class="note-text">${p.notes && p.notes.base ? p.notes.base : '—'}</span>
-        </div>
-      </div>
-
-      <!-- Proper Price & Red Strikethrough Display -->
-      <div class="price-row" style="display:flex; align-items:center; gap:8px;">
-        ${p.salePrice ? `<span class="price">PKR ${p.salePrice.toLocaleString()}</span><span class="old-price" style="text-decoration:line-through; color:#ff5252; opacity:0.85; font-size:0.85rem; font-weight:600;">PKR ${p.price.toLocaleString()}</span>`
-          : p.price ? `<span class="price">PKR ${p.price.toLocaleString()}</span>`
-          : `<span class="price">[Price]</span>`}
-      </div>
-
-      <div class="card-actions">
-        ${isAvailable ? `
-          <button type="button" class="btn btn-add-bag" data-action="add-to-bag" data-id="${p.id \vert{}\vert{} p.slug}" data-name="${p.name}" data-price="${activePrice}" data-image="${p.images[0]}">
-            ${BAG_ICON} Add to Bag
-          </button>
-        ` : `
-          <button type="button" class="btn btn-add-bag" disabled style="opacity:0.5; cursor:not-allowed; border-color:rgba(255,255,255,0.2); background:rgba(255,255,255,0.05); color:var(--ivory-dim);">
-            Sold Out
-          </button>
-        `}
-        <div class="card-actions-row">
-          <a class="btn btn-ghost" href="${detailUrl}">View Details</a>
-          <a class="btn btn-wa btn-wa-compact" target="_blank" rel="noopener" href="${waLink(isAvailable ? waOrderMessage(p.name) : `Hi, I would like to inquire when ${p.name} will be back in stock at XYAAL 365.`)}" title="Order on WhatsApp">
-            ${WA_BTN_ICON}<span>${isAvailable ? 'Order' : 'Inquire'}</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  `}).join("");
-}
-
-/* Auto-render grids on DOM ready */
-document.addEventListener("DOMContentLoaded", () => {
-  if (document.getElementById("collectionGrid")) {
-    renderProductGrid("collectionGrid");
-  }
-  if (document.getElementById("homeProductGrid")) {
-    renderProductGrid("homeProductGrid");
-  }
-});
-
-/* =====================================================
    PRODUCT DETAIL PAGE (used inside /products/<slug>/index.html)
 ===================================================== */
 function renderProductDetail(slug){
-  const currentProducts = (typeof getXyaalProducts === "function") ? getXyaalProducts() : (window.PRODUCTS || PRODUCTS);
-  const p = currentProducts.find(x => x.slug === slug || x.id === slug);
+  // Slug auto-detect agar pass na ho
+  if (!slug) {
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    slug = parts[parts.length - 1] === "index.html" ? parts[parts.length - 2] : parts[parts.length - 1];
+  }
+
+  const currentProducts = (typeof getXyaalProducts === "function") 
+    ? getXyaalProducts() 
+    : (window.PRODUCTS || (typeof PRODUCTS !== "undefined" ? PRODUCTS : []));
+
+  const p = currentProducts.find(x => x.slug === slug || x.id === slug) || currentProducts[0];
   const root = document.getElementById("productDetail");
   if (!p || !root) return;
 
   document.title = `${p.name} | XYAAL 365`;
+
+  const activePrice = p.salePrice || p.price;
+  const cutPrice = p.originalPrice || (p.id === 'aura' ? 'PKR 4,299' : p.id === 'vibe' ? 'PKR 3,499' : 'PKR 3,999');
+  const prodImg = (p.images && p.images[0]) || p.image || 'assets/products/haider/main.jpg';
 
   root.innerHTML = `
     <a class="back-link" href="${ROOT}collection.html">${BACK_ICON} Back to Collection</a>
     <div class="pd-grid">
       <div class="pd-gallery">
         <div class="gallery-main" id="galleryMain">
-          ${productImgOrPlaceholder(p.images[0], p.name)}
+          ${productImgOrPlaceholder(prodImg, p.name)}
         </div>
         <div class="gallery-thumbs" id="galleryThumbs">
-          ${p.images.map((img,i) => `
+          ${(p.images || [prodImg]).map((img,i) => `
             <button class="${i===0?'active':''}" data-index="${i}">
               ${productImgOrPlaceholder(img, p.name + ' ' + (i+1))}
             </button>`).join("")}
@@ -186,55 +94,44 @@ function renderProductDetail(slug){
       <div class="pd-info">
         <span class="eyebrow">XYAAL 365</span>
         <h1>${p.name}</h1>
-        <p class="tagline">${p.tagline}</p>
+        <p class="tagline">${p.tagline || ''}</p>
 
-        <div class="pd-price" style="display:flex; align-items:center; gap:10px;">
-          ${p.salePrice ? `<span class="price">PKR ${p.salePrice.toLocaleString()}</span><span class="old-price" style="text-decoration:line-through; color:#ff5252; opacity:0.85; font-size:0.95rem; font-weight:600;">PKR ${p.price.toLocaleString()}</span>`
-            : p.price ? `<span class="price">PKR ${p.price.toLocaleString()}</span>`
-            : `<span class="price">[Price]</span>`}
+        <div class="pd-price" style="display:flex; align-items:baseline; gap:12px; margin: 15px 0;">
+          <span class="price" style="font-weight:800; color:#dfba73; font-size:1.45rem;">PKR ${activePrice.toLocaleString()}</span>
+          <span class="old-price" style="text-decoration:line-through; color:#ff5252; opacity:0.85; font-size:1rem; font-weight:600;">${cutPrice}</span>
         </div>
-        <span class="pd-badge ${p.available ? '' : 'is-sold-out'}" style="${p.available ? '' : 'border-color:rgba(239,68,68,0.3); color:#fca5a5;'}">${p.available ? 'In Stock' : 'Currently Unavailable'} · ${p.size}</span>
+        <span class="pd-badge" style="border:1px solid rgba(197,168,128,0.3); color:#c5a880; padding:3px 10px; border-radius:4px; font-size:12px;">In Stock · ${p.size || '50ml Eau de Parfum'}</span>
 
-        <p class="pd-desc">${p.description}</p>
+        <p class="pd-desc" style="margin:16px 0; color:#ccc; line-height:1.6;">${p.description || ''}</p>
 
-        <div class="notes-table">
-          <div><b>Top Notes</b><span>${p.notes && p.notes.top ? p.notes.top : '—'}</span></div>
-          <div><b>Heart Notes</b><span>${p.notes && p.notes.heart ? p.notes.heart : '—'}</span></div>
-          <div><b>Base Notes</b><span>${p.notes && p.notes.base ? p.notes.base : '—'}</span></div>
+        <div class="notes-table" style="background:rgba(255,255,255,0.03); border:1px solid rgba(197,168,128,0.15); border-radius:6px; padding:12px; margin-bottom:20px;">
+          <div style="margin-bottom:6px;"><b style="color:#dfba73;">Top Notes:</b> <span style="color:#eee;">${p.notes && p.notes.top ? p.notes.top : '—'}</span></div>
+          <div style="margin-bottom:6px;"><b style="color:#dfba73;">Heart Notes:</b> <span style="color:#eee;">${p.notes && p.notes.heart ? p.notes.heart : '—'}</span></div>
+          <div><b style="color:#dfba73;">Base Notes:</b> <span style="color:#eee;">${p.notes && p.notes.base ? p.notes.base : '—'}</span></div>
         </div>
 
-        <div class="qty-row">
-          <div class="qty-box">
-            <button id="qtyMinus" aria-label="Decrease quantity">&minus;</button>
-            <span id="qtyValue">1</span>
-            <button id="qtyPlus" aria-label="Increase quantity">&plus;</button>
+        <div class="qty-row" style="margin-bottom:20px;">
+          <div class="qty-box" style="display:inline-flex; align-items:center; border:1px solid rgba(255,255,255,0.2); border-radius:4px;">
+            <button id="qtyMinus" style="background:transparent; border:none; color:#fff; padding:6px 14px; cursor:pointer; font-size:16px;">&minus;</button>
+            <span id="qtyValue" style="padding:0 10px; font-weight:bold;">1</span>
+            <button id="qtyPlus" style="background:transparent; border:none; color:#fff; padding:6px 14px; cursor:pointer; font-size:16px;">&plus;</button>
           </div>
         </div>
 
-        <div class="pd-cta-row">
-          ${p.available ? `
-            <button type="button" class="btn btn-add-bag" id="pdAddToBagBtn" style="padding:14px 24px; font-size:.88rem; flex:1;">
-              ${BAG_ICON} Add to Bag
-            </button>
-            <a class="btn btn-wa" style="flex:1; justify-content:center; padding:14px 20px; font-size:.88rem;" target="_blank" rel="noopener" id="waOrderBtn"
-               href="${waLink(waOrderMessage(p.name))}">
-              ${WA_BTN_ICON} Order on WhatsApp
-            </a>
-          ` : `
-            <button type="button" class="btn btn-add-bag" disabled style="padding:14px 24px; font-size:.88rem; flex:1; opacity:0.5; cursor:not-allowed;">
-              Sold Out
-            </button>
-            <a class="btn btn-wa" style="flex:1; justify-content:center; padding:14px 20px; font-size:.88rem;" target="_blank" rel="noopener" id="waOrderBtn"
-               href="${waLink(`Hi, I would like to inquire when ${p.name} will be back in stock at XYAAL 365.`)}">
-              ${WA_BTN_ICON} Inquire Availability
-            </a>
-          `}
+        <div class="pd-cta-row" style="display:flex; gap:10px;">
+          <button type="button" class="btn btn-add-bag" id="pdAddToBagBtn" style="padding:14px 24px; font-size:.88rem; flex:1; background:#dfba73; color:#000; font-weight:bold; border:none; border-radius:4px; cursor:pointer;">
+            ${BAG_ICON} Add to Bag
+          </button>
+          <a class="btn btn-wa" style="flex:1; justify-content:center; padding:14px 20px; font-size:.88rem; background:#1e3a29; border:1px solid #25d366; color:#fff; text-decoration:none; display:flex; align-items:center; border-radius:4px; font-weight:bold;" target="_blank" rel="noopener" id="waOrderBtn"
+             href="${waLink(`Hi, I am interested in ordering ${p.name} from XYAAL 365.`)}">
+            ${WA_BTN_ICON} Order on WhatsApp
+          </a>
         </div>
       </div>
     </div>
   `;
 
-  // Gallery interaction
+  // Gallery click handlers
   const mainEl = document.getElementById("galleryMain");
   document.querySelectorAll("#galleryThumbs button").forEach(btn => {
     btn.addEventListener("click", () => {
@@ -245,15 +142,15 @@ function renderProductDetail(slug){
     });
   });
 
-  // Quantity selector
+  // Quantity Counter
   let qty = 1;
   const qtyValue = document.getElementById("qtyValue");
   const waBtn = document.getElementById("waOrderBtn");
   function updateWaLink(){
     const msg = qty > 1
-      ? `Hi, I am interested in ordering ${qty} x ${p.name} from XYAAL 365.`
-      : waOrderMessage(p.name);
-    waBtn.href = waLink(msg);
+      ? `Hi, I am interested in ordering ${qty} x ${p.name} (PKR ${(activePrice * qty).toLocaleString()}) from XYAAL 365.`
+      : `Hi, I am interested in ordering ${p.name} (PKR ${activePrice.toLocaleString()}) from XYAAL 365.`;
+    if (waBtn) waBtn.href = waLink(msg);
   }
   document.getElementById("qtyMinus")?.addEventListener("click", () => {
     qty = Math.max(1, qty - 1); qtyValue.textContent = qty; updateWaLink();
@@ -262,58 +159,29 @@ function renderProductDetail(slug){
     qty += 1; qtyValue.textContent = qty; updateWaLink();
   });
 
-  // Add to Bag handler
+  // Cart binding
   const addToBagBtn = document.getElementById("pdAddToBagBtn");
   if (addToBagBtn) {
     addToBagBtn.addEventListener("click", () => {
-      if (!addToBagBtn.classList.contains('is-added')) {
-        const origContent = addToBagBtn.innerHTML;
-        addToBagBtn.classList.add('is-added');
-        addToBagBtn.innerHTML = `Added ✓`;
-        setTimeout(() => {
-          addToBagBtn.classList.remove('is-added');
-          addToBagBtn.innerHTML = origContent;
-        }, 1400);
-      }
+      addToBagBtn.innerHTML = `Added ✓`;
+      setTimeout(() => {
+        addToBagBtn.innerHTML = `${BAG_ICON} Add to Bag`;
+      }, 1500);
       if (window.XyaalCart) {
         window.XyaalCart.add({
-          id: p.slug,
+          id: p.slug || p.id,
           name: p.name,
-          price: p.salePrice || p.price,
-          image: p.images[0]
+          price: activePrice,
+          image: prodImg
         }, qty);
       }
     });
   }
 }
 
-/* Promo Video Mute/Unmute */
-(function initPromoVideoControl() {
-  function setup() {
-    const vid = document.getElementById('heroPromoVideo');
-    const btn = document.getElementById('promoMuteBtn');
-    const iconMuted = document.getElementById('soundMutedIcon');
-    const iconActive = document.getElementById('soundActiveIcon');
-
-    if (!vid || !btn) return;
-
-    btn.addEventListener('click', () => {
-      vid.muted = !vid.muted;
-      if (vid.muted) {
-        if (iconMuted) iconMuted.style.display = 'block';
-        if (iconActive) iconActive.style.display = 'none';
-        btn.title = "Sound Muted";
-      } else {
-        if (iconMuted) iconMuted.style.display = 'none';
-        if (iconActive) iconActive.style.display = 'block';
-        btn.title = "Sound Active";
-      }
-    });
+// Auto run detail page if element exists
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("productDetail")) {
+    renderProductDetail();
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setup);
-  } else {
-    setup();
-  }
-})();
+});
