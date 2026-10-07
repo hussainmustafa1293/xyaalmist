@@ -11,17 +11,17 @@ const PRODUCTS = [
     name: "Aura",
     gender: "For Men",
     tagline: "Bold, masculine, magnetic — For Men",
-    description: "Aura is a commanding luxury fragrance crafted for men. Notes of crisp bergamot, pepper, smoked cedarwood, and rich amber create a bold, magnetic sillage built for distinction.",
-    originalPrice: "Rs. 3,499",
-    price: 2999,
-    salePrice: 2999,
-    badge: "UNDER 3K • BEST BUY",
+    description: "Aura opens with vibrant Calabrian bergamot leading into a spicy heart of Sichuan pepper, lavender, and star anise, grounded in rich ambroxan and warm vanilla.",
+    originalPrice: "Rs. 4,299",
+    price: 3699,
+    salePrice: 3699,
+    badge: "BESTSELLER • SIGNATURE",
     size: "50ml Eau de Parfum",
     available: true,
     notes: {
-      top: "Crisp Bergamot, Pepper",
-      heart: "Smoked Cedarwood",
-      base: "Rich Amber"
+      top: "Bergamot",
+      heart: "Sichuan Pepper, Lavender, Star Anise, Nutmeg",
+      base: "Ambroxan, Vanilla"
     },
     images: [
       "assets/products/haider/main.jpg",
@@ -37,17 +37,17 @@ const PRODUCTS = [
     name: "Vibe",
     gender: "Unisex",
     tagline: "Fresh, versatile, sophisticated — Unisex",
-    description: "Vibe is a quiet, sophisticated scent built for everyone. Fresh and versatile, it harmonizes crisp cardamom, light citrus, and velvet iris with a clean white musk drydown.",
-    originalPrice: "Rs. 3,699",
-    price: 3199,
-    salePrice: 3199,
-    badge: "PREMIUM EVERYDAY",
+    description: "Vibe blends a bright burst of grapefruit, lemon, and mint with aromatic ginger, jasmine, and nutmeg, drying down into an exquisite trail of incense, cedar, and amberwood.",
+    originalPrice: "Rs. 3,499",
+    price: 2999,
+    salePrice: 2999,
+    badge: "UNDER 3K • BEST BUY",
     size: "50ml Eau de Parfum",
     available: true,
     notes: {
-      top: "Light Citrus, Cardamom",
-      heart: "Iris",
-      base: "Clean White Musk"
+      top: "Grapefruit, Lemon, Mint, Pink Pepper, Bergamot, Aldehydes, Coriander",
+      heart: "Ginger, Jasmine, Nutmeg, Melon",
+      base: "Incense, Amber, Cedar, Sandalwood, Labdanum, Patchouli, Amberwood"
     },
     images: [
       "assets/products/product-2/main.jpg",
@@ -63,17 +63,17 @@ const PRODUCTS = [
     name: "Crush",
     gender: "For Women",
     tagline: "Sensual, floral, enchanting — For Women",
-    description: "Crush is an enchanting luxury fragrance crafted specially for women. Blending blooming rose petals with soft vanilla, sweet jasmine, and warm sandalwood, it captures effortless romantic allure.",
+    description: "Crush is an alluring blend of sparkling orange blossom, pink pepper, and juicy pear enveloped in coffee, white flowers, and warm vanilla over cashmere wood.",
     originalPrice: "Rs. 3,999",
-    price: 3399,
-    salePrice: 3399,
+    price: 3499,
+    salePrice: 3499,
     badge: "FOR CRUSH 🥰",
     size: "50ml Eau de Parfum",
     available: true,
     notes: {
-      top: "Soft Vanilla, Jasmine",
-      heart: "Blooming Rose",
-      base: "Warm Sandalwood"
+      top: "Orange Blossom, Pink Pepper, Pear",
+      heart: "Coffee, White Flowers, Jasmine",
+      base: "Vanilla, Patchouli, Cashmere Wood, Cedarwood"
     },
     images: [
       "assets/products/product-3/main.jpg",
