@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-  /* Ensure reveal items are never hidden or stuck blank */
+  /* Ensure cards and reveal items are always properly displayed */
   .reveal {
     opacity: 1 !important;
     visibility: visible !important;
@@ -34,7 +34,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    background-color: #121216;
   }
 </style>
 </head>
@@ -53,12 +52,11 @@
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
-      <button id="lang-toggle" style="background:transparent; border:1px solid #c5a880; color:#c5a880; padding:3px 8px; border-radius:4px; margin-right:8px; font-size:12px; cursor:pointer;">EN</button>
-      <button class="nav-bag-btn" id="headerCartBtn" aria-label="Open shopping bag">
+      <button class="nav-bag-btn" aria-label="Open shopping bag">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <path d="M16 10a4 4 0 0 1-8 0"></path>
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+          <path d="M3 6h18"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
         </svg>
         <span class="nav-cart-badge">0</span>
       </button>
@@ -91,7 +89,7 @@
         <h1>Fragrance,<br><em>crafted for distinction.</em></h1>
         <p>A Pakistani perfume house crafting signature fragrances with considered notes and understated luxury. Discover <strong>Aura</strong> for Men, <strong>Vibe</strong> for Unisex, and <strong>Crush</strong> for Women — 50ml Eau de Parfum.</p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="#collectionSection">Shop Collection</a>
+          <a class="btn btn-primary" href="collection.html">Shop Collection</a>
           <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20am%20interested%20in%20ordering%20from%20XYAAL%20365."><svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;margin-right:8px;vertical-align:-4px;"><path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.5c0 2.42.687 4.68 1.878 6.6L3 29l7.09-2.34a12.44 12.44 0 0 0 5.911 1.5h.005c6.893 0 12.5-5.607 12.5-12.5S22.894 3 16.001 3Zm0 22.7h-.004a10.36 10.36 0 0 1-5.28-1.45l-.379-.225-3.943 1.3 1.32-3.84-.247-.395a10.34 10.34 0 0 1-1.588-5.59c0-5.73 4.665-10.4 10.397-10.4 2.777 0 5.386 1.082 7.35 3.048A10.33 10.33 0 0 1 26.62 15.5c0 5.73-4.665 10.4-10.62 10.4Zm5.706-7.79c-.312-.156-1.846-.911-2.132-1.015-.286-.104-.494-.156-.702.156-.208.312-.806 1.015-.988 1.223-.182.208-.364.234-.676.078-.312-.156-1.317-.485-2.508-1.546-.927-.826-1.553-1.847-1.735-2.159-.182-.312-.02-.48.137-.636.14-.14.312-.364.468-.546.156-.182.208-.312.312-.52.104-.208.052-.39-.026-.546-.078-.156-.702-1.69-.962-2.314-.253-.608-.51-.526-.702-.536l-.598-.01c-.208 0-.546.078-.832.39-.286.312-1.09 1.066-1.09 2.6 0 1.534 1.116 3.016 1.272 3.224.156.208 2.196 3.353 5.32 4.7.743.321 1.323.513 1.775.657.746.237 1.424.204 1.96.124.598-.089 1.846-.755 2.106-1.484.26-.729.26-1.354.182-1.484-.078-.13-.286-.208-.598-.364Z"/></svg>Order on WhatsApp</a>
         </div>
       </div>
@@ -125,107 +123,15 @@
     </div>
   </section>
 
-  <!-- STATIC COLLECTION CARDS (ZERO JAVASCRIPT FAILURE RISK) -->
-  <section class="section" id="collectionSection">
+  <section class="section">
     <div class="container">
       <div class="section-head reveal">
         <span class="kicker">The Collection</span>
         <h2>Three fragrances.</h2>
         <p>Every bottle in the XYAAL 365 collection is built around a distinct character — from first spray to final drydown.</p>
       </div>
-
-      <div class="product-grid">
-
-        <!-- CARD 1: AURA -->
-        <div class="product-card" id="aura">
-          <div class="product-thumb">
-            <img src="assets/products/haider/main.jpg" alt="AURA" onerror="this.src='assets/products/aura/main.jpg'">
-          </div>
-          <h3>AURA</h3>
-          <p class="tagline">Bold, masculine, magnetic — for Men</p>
-          <div class="card-notes">
-            <div class="note-item"><span class="note-tag">Top:</span> <span class="note-text">Crisp Bergamot, Pepper</span></div>
-            <div class="note-item"><span class="note-tag">Heart:</span> <span class="note-text">Smoked Cedarwood</span></div>
-            <div class="note-item"><span class="note-tag">Base:</span> <span class="note-text">Rich Amber</span></div>
-          </div>
-          <div style="margin: 8px 0; display:flex; flex-direction:column; gap:3px;">
-            <span style="font-size:11px; color:#a1a1a6; text-transform:uppercase; letter-spacing:1px;">
-              Original Price <span style="text-decoration:line-through; color:#ff5252; font-weight:600;">Rs. 3,499</span>
-            </span>
-            <span style="background:linear-gradient(135deg, #dfba73, #c59b48); color:#0a0a0a; padding:4px 10px; border-radius:4px; font-weight:800; font-size:14px; display:inline-block; width:fit-content;">
-              Launch Price Rs. 2,999
-            </span>
-            <span style="font-size:10px; color:#dfba73; letter-spacing:1px; font-weight:600; margin-top:2px;">
-              UNDER 3K • BEST BUY
-            </span>
-          </div>
-          <div class="card-actions-row" style="display:flex; gap:8px; align-items:center; margin-top:14px;">
-            <a class="btn btn-ghost" href="collection.html#aura" style="flex:1; text-align:center; padding:10px 6px; font-size:0.75rem; letter-spacing:0.05em; justify-content:center;">VIEW DETAILS</a>
-            <a class="btn btn-wa-compact" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20want%20to%20order%20AURA%20for%20Rs.%202%2C999" style="flex:1.2; text-align:center; padding:10px 6px; font-size:0.75rem; justify-content:center; font-weight:700;">ORDER</a>
-          </div>
-        </div>
-
-        <!-- CARD 2: VIBE -->
-        <div class="product-card" id="vibe">
-          <div class="product-thumb">
-            <!-- Tries collection-tested paths automatically -->
-            <img src="assets/products/vibe/1.jpg" alt="VIBE" onerror="if(this.src.indexOf('main.jpg')===-1){this.src='assets/products/vibe/main.jpg';}else if(this.src.indexOf('vibe.jpg')===-1){this.src='assets/products/vibe.jpg';}else{this.onerror=null;}">
-          </div>
-          <h3>VIBE</h3>
-          <p class="tagline">Fresh, versatile, sophisticated — Unisex</p>
-          <div class="card-notes">
-            <div class="note-item"><span class="note-tag">Top:</span> <span class="note-text">Light Citrus, Cardamom</span></div>
-            <div class="note-item"><span class="note-tag">Heart:</span> <span class="note-text">Iris</span></div>
-            <div class="note-item"><span class="note-tag">Base:</span> <span class="note-text">Clean White Musk</span></div>
-          </div>
-          <div style="margin: 8px 0; display:flex; flex-direction:column; gap:3px;">
-            <span style="font-size:11px; color:#a1a1a6; text-transform:uppercase; letter-spacing:1px;">
-              Original Price <span style="text-decoration:line-through; color:#ff5252; font-weight:600;">Rs. 3,699</span>
-            </span>
-            <span style="background:linear-gradient(135deg, #dfba73, #c59b48); color:#0a0a0a; padding:4px 10px; border-radius:4px; font-weight:800; font-size:14px; display:inline-block; width:fit-content;">
-              Launch Price Rs. 3,199
-            </span>
-            <span style="font-size:10px; color:#dfba73; letter-spacing:1px; font-weight:600; margin-top:2px;">
-              PREMIUM EVERYDAY
-            </span>
-          </div>
-          <div class="card-actions-row" style="display:flex; gap:8px; align-items:center; margin-top:14px;">
-            <a class="btn btn-ghost" href="collection.html#vibe" style="flex:1; text-align:center; padding:10px 6px; font-size:0.75rem; letter-spacing:0.05em; justify-content:center;">VIEW DETAILS</a>
-            <a class="btn btn-wa-compact" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20want%20to%20order%20VIBE%20for%20Rs.%203%2C199" style="flex:1.2; text-align:center; padding:10px 6px; font-size:0.75rem; justify-content:center; font-weight:700;">ORDER</a>
-          </div>
-        </div>
-
-        <!-- CARD 3: CRUSH -->
-        <div class="product-card" id="crush">
-          <div class="product-thumb">
-            <!-- Tries collection-tested paths automatically -->
-            <img src="assets/products/crush/1.jpg" alt="CRUSH" onerror="if(this.src.indexOf('main.jpg')===-1){this.src='assets/products/crush/main.jpg';}else if(this.src.indexOf('crush.jpg')===-1){this.src='assets/products/crush.jpg';}else{this.onerror=null;}">
-          </div>
-          <h3>CRUSH</h3>
-          <p class="tagline">Sensual, floral, enchanting — for Women</p>
-          <div class="card-notes">
-            <div class="note-item"><span class="note-tag">Top:</span> <span class="note-text">Soft Vanilla, Jasmine</span></div>
-            <div class="note-item"><span class="note-tag">Heart:</span> <span class="note-text">Blooming Rose</span></div>
-            <div class="note-item"><span class="note-tag">Base:</span> <span class="note-text">Warm Sandalwood</span></div>
-          </div>
-          <div style="margin: 8px 0; display:flex; flex-direction:column; gap:3px;">
-            <span style="font-size:11px; color:#a1a1a6; text-transform:uppercase; letter-spacing:1px;">
-              Original Price <span style="text-decoration:line-through; color:#ff5252; font-weight:600;">Rs. 3,999</span>
-            </span>
-            <span style="background:linear-gradient(135deg, #dfba73, #c59b48); color:#0a0a0a; padding:4px 10px; border-radius:4px; font-weight:800; font-size:14px; display:inline-block; width:fit-content;">
-              Launch Price Rs. 3,399
-            </span>
-            <span style="font-size:10px; color:#dfba73; letter-spacing:1px; font-weight:600; margin-top:2px;">
-              FOR CRUSH 🥰
-            </span>
-          </div>
-          <div class="card-actions-row" style="display:flex; gap:8px; align-items:center; margin-top:14px;">
-            <a class="btn btn-ghost" href="collection.html#crush" style="flex:1; text-align:center; padding:10px 6px; font-size:0.75rem; letter-spacing:0.05em; justify-content:center;">VIEW DETAILS</a>
-            <a class="btn btn-wa-compact" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20want%20to%20order%20CRUSH%20for%20Rs.%203%2C399" style="flex:1.2; text-align:center; padding:10px 6px; font-size:0.75rem; justify-content:center; font-weight:700;">ORDER</a>
-          </div>
-        </div>
-
-      </div>
+      <!-- Shared grid container identical to collection.html -->
+      <div class="product-grid" id="collectionGrid"></div>
     </div>
   </section>
 
@@ -268,7 +174,7 @@
       <div>
         <h4>Explore</h4>
         <a href="index.html">Home</a>
-        <a href="#collectionSection">Collection</a>
+        <a href="collection.html">Collection</a>
         <a href="about.html">Our Story</a>
         <a href="contact.html">Contact</a>
       </div>
@@ -285,31 +191,15 @@
   </div>
 </footer>
 
-<script src="lang.js?v=2.0"></script>
-  
+<!-- EXACT ENGINE SCRIPTS FROM COLLECTION.HTML -->
+<script>window.ROOT = "./";</script>
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script src="js/cart.js"></script>
 <script>
-  // Mobile Menu Toggle
-  const menuToggle = document.getElementById('menuToggle');
-  const menuClose = document.getElementById('menuClose');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => mobileMenu.classList.add('open'));
-  }
-  if (menuClose && mobileMenu) {
-    menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  }
-
-  // Cart Button Smooth Scroll
-  const cartBtn = document.getElementById('headerCartBtn');
-  if (cartBtn) {
-    cartBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.getElementById('collectionSection');
-      if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
+  if (typeof renderProductGrid === 'function') {
+    renderProductGrid("collectionGrid");
   }
 </script>
-  
 </body>
 </html>
