@@ -82,16 +82,23 @@ if (document.readyState === 'loading') {
   applyStoryImage();
 }
 
-
 function placeholderBlock(label){
   return `<div class="ph-label">${label}</div>`;
 }
 function productImgOrPlaceholder(src, label){
-  // Returns an <img> that falls back to a text placeholder if the file isn't there yet.
   const resolved = (src && (src.startsWith('data:') || src.startsWith('http://') || src.startsWith('https://')))
     ? src
     : `${ROOT}${src || ''}`;
   return `<img src="${resolved}" alt="${label}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'ph-label',innerHTML:'${label}<br><small>Replace with product photo</small>'}))">`;
+}
+
+/* Helper: Get explicit strikethrough price */
+function getOriginalPriceText(p) {
+  if (p.originalPrice) return p.originalPrice;
+  if (p.id === 'aura' || p.slug === 'aura') return 'PKR 4,299';
+  if (p.id === 'vibe' || p.slug === 'vibe') return 'PKR 3,499';
+  if (p.id === 'crush' || p.slug === 'crush') return 'PKR 3,999';
+  return '';
 }
 
 /* =====================================================
@@ -113,6 +120,7 @@ function renderProductGrid(containerId, limit){
     const isAvailable = (p.available !== false);
     const activeImg = p.image || (p.images && p.images[0]);
     const detailUrl = `${ROOT}products/${p.slug}/`;
+    const origPriceDisplay = getOriginalPriceText(p);
 
     return `
     <div class="product-card reveal ${!isAvailable ? 'is-unavailable' : ''}">
@@ -139,15 +147,15 @@ function renderProductGrid(containerId, limit){
         </div>
       </div>
 
-      <div class="price-row">
-        ${p.salePrice ? `<span class="price">PKR ${p.salePrice.toLocaleString()}</span><span class="old-price">PKR ${p.price.toLocaleString()}</span>`
-          : p.price ? `<span class="price">PKR ${p.price.toLocaleString()}</span>`
-          : `<span class="price">[Price]</span>`}
+      <!-- Pricing Row with Prominent Strikethrough Cut -->
+      <div class="price-row" style="display:flex; align-items:center; gap:8px; margin: 10px 0 14px;">
+        <span class="price" style="font-weight:700; color:var(--gold, #dfba73); font-size:1.05rem;">PKR ${activePrice.toLocaleString()}</span>
+        ${origPriceDisplay ? `<span class="old-price" style="text-decoration:line-through; color:#ff5252; opacity:0.85; font-size:0.85rem; font-weight:600;">${origPriceDisplay}</span>` : ''}
       </div>
 
       <div class="card-actions">
         ${isAvailable ? `
-          <button type="button" class="btn btn-add-bag" data-action="add-to-bag" data-id="${p.id || p.slug}" data-name="${p.name}" data-price="${activePrice}" data-image="${p.images[0]}">
+          <button type="button" class="btn btn-add-bag" data-action="add-to-bag" data-id="${p.id \vert{}\vert{} p.slug}" data-name="${p.name}" data-price="${activePrice}" data-image="${p.images[0]}">
             ${BAG_ICON} Add to Bag
           </button>
         ` : `
@@ -166,7 +174,6 @@ function renderProductGrid(containerId, limit){
   `}).join("");
 
   document.querySelectorAll(".reveal").forEach(elm => {
-    // re-observe newly injected cards
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); });
     }, { threshold:.15 });
@@ -184,6 +191,8 @@ function renderProductDetail(slug){
   if (!p || !root) return;
 
   document.title = `${p.name} | XYAAL 365`;
+  const activePrice = p.salePrice || p.price;
+  const origPriceDisplay = getOriginalPriceText(p);
 
   root.innerHTML = `
     <a class="back-link" href="${ROOT}collection.html">${BACK_ICON} Back to Collection</a>
@@ -204,10 +213,9 @@ function renderProductDetail(slug){
         <h1>${p.name}</h1>
         <p class="tagline">${p.tagline}</p>
 
-        <div class="pd-price">
-          ${p.salePrice ? `<span class="price">PKR ${p.salePrice.toLocaleString()}</span><span class="old-price">PKR ${p.price.toLocaleString()}</span>`
-            : p.price ? `<span class="price">PKR ${p.price.toLocaleString()}</span>`
-            : `<span class="price">[Price]</span>`}
+        <div class="pd-price" style="display:flex; align-items:center; gap:10px;">
+          <span class="price" style="font-weight:700; color:var(--gold, #dfba73); font-size:1.35rem;">PKR ${activePrice.toLocaleString()}</span>
+          ${origPriceDisplay ? `<span class="old-price" style="text-decoration:line-through; color:#ff5252; opacity:0.85; font-size:0.95rem; font-weight:600;">${origPriceDisplay}</span>` : ''}
         </div>
         <span class="pd-badge ${p.available ? '' : 'is-sold-out'}" style="${p.available ? '' : 'border-color:rgba(239,68,68,0.3); color:#fca5a5;'}">${p.available ? 'In Stock' : 'Currently Unavailable'} · ${p.size}</span>
 
@@ -266,7 +274,7 @@ function renderProductDetail(slug){
     });
   });
 
-  // Quantity selector (reflected in the WhatsApp message & Add to Bag)
+  // Quantity selector
   let qty = 1;
   const qtyValue = document.getElementById("qtyValue");
   const waBtn = document.getElementById("waOrderBtn");
@@ -312,7 +320,7 @@ function renderProductDetail(slug){
   }
 }
 
-/* ---------- Conversion tracking hooks (dormant until GA4 / Meta Pixel is added) ---------- */
+/* ---------- Conversion tracking hooks ---------- */
 document.addEventListener("click", (e) => {
   const a = e.target.closest('a[href*="wa.me"]');
   if (!a) return;
@@ -350,4 +358,3 @@ document.addEventListener("click", (e) => {
     setup();
   }
 })();
-
