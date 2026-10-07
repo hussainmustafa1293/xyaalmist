@@ -24,39 +24,108 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-  /* Ensure reveal and cards are never hidden or stuck blank */
-  .reveal, .product-card {
+  * { box-sizing: border-box; }
+  .reveal, .product-card, #theCollectionSection, .product-grid-fixed {
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
+    display: block !important;
   }
-  .product-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    background-color: #121216;
+  .product-grid-fixed {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 24px !important;
+    margin-top: 30px !important;
   }
-  .price-row-custom {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    margin: 10px 0 14px 0;
+  .card-box {
+    background: #0d0d11 !important;
+    border: 1px solid rgba(197, 168, 128, 0.25) !important;
+    border-radius: 8px !important;
+    padding: 18px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
-  .price-current {
-    font-weight: 700;
-    color: #dfba73;
-    font-size: 1.15rem;
+  .card-img-wrap {
+    width: 100% !important;
+    height: 380px !important;
+    overflow: hidden !important;
+    border-radius: 6px !important;
+    background: #15151a !important;
+    margin-bottom: 16px !important;
   }
-  .price-cut {
-    text-decoration: line-through;
+  .card-img-wrap img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+  .notes-box {
+    background: rgba(255,255,255,0.03) !important;
+    padding: 10px 12px !important;
+    border-radius: 6px !important;
+    margin: 12px 0 !important;
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+  }
+  .notes-row {
+    margin-bottom: 4px !important;
+    color: #e0e0e0 !important;
+  }
+  .notes-label {
+    color: #c5a880 !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    margin-right: 4px !important;
+  }
+  .price-strip {
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 10px !important;
+    margin: 12px 0 16px 0 !important;
+  }
+  .price-main {
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    color: #dfba73 !important;
+  }
+  .price-striked {
+    font-size: 0.95rem !important;
     color: #ff5252 !important;
-    opacity: 0.9;
-    font-size: 0.88rem;
-    font-weight: 600;
+    text-decoration: line-through !important;
+    font-weight: 600 !important;
+  }
+  .btn-row {
+    display: flex !important;
+    gap: 8px !important;
+    margin-top: auto !important;
+  }
+  .btn-act {
+    flex: 1 !important;
+    text-align: center !important;
+    padding: 10px 8px !important;
+    font-size: 12px !important;
+    border-radius: 4px !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    display: inline-block !important;
+  }
+  .btn-act-details {
+    border: 1px solid rgba(197, 168, 128, 0.4) !important;
+    color: #c5a880 !important;
+    background: transparent !important;
+  }
+  .btn-act-order {
+    background: #1e3a29 !important;
+    border: 1px solid #25d366 !important;
+    color: #ffffff !important;
   }
 </style>
 </head>
-<body>
+<body style="background:#050507; color:#f0f0f5; margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
 
 <header class="site-header" id="siteHeader">
   <div class="container nav-row">
@@ -67,7 +136,7 @@
     <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="collection.html">Collection</a>
-      <a href="about.html">Our Story</a>
+      <a href="#ourStorySection">Our Story</a>
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-actions">
@@ -94,11 +163,9 @@
   </div>
   <a href="index.html">Home</a>
   <a href="collection.html">Collection</a>
-  <a href="about.html">Our Story</a>
+  <a href="#ourStorySection">Our Story</a>
   <a href="contact.html">Contact</a>
-  <a class="btn btn-primary" href="https://wa.me/923281959312" target="_blank" rel="noopener">
-    Order on WhatsApp
-  </a>
+  <a class="btn btn-primary" href="https://wa.me/923281959312" target="_blank" rel="noopener">Order on WhatsApp</a>
 </div>
 
 <main>
@@ -111,9 +178,7 @@
         <p>A Pakistani perfume house crafting signature fragrances with considered notes and understated luxury. Discover <strong>Aura</strong> for Men, <strong>Vibe</strong> for Unisex, and <strong>Crush</strong> for Women — 50ml Eau de Parfum.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#theCollectionSection">Shop Collection</a>
-          <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20am%20interested%20in%20ordering%20from%20XYAAL%20365.">
-            Order on WhatsApp
-          </a>
+          <a class="btn btn-wa" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20am%20interested%20in%20ordering%20from%20XYAAL%20365.">Order on WhatsApp</a>
         </div>
       </div>
       <div class="hero-promo-card">
@@ -146,101 +211,89 @@
     </div>
   </section>
 
-  <!-- COLLECTION SECTION GUARANTEED VISIBLE -->
-  <section class="section" id="theCollectionSection">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="kicker">The Collection</span>
-        <h2>Three fragrances.</h2>
-        <p>Every bottle in the XYAAL 365 collection is built around a distinct character — from first spray to final drydown.</p>
+  <!-- COLLECTION SECTION -->
+  <section class="section" id="theCollectionSection" style="padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.08);">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span style="color:#c5a880; font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:700;">The Collection</span>
+        <h2 style="font-size:2.2rem; margin:10px 0; color:#fff; font-family:Georgia,serif;">Three Fragrances.</h2>
+        <p style="color:#aaa; font-size:14px; max-width:600px; margin:0 auto;">Every bottle in the XYAAL 365 collection is built around a distinct character — from first spray to final drydown.</p>
       </div>
 
-      <div class="product-grid" id="homeProductGrid">
+      <div class="product-grid-fixed">
 
-        <!-- CARD 1: AURA -->
-        <div class="product-card" id="aura">
-          <a href="products/aura/" class="product-thumb">
-            <img src="assets/products/haider/main.jpg" alt="AURA" onerror="this.src='assets/products/aura/main.jpg'">
-          </a>
-          <h3><a href="products/aura/">AURA</a></h3>
-          <p class="tagline">Bold, masculine, magnetic — for Men</p>
-          <div class="card-notes">
-            <div class="note-item"><span class="note-tag">Top:</span> <span class="note-text">Bergamot</span></div>
-            <div class="note-item"><span class="note-tag">Heart:</span> <span class="note-text">Sichuan Pepper, Lavender, Star Anise, Nutmeg</span></div>
-            <div class="note-item"><span class="note-tag">Base:</span> <span class="note-text">Ambroxan, Vanilla</span></div>
+        <!-- 1. AURA -->
+        <div class="card-box">
+          <div class="card-img-wrap">
+            <img src="assets/products/haider/main.jpg" alt="AURA" onerror="this.onerror=null; this.src='assets/products/aura/main.jpg';">
           </div>
-          <div class="price-row-custom">
-            <span class="price-current">PKR 3,699</span>
-            <span class="price-cut">PKR 4,299</span>
+          <h3 style="margin:0; font-size:1.3rem; color:#fff; letter-spacing:1px;">AURA</h3>
+          <p style="margin:4px 0 10px 0; font-size:12px; color:#aaa;">Bold, masculine, magnetic — for Men</p>
+          
+          <div class="notes-box">
+            <div class="notes-row"><span class="notes-label">Top:</span> Bergamot</div>
+            <div class="notes-row"><span class="notes-label">Heart:</span> Sichuan Pepper, Lavender, Star Anise, Nutmeg</div>
+            <div class="notes-row"><span class="notes-label">Base:</span> Ambroxan, Vanilla</div>
           </div>
-          <div class="card-actions">
-            <button type="button" class="btn btn-add-bag" data-action="add-to-bag" data-id="aura" data-name="Aura" data-price="3699" data-image="assets/products/haider/main.jpg">
-              Add to Bag
-            </button>
-            <div class="card-actions-row">
-              <a class="btn btn-ghost" href="products/aura/">View Details</a>
-              <a class="btn btn-wa btn-wa-compact" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20want%20to%20order%20Aura%20for%20PKR%203%2C699">
-                Order
-              </a>
-            </div>
+
+          <div class="price-strip">
+            <span class="price-main">PKR 3,699</span>
+            <span class="price-striked">PKR 4,299</span>
+          </div>
+
+          <div class="btn-row">
+            <a href="products/aura/" class="btn-act btn-act-details">View Details</a>
+            <a href="https://wa.me/923281959312?text=Hi%2C%20I%20want%20to%20order%20Aura%20for%20PKR%203%2C699" target="_blank" rel="noopener" class="btn-act btn-act-order">Order</a>
           </div>
         </div>
 
-        <!-- CARD 2: VIBE -->
-        <div class="product-card" id="vibe">
-          <a href="products/vibe/" class="product-thumb">
-            <img src="assets/products/product-2/main.jpg" alt="VIBE" onerror="this.src='assets/products/vibe/1.jpg'">
-          </a>
-          <h3><a href="products/vibe/">VIBE</a></h3>
-          <p class="tagline">Fresh, versatile, sophisticated — Unisex</p>
-          <div class="card-notes">
-            <div class="note-item"><span class="note-tag">Top:</span> <span class="note-text">Grapefruit, Lemon, Mint, Pink Pepper, Bergamot, Aldehydes, Coriander</span></div>
-            <div class="note-item"><span class="note-tag">Heart:</span> <span class="note-text">Ginger, Jasmine, Nutmeg, Melon</span></div>
-            <div class="note-item"><span class="note-tag">Base:</span> <span class="note-text">Incense, Amber, Cedar, Sandalwood, Labdanum, Patchouli, Amberwood</span></div>
+        <!-- 2. VIBE -->
+        <div class="card-box">
+          <div class="card-img-wrap">
+            <img src="assets/products/product-2/main.jpg" alt="VIBE" onerror="this.onerror=null; this.src='assets/products/haider/main.jpg';">
           </div>
-          <div class="price-row-custom">
-            <span class="price-current">PKR 2,999</span>
-            <span class="price-cut">PKR 3,499</span>
+          <h3 style="margin:0; font-size:1.3rem; color:#fff; letter-spacing:1px;">VIBE</h3>
+          <p style="margin:4px 0 10px 0; font-size:12px; color:#aaa;">Fresh, versatile, sophisticated — Unisex</p>
+          
+          <div class="notes-box">
+            <div class="notes-row"><span class="notes-label">Top:</span> Grapefruit, Lemon, Mint, Pink Pepper, Bergamot</div>
+            <div class="notes-row"><span class="notes-label">Heart:</span> Ginger, Jasmine, Nutmeg, Melon</div>
+            <div class="notes-row"><span class="notes-label">Base:</span> Incense, Amber, Cedar, Sandalwood, Patchouli</div>
           </div>
-          <div class="card-actions">
-            <button type="button" class="btn btn-add-bag" data-action="add-to-bag" data-id="vibe" data-name="Vibe" data-price="2999" data-image="assets/products/product-2/main.jpg">
-              Add to Bag
-            </button>
-            <div class="card-actions-row">
-              <a class="btn btn-ghost" href="products/vibe/">View Details</a>
-              <a class="btn btn-wa btn-wa-compact" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20want%20to%20order%20Vibe%20for%20PKR%202%2C999">
-                Order
-              </a>
-            </div>
+
+          <div class="price-strip">
+            <span class="price-main">PKR 2,999</span>
+            <span class="price-striked">PKR 3,499</span>
+          </div>
+
+          <div class="btn-row">
+            <a href="products/vibe/" class="btn-act btn-act-details">View Details</a>
+            <a href="https://wa.me/923281959312?text=Hi%2C%20I%20want%20to%20order%20Vibe%20for%20PKR%202%2C999" target="_blank" rel="noopener" class="btn-act btn-act-order">Order</a>
           </div>
         </div>
 
-        <!-- CARD 3: CRUSH -->
-        <div class="product-card" id="crush">
-          <a href="products/crush/" class="product-thumb">
-            <img src="assets/products/product-3/main.jpg" alt="CRUSH" onerror="this.src='assets/products/crush/1.jpg'">
-          </a>
-          <h3><a href="products/crush/">CRUSH</a></h3>
-          <p class="tagline">Sensual, floral, enchanting — for Women</p>
-          <div class="card-notes">
-            <div class="note-item"><span class="note-tag">Top:</span> <span class="note-text">Orange Blossom, Pink Pepper, Pear</span></div>
-            <div class="note-item"><span class="note-tag">Heart:</span> <span class="note-text">Coffee, White Flowers, Jasmine</span></div>
-            <div class="note-item"><span class="note-tag">Base:</span> <span class="note-text">Vanilla, Patchouli, Cashmere Wood, Cedarwood</span></div>
+        <!-- 3. CRUSH -->
+        <div class="card-box">
+          <div class="card-img-wrap">
+            <img src="assets/products/product-3/main.jpg" alt="CRUSH" onerror="this.onerror=null; this.src='assets/products/haider/main.jpg';">
           </div>
-          <div class="price-row-custom">
-            <span class="price-current">PKR 3,499</span>
-            <span class="price-cut">PKR 3,999</span>
+          <h3 style="margin:0; font-size:1.3rem; color:#fff; letter-spacing:1px;">CRUSH</h3>
+          <p style="margin:4px 0 10px 0; font-size:12px; color:#aaa;">Sensual, floral, enchanting — for Women</p>
+          
+          <div class="notes-box">
+            <div class="notes-row"><span class="notes-label">Top:</span> Orange Blossom, Pink Pepper, Pear</div>
+            <div class="notes-row"><span class="notes-label">Heart:</span> Coffee, White Flowers, Jasmine</div>
+            <div class="notes-row"><span class="notes-label">Base:</span> Vanilla, Patchouli, Cashmere Wood, Cedarwood</div>
           </div>
-          <div class="card-actions">
-            <button type="button" class="btn btn-add-bag" data-action="add-to-bag" data-id="crush" data-name="Crush" data-price="3499" data-image="assets/products/product-3/main.jpg">
-              Add to Bag
-            </button>
-            <div class="card-actions-row">
-              <a class="btn btn-ghost" href="products/crush/">View Details</a>
-              <a class="btn btn-wa btn-wa-compact" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20want%20to%20order%20Crush%20for%20PKR%203%2C499">
-                Order
-              </a>
-            </div>
+
+          <div class="price-strip">
+            <span class="price-main">PKR 3,499</span>
+            <span class="price-striked">PKR 3,999</span>
+          </div>
+
+          <div class="btn-row">
+            <a href="products/crush/" class="btn-act btn-act-details">View Details</a>
+            <a href="https://wa.me/923281959312?text=Hi%2C%20I%20want%20to%20order%20Crush%20for%20PKR%203%2C499" target="_blank" rel="noopener" class="btn-act btn-act-order">Order</a>
           </div>
         </div>
 
@@ -248,26 +301,27 @@
     </div>
   </section>
 
-  <section class="section" style="border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow-x:hidden;">
-    <div class="container editorial reveal">
-      <div class="editorial-media">
-        <img src="assets/images/story.png" alt="XYAAL 365 — Hidden Chapter" class="editorial-img" id="storySectionImg" loading="lazy" />
+  <!-- OUR STORY SECTION (TARGETABLE VIA #ourStorySection) -->
+  <section class="section" id="ourStorySection" style="border-top:1px solid rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.08); padding:60px 0; scroll-margin-top:70px;">
+    <div class="container editorial" style="display:flex; flex-wrap:wrap; gap:40px; align-items:center; max-width:1200px; margin:0 auto; padding:0 20px;">
+      <div style="flex:1; min-width:300px;">
+        <img src="assets/images/story.png" alt="XYAAL 365 Story" style="width:100%; border-radius:8px; display:block;" loading="lazy">
       </div>
-      <div class="editorial-content">
-        <span class="kicker">Our Story</span>
-        <h2>A quiet approach to fragrance.</h2>
-        <p>XYAAL 365 is a Pakistani perfume house, built with care around fragrance, presentation and identity rather than scale. Crafted for every day of the year.</p>
-        <a class="btn btn-ghost" href="about.html">Read Our Story</a>
+      <div style="flex:1; min-width:300px;">
+        <span style="color:#c5a880; font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:700;">Our Story</span>
+        <h2 style="font-size:2rem; margin:10px 0; color:#fff; font-family:Georgia,serif;">A quiet approach to fragrance.</h2>
+        <p style="color:#aaa; line-height:1.6;">XYAAL 365 is a Pakistani perfume house, built with care around fragrance, presentation and identity rather than scale. Crafted for every day of the year.</p>
+        <a class="btn btn-ghost" href="about.html" style="margin-top:15px; display:inline-block; border:1px solid rgba(197,168,128,0.4); color:#c5a880; padding:10px 18px; text-decoration:none; border-radius:4px;">Read Full Story</a>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" style="padding:60px 0;">
     <div class="container">
-      <div class="contact-card reveal" style="text-align:center; max-width:640px; margin:0 auto;">
-        <h3>Ready to order?</h3>
-        <p style="margin:10px 0 20px;">Reach us directly on WhatsApp for orders, questions or fragrance guidance.</p>
-        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20am%20interested%20in%20ordering%20from%20XYAAL%20365.">Chat on WhatsApp</a>
+      <div class="contact-card" style="text-align:center; max-width:640px; margin:0 auto; padding:40px 20px; background:#0d0d11; border-radius:8px; border:1px solid rgba(197,168,128,0.2);">
+        <h3 style="color:#fff; font-size:1.8rem; margin:0;">Ready to order?</h3>
+        <p style="margin:12px 0 24px; color:#aaa;">Reach us directly on WhatsApp for orders, questions or fragrance guidance.</p>
+        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/923281959312?text=Hi%2C%20I%20am%20interested%20in%20ordering%20from%20XYAAL%20365." style="background:#dfba73; color:#000; padding:12px 24px; text-decoration:none; font-weight:bold; border-radius:4px; display:inline-block;">Chat on WhatsApp</a>
       </div>
     </div>
   </section>
@@ -288,7 +342,7 @@
         <h4>Explore</h4>
         <a href="index.html">Home</a>
         <a href="#theCollectionSection">Collection</a>
-        <a href="about.html">Our Story</a>
+        <a href="#ourStorySection">Our Story</a>
         <a href="contact.html">Contact</a>
       </div>
       <div>
@@ -304,10 +358,8 @@
   </div>
 </footer>
 
-<script>window.ROOT = "./";</script>
-<script src="js/cart.js"></script>
 <script>
-  // Mobile Menu Toggle
+  // Mobile Menu Controls
   const menuToggle = document.getElementById('menuToggle');
   const menuClose = document.getElementById('menuClose');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -315,7 +367,7 @@
   if (menuToggle && mobileMenu) menuToggle.addEventListener('click', () => mobileMenu.classList.add('open'));
   if (menuClose && mobileMenu) menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
 
-  // Video Mute/Unmute
+  // Video Controls
   const vid = document.getElementById('heroPromoVideo');
   const muteBtn = document.getElementById('promoMuteBtn');
   if (vid && muteBtn) {
