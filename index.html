@@ -25,6 +25,16 @@
 
 <style>
   * { box-sizing: border-box; }
+   /* Fix Header and Logo Overlap */
+  .announcement-bar {
+    position: relative !important;
+    z-index: 1002 !important;
+  }
+  .site-header {
+    position: relative !important;
+    top: auto !important;
+    z-index: 1001 !important;
+  }
   .reveal, .product-card, #theCollectionSection, .product-grid-fixed {
     opacity: 1 !important;
     visibility: visible !important;
