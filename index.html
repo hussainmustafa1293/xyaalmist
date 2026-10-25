@@ -1,4 +1,4 @@
-Hy<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -123,10 +123,47 @@ Hy<!DOCTYPE html>
     border: 1px solid #25d366 !important;
     color: #ffffff !important;
   }
+
+  /* Delivery Announcement Bar Style */
+  .announcement-bar {
+    background: #0a0a0e !important;
+    border-bottom: 1px solid rgba(223, 186, 115, 0.3) !important;
+    color: #dfba73 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.2px !important;
+    text-transform: uppercase !important;
+    padding: 8px 0 !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    position: relative !important;
+    z-index: 1002 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4) !important;
+  }
+  .announcement-track {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    animation: announcement-scroll 24s linear infinite !important;
+  }
+  .announcement-track span {
+    display: inline-block !important;
+    padding-right: 60px !important;
+  }
+  @keyframes announcement-scroll {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
 </style>
- <!
 </head>
 <body style="background:#050507; color:#f0f0f5; margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+
+<!-- Top Moving Announcement Bar -->
+<div class="announcement-bar">
+  <div class="announcement-track">
+    <span>🚚 FAST DELIVERY ALL OVER PAKISTAN ✦ 💵 CASH ON DELIVERY (COD) AVAILABLE ✦ ✨ 100% ORIGINAL ARTISAN FRAGRANCES ✦</span>
+    <span>🚚 FAST DELIVERY ALL OVER PAKISTAN ✦ 💵 CASH ON DELIVERY (COD) AVAILABLE ✦ ✨ 100% ORIGINAL ARTISAN FRAGRANCES ✦</span>
+  </div>
+</div>
 
 <header class="site-header" id="siteHeader">
   <div class="container nav-row">
